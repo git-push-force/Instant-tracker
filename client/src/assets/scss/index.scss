@@ -1,0 +1,41 @@
+@import './colors.scss';
+
+.bg-main {
+    background-color: $mainColor !important;
+
+    &:hover {
+        background-color: lighten($mainColor, 5) !important;
+    }
+}
+
+.bg-light {
+    background-color: $lightColor !important;
+
+    &:hover {
+        background-color: lighten($lightColor, 5) !important;
+    }
+}
+
+.bg-subLight {
+    background-color: $subLightColor !important;
+
+    &:hover {
+        background-color: lighten($subLightColor, 5) !important;
+    }
+}
+
+.bg-sub {
+    background-color: $subColor !important;
+
+    &:hover {
+        background-color: lighten($subColor, 5) !important;
+    }
+}
+
+.bg-subDark {
+    background-color: $subDarkColor !important;
+
+    &:hover {
+        background-color: lighten($subDarkColor, 5) !important;
+    }
+}
