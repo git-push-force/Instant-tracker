@@ -9,6 +9,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const mongoose_1 = require("@nestjs/mongoose");
 const config_1 = require("@nestjs/config");
+const calendar_module_1 = require("./calendar/calendar.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -20,8 +21,9 @@ AppModule = __decorate([
             }),
             mongoose_1.MongooseModule.forRoot(`mongodb://localhost/${process.env.DBname}`, {
                 useNewUrlParser: true,
-                useUnifiedTopology: true
+                useUnifiedTopology: true,
             }),
+            calendar_module_1.CalendarModule,
         ],
         controllers: [],
         providers: [],
