@@ -12,33 +12,42 @@ export class CalendarService {
         private calendarModel: Model<ICalendarInterface>
     ) {}
 
+    checkPassword(query, founded) {
+        if (founded.password) {
+            if (!query.password) {
+                throw new HttpException(
+                    'Provide password to get access to this calendar',
+                    HttpStatus.UNAUTHORIZED
+                );
+            }
+
+            if (query.password !== founded.password) {
+                throw new HttpException(
+                    'Wrong password',
+                    HttpStatus.BAD_REQUEST
+                );
+            }
+        }
+    }
+
+    checkId(query) {
+        if (!query.id) {
+            throw new HttpException(
+                'Enter valid calendar id',
+                HttpStatus.BAD_REQUEST
+            );
+        }
+    }
+
     async get(query) {
         if (!query.id) {
             throw new HttpException('ID is required', HttpStatus.BAD_REQUEST);
         }
 
         try {
-            const founded = await this.calendarModel.find({ _id: query.id });
+            const founded = await this.calendarModel.findById(query.id);
 
-            // @ts-ignore
-            if (founded.password) {
-                if (!query.password) {
-                    throw new HttpException(
-                        'Provide password to get access to this tracker',
-                        HttpStatus.UNAUTHORIZED
-                    );
-                }
-
-                // @ts-ignore
-                if (query.password !== founded.password) {
-                    throw new HttpException(
-                        'Wrong password',
-                        HttpStatus.BAD_REQUEST
-                    );
-                } else {
-                    return founded;
-                }
-            }
+            this.checkPassword(query, founded);
 
             return founded;
         } catch (err) {
@@ -76,12 +85,12 @@ export class CalendarService {
     }
 
     async update(query) {
-        if (!query.id) {
-            throw new HttpException(
-                'Enter valid calendar id',
-                HttpStatus.BAD_REQUEST
-            );
-        }
+
+        this.checkId(query);
+
+        const founded = await this.calendarModel.findById(query.id);
+
+        this.checkPassword(query, founded);
 
         if (!query.name || !query.name.length) {
             throw new HttpException(
@@ -106,7 +115,48 @@ export class CalendarService {
         }
     }
 
-    remove() {}
+    async remove(query) {
+        this.checkId(query);
+        const founded = await this.calendarModel.findById(query.id);
+        this.checkPassword(query, founded);
 
-    setPassword(query) {}
+        try {
+            this.calendarModel.findByIdAndDelete(query.id);
+        } catch (err) {
+            throw new HttpException(
+                'Internal error',
+                HttpStatus.INTERNAL_SERVER_ERROR
+            );
+        }
+    }
+
+    async setPassword(query) {
+        this.checkId(query);
+
+        const founded = await this.calendarModel.findById(query.id);
+
+        this.checkPassword(query, founded);
+
+        if (!query.newPassword || query.newPassword.length < 4) {
+            throw new HttpException(
+                'Enter valid new password',
+                HttpStatus.BAD_REQUEST
+            );
+        }
+
+        try {
+            const updated = await this.calendarModel.findByIdAndUpdate(
+                query.id,
+                { $set: { password: query.password } },
+                { new: true }
+            );
+
+            return updated;
+        } catch (err) {
+            throw new HttpException(
+                'Internal error',
+                HttpStatus.INTERNAL_SERVER_ERROR
+            );
+        }
+    }
 }
