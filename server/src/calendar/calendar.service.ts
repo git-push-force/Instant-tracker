@@ -28,6 +28,7 @@ export class CalendarService {
                 );
             }
         }
+        return founded;
     }
 
     checkId(query) {
@@ -39,23 +40,22 @@ export class CalendarService {
         }
     }
 
-    async get(query) {
-        if (!query.id) {
-            throw new HttpException('ID is required', HttpStatus.BAD_REQUEST);
-        }
-
+    async checkIsExist(query) {
         try {
-            const founded = await this.calendarModel.findById(query.id);
+            return await this.calendarModel.findById(query.id);
 
-            this.checkPassword(query, founded);
-
-            return founded;
         } catch (err) {
             throw new HttpException(
-                "Calendar with this id doesn't exist",
-                HttpStatus.NOT_FOUND
+                'Calendar with this id doesn\'t exist',
+                HttpStatus.BAD_REQUEST
             );
         }
+    }
+
+    async get(query) {
+        this.checkId(query);
+        const founded = await this.checkIsExist(query);
+        return this.checkPassword(query, founded);
     }
 
     async create(calendarDto: CalendarDto) {
@@ -78,17 +78,14 @@ export class CalendarService {
         }
 
         const createdCalendar = new this.calendarModel({
-            ...calendarDto,
-            events: [],
+            ...calendarDto
         });
         return createdCalendar.save();
     }
 
     async update(query) {
-
         this.checkId(query);
-
-        const founded = await this.calendarModel.findById(query.id);
+        const founded = await this.checkIsExist(query);
 
         this.checkPassword(query, founded);
 
@@ -117,11 +114,11 @@ export class CalendarService {
 
     async remove(query) {
         this.checkId(query);
-        const founded = await this.calendarModel.findById(query.id);
+        const founded = await this.checkIsExist(query);
         this.checkPassword(query, founded);
 
         try {
-            this.calendarModel.findByIdAndDelete(query.id);
+            return await this.calendarModel.findByIdAndDelete(query.id);
         } catch (err) {
             throw new HttpException(
                 'Internal error',

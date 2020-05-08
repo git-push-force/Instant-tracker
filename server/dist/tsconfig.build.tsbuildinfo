@@ -1222,20 +1222,20 @@
         "signature": "8f1241f5d9f0d3d72117768b3c974e462840fbd85026fb66685078945404cf2f"
       },
       "../src/calendar/interfaces/calendar.interface.ts": {
-        "version": "edd08e2ff7056208d5ea754fb3ffcfb58f4787d42bc1146ca747134a378b81a0",
-        "signature": "98d7efc6ec1471cc51b59614b64a92fc0136c7d18cf77d5a05b8ed80b3201282"
+        "version": "dd21a161f6215650672d6d7f49e2ec9538f9c66675d5c151f3fc43ecf3850f71",
+        "signature": "6b680e113bdd8206acf33839803892961e929647863867394f369d93a247f11b"
       },
       "../src/calendar/dto/calendar.dto.ts": {
         "version": "0677d246df7bb3d673ae47ea1b05998322a6ae6a9b2882fac8e81dc8f5875b80",
         "signature": "e16214c066f002eca35219a830e4065953fde2e140e5e650569fdeda64b0fe07"
       },
       "../src/calendar/calendar.service.ts": {
-        "version": "b650f79b1b65564c3ebcebaa9eca8d0b237f19b1ece9fffc5341a8c7082a316d",
-        "signature": "8511261794971a2e3310da1d4a2be1256da50db5c9b36fe66539ca8a2a90f56d"
+        "version": "83ebfa871f9b34cb175e5dfcac68e3521d0c07a0f5cad8b08232dbbb712486e0",
+        "signature": "8ea0112221b8feec7130694a3ed6dd1d5a715ff6817ebd06f1416eb84fc692a8"
       },
       "../src/calendar/calendar.controller.ts": {
         "version": "9cf6933fce436d3257dc607a17ac236616528d165830e861a1878d138c98da99",
-        "signature": "a3338e49c54bb2f1ff48fb41033065967fad5caa87b8995c0d45cbb69415c429"
+        "signature": "9af5ee9a2c250f2fad9481f58cbb432106071224a750edecaf348b9a9157d46e"
       },
       "../src/calendar/schemas/calendar.schema.ts": {
         "version": "3ca62def83682301f57517cab53f37343bf6e5894f9190b4a5d76801483da839",
