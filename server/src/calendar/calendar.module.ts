@@ -1,8 +1,8 @@
-import { Module, Get } from '@nestjs/common'
-import { MongooseModule } from '@nestjs/mongoose'
-import { CalendarController } from './calendar.controller'
-import { CalendarService } from './calendar.service'
-import { CalendarSchema } from './schemas/calendar.schema'
+import { Module, Get } from '@nestjs/common';
+import { MongooseModule } from '@nestjs/mongoose';
+import { CalendarController } from './calendar.controller';
+import { CalendarService } from './calendar.service';
+import { CalendarSchema } from './schemas/calendar.schema';
 
 @Module({
     imports: [

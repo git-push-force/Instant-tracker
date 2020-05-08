@@ -1,7 +1,7 @@
-import { Module } from '@nestjs/common'
-import { MongooseModule } from '@nestjs/mongoose'
-import { ConfigModule } from '@nestjs/config'
-import { CalendarModule } from './calendar/calendar.module'
+import { Module } from '@nestjs/common';
+import { MongooseModule } from '@nestjs/mongoose';
+import { ConfigModule } from '@nestjs/config';
+import { CalendarModule } from './calendar/calendar.module';
 
 @Module({
     imports: [
