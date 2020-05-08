@@ -5,12 +5,12 @@ import { CalendarService } from './calendar.service'
 export class CalendarController {
     constructor(private calendarService: CalendarService) {}
 
-    @Get('list')
+    @Get('get')
     list(@Param('id') id) {
         return this.calendarService.get(id);
     }
 
-    @Post('create')
+    @Get('create')
     create(@Query() query) {
         return this.calendarService.create(query);
     }

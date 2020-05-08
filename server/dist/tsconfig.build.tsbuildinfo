@@ -1230,11 +1230,11 @@
         "signature": "e16214c066f002eca35219a830e4065953fde2e140e5e650569fdeda64b0fe07"
       },
       "../src/calendar/calendar.service.ts": {
-        "version": "75fa1eec415a91f9c9ea496c8674b2bf3baf1a0d76de2983600ef0f0775992b8",
+        "version": "cd141bc799262e5bb7f478beb399913677b4d429b3c910c13df9f91dedc7604d",
         "signature": "177255cd66dc2b449fa36fd57a683dcdd458f45712faccd6764d6952b13e8fce"
       },
       "../src/calendar/calendar.controller.ts": {
-        "version": "b0d5390a47f877fc491bb6e92da7b0faf9144fbc78b8f8d02c715b582ec2aeaa",
+        "version": "6ff19a556cbf0dbdb13f34d1a6d531bc4145d91e6d8599550158215fcd487298",
         "signature": "a375c9d2023c87886404fc7b83e0525975c6a431088700e0278a84172ab8d11b"
       },
       "../src/calendar/schemas/calendar.schema.ts": {
@@ -8950,8 +8950,9 @@
       "../node_modules/@nestjs/config/index.d.ts",
       "../src/calendar/interfaces/calendar.interface.ts",
       "../src/calendar/dto/calendar.dto.ts",
-      "../src/calendar/calendar.service.ts",
+      "../src/calendar/calendar.controller.ts",
       "../src/calendar/schemas/calendar.schema.ts",
+      "../src/calendar/calendar.module.ts",
       "../src/app.module.ts",
       "../node_modules/@nestjs/core/adapters/http-adapter.d.ts",
       "../node_modules/@nestjs/core/adapters/index.d.ts",
@@ -9038,8 +9039,7 @@
       "../node_modules/@types/webpack/index.d.ts",
       "../node_modules/@types/yargs-parser/index.d.ts",
       "../node_modules/@types/yargs/index.d.ts",
-      "../src/calendar/calendar.controller.ts",
-      "../src/calendar/calendar.module.ts"
+      "../src/calendar/calendar.service.ts"
     ]
   },
   "version": "3.8.3"
