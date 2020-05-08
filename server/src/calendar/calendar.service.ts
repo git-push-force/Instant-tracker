@@ -75,7 +75,36 @@ export class CalendarService {
         return createdCalendar.save();
     }
 
-    update() {}
+    async update(query) {
+        if (!query.id) {
+            throw new HttpException(
+                'Enter valid calendar id',
+                HttpStatus.BAD_REQUEST
+            );
+        }
+
+        if (!query.name || !query.name.length) {
+            throw new HttpException(
+                'Enter valid calendar name',
+                HttpStatus.BAD_REQUEST
+            );
+        }
+
+        try {
+            const updated = await this.calendarModel.findByIdAndUpdate(
+                query.id,
+                { $set: { name: query.name } },
+                { new: true }
+            );
+
+            return updated;
+        } catch (err) {
+            throw new HttpException(
+                'Internal error',
+                HttpStatus.INTERNAL_SERVER_ERROR
+            );
+        }
+    }
 
     remove() {}
 

@@ -16,8 +16,8 @@ export class CalendarController {
     }
 
     @Post('update')
-    update() {
-        return this.calendarService.update();
+    update(@Query() query) {
+        return this.calendarService.update(query);
     }
 
     @Post('remove')
@@ -25,7 +25,7 @@ export class CalendarController {
         return this.calendarService.remove();
     }
 
-    @Post('set-password')
+    @Post('change-password')
     setPassword(@Query() query) {
         return this.calendarService.setPassword(query);
     }
