@@ -1254,12 +1254,12 @@
         "signature": "f0d59adf80ff17ba06c4cc2a807b861341d7d36688577517c7929c9b62879f4d"
       },
       "../src/event/event.service.ts": {
-        "version": "1ceed3d55daf993f4066c328ed107a0bab915751e0e24f50e27747cb3ff0c2a2",
-        "signature": "df9fa6119682704472ad27232a7cc478fd1eaee5deacd51b945970c5a369e185"
+        "version": "a2f0b16568e35a85d685ef0af8ae617a3b71cc793553bf41f05141245b622e0b",
+        "signature": "e54e04290b1dadbfe578e8f694afb219e266ff02eab74db1e46182452bcc9aef"
       },
       "../src/event/event.controller.ts": {
         "version": "f3bc0636ddd4d25b708b0a18a45cfc18e2db85814f1c3c0b6373a3e516367bb0",
-        "signature": "41f163ca0657fc82eff5ef41487d4a2d509a285faa47bfe38aac490e7671a7f8"
+        "signature": "70b72ba7e903abf52e5e45e0bbea59e40c64832107d1d1215d4ec4a48f818941"
       },
       "../src/event/event.module.ts": {
         "version": "4174f6b6cc85681a9fe50b4815ce7fc3a27e17ee454f546f4bc499f2d662fdc1",
@@ -9058,6 +9058,9 @@
       "../src/calendar/schemas/calendar.schema.ts",
       "../src/calendar/calendar.module.ts",
       "../src/event/dto/event.dto.ts",
+      "../src/event/event.controller.ts",
+      "../src/event/event.module.ts",
+      "../src/app.module.ts",
       "../node_modules/@nestjs/core/adapters/http-adapter.d.ts",
       "../node_modules/@nestjs/core/adapters/index.d.ts",
       "../node_modules/@nestjs/core/injector/module-token-factory.d.ts",
@@ -9144,10 +9147,7 @@
       "../node_modules/@types/webpack/index.d.ts",
       "../node_modules/@types/yargs-parser/index.d.ts",
       "../node_modules/@types/yargs/index.d.ts",
-      "../src/event/event.service.ts",
-      "../src/event/event.module.ts",
-      "../src/event/event.controller.ts",
-      "../src/app.module.ts"
+      "../src/event/event.service.ts"
     ]
   },
   "version": "3.8.3"

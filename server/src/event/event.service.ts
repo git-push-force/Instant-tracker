@@ -88,7 +88,49 @@ export class EventService {
         }
     }
 
-    update(query) {}
+    async update(query) {
+        this.checkId(query);
+        const founded = await this.checkIsExist(query);
+        this.checkPassword(query, founded);
+
+        if (!query.eventId || !query.eventId.length) {
+            throw new HttpException(
+                'Provide valid event id',
+                HttpStatus.BAD_REQUEST
+            );
+        }
+
+        try {
+            if (!founded.events.find(item => item.id === query.eventId)) {
+                throw new HttpException(
+                    'Event with this id doesn\'t exist',
+                    HttpStatus.BAD_REQUEST
+                );
+            }
+
+            const foundedEvent = founded.events.find(item => item.id === query.eventId);
+
+            return await this.calendarModel.findByIdAndUpdate(
+                query.id,
+                { $set: {
+                    events: [
+                        ...founded.events.filter(item => item.id !== query.eventId),
+                        { 
+                            ...foundedEvent,
+                            name: query.name ? query.name : foundedEvent.name,
+                            description: query.description ? query.description : foundedEvent.description
+                        }
+                    ]
+                }}
+            );
+
+        } catch (err) {
+            throw new HttpException(
+                'Internal error',
+                HttpStatus.INTERNAL_SERVER_ERROR
+            );
+        }
+    }
 
     remove(query) {}
 }
