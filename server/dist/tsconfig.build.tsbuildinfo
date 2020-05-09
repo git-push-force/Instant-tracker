@@ -1414,7 +1414,7 @@
         "signature": "7b5ed961a0e03965299591d73de8b8c41e8a68105ff4fc07a240b0dfb94a5a3d"
       },
       "../src/main.ts": {
-        "version": "7081b8bd1dc9636bfee22d8da40bfd63bf5677393b9da992b9fa8cfc772b35ec",
+        "version": "bfe1dd68f2452bd2ccef0324cfa72019820384d7b02a0e5e839a31460cc1b301",
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
       },
       "../src/event/schemas/event.schema.ts": {
@@ -9057,6 +9057,7 @@
       "../src/calendar/schemas/calendar.schema.ts",
       "../src/calendar/calendar.module.ts",
       "../src/event/dto/event.dto.ts",
+      "../src/event/event.service.ts",
       "../src/event/event.controller.ts",
       "../src/event/event.module.ts",
       "../src/app.module.ts",
@@ -9096,7 +9097,6 @@
       "../node_modules/@nestjs/core/services/reflector.service.d.ts",
       "../node_modules/@nestjs/core/services/index.d.ts",
       "../node_modules/@nestjs/core/index.d.ts",
-      "../src/main.ts",
       "../src/event/schemas/event.schema.ts",
       "../node_modules/@types/anymatch/index.d.ts",
       "../node_modules/@babel/types/lib/index.d.ts",
@@ -9146,7 +9146,7 @@
       "../node_modules/@types/webpack/index.d.ts",
       "../node_modules/@types/yargs-parser/index.d.ts",
       "../node_modules/@types/yargs/index.d.ts",
-      "../src/event/event.service.ts"
+      "../src/main.ts"
     ]
   },
   "version": "3.8.3"
