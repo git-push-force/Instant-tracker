@@ -3,6 +3,7 @@ import { EventService } from './event.service';
 
 @Controller('api/event')
 export class EventController {
+    
     constructor(private eventService: EventService) {}
 
     @Post('create')

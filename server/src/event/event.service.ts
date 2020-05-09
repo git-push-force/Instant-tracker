@@ -3,11 +3,11 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 
 import { ICalendar } from '../calendar/interfaces/calendar.interface';
-import { IEventCreate } from './interfaces/event.interface';
 import { EventDto } from './dto/event.dto';
 
 @Injectable()
 export class EventService {
+
     constructor(
         @InjectModel('Calendar')
         private calendarModel: Model<ICalendar>
@@ -47,6 +47,24 @@ export class EventService {
         } catch (err) {
             throw new HttpException(
                 "Calendar with this id doesn't exist",
+                HttpStatus.BAD_REQUEST
+            );
+        }
+    }
+
+    checkEventId(query) {
+        if (!query.eventId || !query.eventId.length) {
+            throw new HttpException(
+                'Provide valid event id',
+                HttpStatus.BAD_REQUEST
+            );
+        }
+    }
+
+    checkIsEventExist(query, founded) {
+        if (!founded.events.find(item => item.id === query.eventId)) {
+            throw new HttpException(
+                'Event with this id doesn\'t exist',
                 HttpStatus.BAD_REQUEST
             );
         }
@@ -92,21 +110,10 @@ export class EventService {
         this.checkId(query);
         const founded = await this.checkIsExist(query);
         this.checkPassword(query, founded);
-
-        if (!query.eventId || !query.eventId.length) {
-            throw new HttpException(
-                'Provide valid event id',
-                HttpStatus.BAD_REQUEST
-            );
-        }
+        this.checkEventId(query);
+        this.checkIsEventExist(query, founded);
 
         try {
-            if (!founded.events.find(item => item.id === query.eventId)) {
-                throw new HttpException(
-                    'Event with this id doesn\'t exist',
-                    HttpStatus.BAD_REQUEST
-                );
-            }
 
             const foundedEvent = founded.events.find(item => item.id === query.eventId);
 
@@ -132,5 +139,30 @@ export class EventService {
         }
     }
 
-    remove(query) {}
+    async remove(query) {
+        this.checkId(query);
+        const founded = await this.checkIsExist(query);
+        this.checkPassword(query, founded);
+        this.checkEventId(query);
+        this.checkIsEventExist(query, founded);
+
+        try {
+            
+            const updated = await this.calendarModel.findByIdAndUpdate(
+                query.id,
+                { $set: {
+                    events: [
+                        ...founded.events.filter(item => item.id !== query.eventId),
+                    ]
+                }}
+            );
+
+            return updated;
+        } catch (err) {
+            throw new HttpException(
+                'Internal error',
+                HttpStatus.INTERNAL_SERVER_ERROR
+            );
+        }
+    }
 }
