@@ -76,9 +76,7 @@ export class CalendarService {
             );
         }
 
-        const createdCalendar = new this.calendarModel({
-            ...calendarDto,
-        });
+        const createdCalendar = new this.calendarModel(calendarDto);
         return createdCalendar.save();
     }
 

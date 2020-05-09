@@ -1222,19 +1222,19 @@
         "signature": "8f1241f5d9f0d3d72117768b3c974e462840fbd85026fb66685078945404cf2f"
       },
       "../src/event/interfaces/event.interface.ts": {
-        "version": "692d25fa764bc380ac77b3dcdd53658708e1686dd7ac0afb6bc49cbbc43ac051",
-        "signature": "9c238a99dd453d041306fd2dc43d3ec91e2e7ef5d454e89f7affded87266b55e"
+        "version": "ad4ad7701a2197ad1c83bd67b61f54cd44010c8083fadeb81f563f70c0678c36",
+        "signature": "b5d263e9891407966475fc36d43b6dc911847c6a5ab871f653d6664e92532c8b"
       },
       "../src/calendar/interfaces/calendar.interface.ts": {
         "version": "0ffdc1156c5b435b4edab9e44ac74ee9f4f17e788c7276f0d10944b1f25c832f",
         "signature": "2698ecb0d1f5d7adcb465949112a077787b5dfe4aa71576a9bf2745330b2280c"
       },
       "../src/calendar/dto/calendar.dto.ts": {
-        "version": "25ecfb92f4d731db917dc0a5091a52e5b9a58b9b4eece0a8daa5f4e827b191d5",
-        "signature": "ee3b3928d32a4c8411cd2b2112485be5b706bdcc97d1bce788d01f6f46e18609"
+        "version": "854c9948597779ab8f7dfcd17ac52499d1c3c5253ec78ce803c6806c52cac449",
+        "signature": "514cec3b5b26ba1fb5f4ad626588ef4b1dec71b495a293b8b3eab7a60e6addf2"
       },
       "../src/calendar/calendar.service.ts": {
-        "version": "2b2d4936913f15f5ebae3810ee6394674f9e6fb85b9c5ee3c53629e381c00f0d",
+        "version": "6b01fe00eb0825715f3f8d3f57d5fcf28b93d059cbedd85d6da64ded5d0e9720",
         "signature": "760398cfe02c20a2bbe38db25a0c8675fff9a83f39f980c50dbba6b576d0aa54"
       },
       "../src/calendar/calendar.controller.ts": {
@@ -1242,11 +1242,11 @@
         "signature": "6b60f2c116ef889f2cfde871a7dc15535ea37e6f900fd751b5fca2c6a3fc609b"
       },
       "../src/calendar/schemas/calendar.schema.ts": {
-        "version": "dd2d7e27aa681d8e079f74d23aa97c2fb46564e6203a23d00daa7dbe656afcb4",
+        "version": "38dda49bbc7cb9188705c738bae9d97c36cb3e57ac5ccd15c688842e9a7de384",
         "signature": "12727f58fb00f38e338b78e7fed68befc8bc9f24723ffaeeb5672a2056dd4020"
       },
       "../src/calendar/calendar.module.ts": {
-        "version": "c449f27597ee6adeb581a966dfd7b3aa7bb8c4b05c2ff3bad59f538d400e5e95",
+        "version": "26263d31bac2a5ba7325727d40cc412b5e9e394469bf873f4a7b6dd780b70a7a",
         "signature": "0836cb54e72bc71da2262dc519fc156d8e3d93d1eca539917c95112c61ec8b44"
       },
       "../src/event/dto/event.dto.ts": {
@@ -1254,7 +1254,7 @@
         "signature": "f0d59adf80ff17ba06c4cc2a807b861341d7d36688577517c7929c9b62879f4d"
       },
       "../src/event/event.service.ts": {
-        "version": "44a86df4ec3c3bf9682804caf3515e6a96164817d8601a894fea7225fc2e88ca",
+        "version": "1ceed3d55daf993f4066c328ed107a0bab915751e0e24f50e27747cb3ff0c2a2",
         "signature": "df9fa6119682704472ad27232a7cc478fd1eaee5deacd51b945970c5a369e185"
       },
       "../src/event/event.controller.ts": {
@@ -4372,6 +4372,7 @@
         "../node_modules/@types/node/ts3.2/util.d.ts"
       ],
       "../src/calendar/dto/calendar.dto.ts": [
+        "../src/event/interfaces/event.interface.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/graceful-fs/index.d.ts",
@@ -7969,6 +7970,9 @@
         "../node_modules/@types/mongoose/index.d.ts",
         "../src/event/interfaces/event.interface.ts"
       ],
+      "../src/calendar/dto/calendar.dto.ts": [
+        "../src/event/interfaces/event.interface.ts"
+      ],
       "../src/calendar/calendar.service.ts": [
         "../node_modules/@types/mongoose/index.d.ts",
         "../src/calendar/interfaces/calendar.interface.ts",
@@ -9052,11 +9056,8 @@
       "../src/calendar/calendar.service.ts",
       "../src/calendar/calendar.controller.ts",
       "../src/calendar/schemas/calendar.schema.ts",
+      "../src/calendar/calendar.module.ts",
       "../src/event/dto/event.dto.ts",
-      "../src/event/event.service.ts",
-      "../src/event/event.controller.ts",
-      "../src/event/event.module.ts",
-      "../src/app.module.ts",
       "../node_modules/@nestjs/core/adapters/http-adapter.d.ts",
       "../node_modules/@nestjs/core/adapters/index.d.ts",
       "../node_modules/@nestjs/core/injector/module-token-factory.d.ts",
@@ -9143,7 +9144,10 @@
       "../node_modules/@types/webpack/index.d.ts",
       "../node_modules/@types/yargs-parser/index.d.ts",
       "../node_modules/@types/yargs/index.d.ts",
-      "../src/calendar/calendar.module.ts"
+      "../src/event/event.service.ts",
+      "../src/event/event.module.ts",
+      "../src/event/event.controller.ts",
+      "../src/app.module.ts"
     ]
   },
   "version": "3.8.3"

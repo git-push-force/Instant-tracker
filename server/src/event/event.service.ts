@@ -67,17 +67,16 @@ export class EventService {
         try {
             const updated = await this.calendarModel.findByIdAndUpdate(
                 query.id,
-                {
-                    ...founded,
+                { $set: {
                     events: [
                         ...founded.events,
-                        {
+                        { 
                             name: query.name,
                             description: query.description,
-                        },
-                    ],
-                },
-                { new: true }
+                            id: founded.events.length.toString()
+                        }
+                    ]
+                }}
             );
 
             return updated;
