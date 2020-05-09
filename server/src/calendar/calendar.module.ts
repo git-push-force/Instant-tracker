@@ -12,5 +12,6 @@ import { CalendarSchema } from './schemas/calendar.schema';
     ],
     controllers: [CalendarController],
     providers: [CalendarService],
+    exports: [MongooseModule]
 })
 export class CalendarModule {}

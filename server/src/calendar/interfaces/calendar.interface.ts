@@ -1,7 +1,9 @@
 import { Document } from 'mongoose';
+import { IEvent } from '../../event/interfaces/event.interface';
 
-export interface ICalendarInterface extends Document {
+export interface ICalendar extends Document {
     name: string;
-    password: string;
-    events: [];
+    description: string;
+    password?: string;
+    events?: IEvent[];
 }

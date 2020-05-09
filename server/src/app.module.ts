@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule } from '@nestjs/config';
 import { CalendarModule } from './calendar/calendar.module';
+import { EventModule } from './event/event.module';
 
 @Module({
     imports: [
@@ -14,6 +15,7 @@ import { CalendarModule } from './calendar/calendar.module';
             useUnifiedTopology: true,
         }),
         CalendarModule,
+        EventModule,
     ],
     controllers: [],
     providers: [],

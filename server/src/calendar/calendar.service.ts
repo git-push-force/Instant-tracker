@@ -2,14 +2,14 @@ import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 
-import { ICalendarInterface } from './interfaces/calendar.interface';
+import { ICalendar } from './interfaces/calendar.interface';
 import { CalendarDto } from './dto/calendar.dto';
 
 @Injectable()
 export class CalendarService {
     constructor(
         @InjectModel('Calendar')
-        private calendarModel: Model<ICalendarInterface>
+        private calendarModel: Model<ICalendar>
     ) {}
 
     checkPassword(query, founded) {
@@ -43,10 +43,9 @@ export class CalendarService {
     async checkIsExist(query) {
         try {
             return await this.calendarModel.findById(query.id);
-
         } catch (err) {
             throw new HttpException(
-                'Calendar with this id doesn\'t exist',
+                "Calendar with this id doesn't exist",
                 HttpStatus.BAD_REQUEST
             );
         }
@@ -78,7 +77,7 @@ export class CalendarService {
         }
 
         const createdCalendar = new this.calendarModel({
-            ...calendarDto
+            ...calendarDto,
         });
         return createdCalendar.save();
     }
