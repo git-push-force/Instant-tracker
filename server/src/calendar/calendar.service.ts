@@ -4,6 +4,13 @@ import { Model } from 'mongoose';
 
 import { ICalendar } from './interfaces/calendar.interface';
 import { CalendarDto } from './dto/calendar.dto';
+import {
+	InternalError,
+	InvalidProperty,
+	WrongPassword,
+	NeedPassword,
+	AlreadyExist,
+} from '../exceptions';
 
 @Injectable()
 export class CalendarService {
@@ -14,40 +21,23 @@ export class CalendarService {
 
 	checkPassword(query, founded) {
 		if (founded.password) {
-			if (!query.password) {
-				throw new HttpException(
-					'Provide password to get access to this calendar',
-					HttpStatus.UNAUTHORIZED
-				);
-			}
+			if (!query.password) throw new NeedPassword();
 
-			if (query.password !== founded.password) {
-				throw new HttpException(
-					'Wrong password',
-					HttpStatus.BAD_REQUEST
-				);
-			}
+			if (query.password !== founded.password) throw new WrongPassword();
 		}
+
 		return founded;
 	}
 
 	checkId(query) {
-		if (!query.id) {
-			throw new HttpException(
-				'Enter valid calendar id',
-				HttpStatus.BAD_REQUEST
-			);
-		}
+		if (!query.id) throw new InvalidProperty('calendar id');
 	}
 
 	async checkIsExist(query) {
 		try {
 			return await this.calendarModel.findById(query.id);
 		} catch (err) {
-			throw new HttpException(
-				"Calendar with this id doesn't exist",
-				HttpStatus.BAD_REQUEST
-			);
+			throw new AlreadyExist('Calendar', 'id');
 		}
 	}
 
@@ -58,22 +48,14 @@ export class CalendarService {
 	}
 
 	async create(calendarDto: CalendarDto) {
-		if (!calendarDto.name) {
-			throw new HttpException(
-				'Name field cannot be black',
-				HttpStatus.BAD_REQUEST
-			);
-		}
+		if (!calendarDto.name) throw new InvalidProperty('calendar name');
 
 		const founded = await this.calendarModel.find({
 			name: calendarDto.name,
 		});
 
 		if (founded.length) {
-			throw new HttpException(
-				'Calendar with this name already exists',
-				HttpStatus.BAD_REQUEST
-			);
+			throw new AlreadyExist('Calendar', 'name');
 		}
 
 		const createdCalendar = new this.calendarModel(calendarDto);
@@ -87,25 +69,20 @@ export class CalendarService {
 		this.checkPassword(query, founded);
 
 		if (!query.name || !query.name.length) {
-			throw new HttpException(
-				'Enter valid calendar name',
-				HttpStatus.BAD_REQUEST
-			);
+			throw new InvalidProperty('calendar name');
 		}
 
 		try {
-			const updated = await this.calendarModel.findByIdAndUpdate(
-				query.id,
-				{ $set: { name: query.name } },
-				{ new: true }
-			);
-
-			return updated;
+			return await this.calendarModel.findByIdAndUpdate(query.id, {
+				$set: {
+					name: query.name ? query.name : founded.name,
+					description: query.description
+						? query.description
+						: founded.description,
+				},
+			});
 		} catch (err) {
-			throw new HttpException(
-				'Internal error',
-				HttpStatus.INTERNAL_SERVER_ERROR
-			);
+			throw new InternalError();
 		}
 	}
 
@@ -117,10 +94,7 @@ export class CalendarService {
 		try {
 			return await this.calendarModel.findByIdAndDelete(query.id);
 		} catch (err) {
-			throw new HttpException(
-				'Internal error',
-				HttpStatus.INTERNAL_SERVER_ERROR
-			);
+			throw new InternalError();
 		}
 	}
 
@@ -132,25 +106,15 @@ export class CalendarService {
 		this.checkPassword(query, founded);
 
 		if (!query.newPassword || query.newPassword.length < 4) {
-			throw new HttpException(
-				'Enter valid new password',
-				HttpStatus.BAD_REQUEST
-			);
+			throw new InvalidProperty('new password');
 		}
 
 		try {
-			const updated = await this.calendarModel.findByIdAndUpdate(
-				query.id,
-				{ $set: { password: query.password } },
-				{ new: true }
-			);
-
-			return updated;
+			return await this.calendarModel.findByIdAndUpdate(query.id, {
+				$set: { password: query.password },
+			});
 		} catch (err) {
-			throw new HttpException(
-				'Internal error',
-				HttpStatus.INTERNAL_SERVER_ERROR
-			);
+			throw new InternalError();
 		}
 	}
 }

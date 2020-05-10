@@ -4,6 +4,13 @@ import { Model } from 'mongoose';
 
 import { ICalendar } from '../calendar/interfaces/calendar.interface';
 import { EventDto } from './dto/event.dto';
+import {
+	InternalError,
+	NeedPassword,
+	WrongPassword,
+	InvalidProperty,
+	AlreadyExist,
+} from '../exceptions';
 
 @Injectable()
 export class EventService {
@@ -15,57 +22,36 @@ export class EventService {
 	checkPassword(query, founded) {
 		if (founded.password) {
 			if (!query.password) {
-				throw new HttpException(
-					'Provide password to get access to this calendar',
-					HttpStatus.UNAUTHORIZED
-				);
+				throw new NeedPassword();
 			}
 
 			if (query.password !== founded.password) {
-				throw new HttpException(
-					'Wrong password',
-					HttpStatus.BAD_REQUEST
-				);
+				throw new WrongPassword();
 			}
 		}
 		return founded;
 	}
 
 	checkId(query) {
-		if (!query.id) {
-			throw new HttpException(
-				'Enter valid calendar id',
-				HttpStatus.BAD_REQUEST
-			);
-		}
+		if (!query.id) throw new InvalidProperty('calendar id');
 	}
 
 	async checkIsExist(query) {
 		try {
 			return await this.calendarModel.findById(query.id);
 		} catch (err) {
-			throw new HttpException(
-				"Calendar with this id doesn't exist",
-				HttpStatus.BAD_REQUEST
-			);
+			throw new AlreadyExist('Calendar', 'id');
 		}
 	}
 
 	checkEventId(query) {
-		if (!query.eventId || !query.eventId.length) {
-			throw new HttpException(
-				'Provide valid event id',
-				HttpStatus.BAD_REQUEST
-			);
-		}
+		if (!query.eventId || !query.eventId.length)
+			throw new InvalidProperty('event id');
 	}
 
 	checkIsEventExist(query, founded) {
 		if (!founded.events.find(item => item.id === query.eventId)) {
-			throw new HttpException(
-				"Event with this id doesn't exist",
-				HttpStatus.BAD_REQUEST
-			);
+			throw new AlreadyExist('Event', 'id');
 		}
 	}
 
@@ -74,36 +60,24 @@ export class EventService {
 		const founded = await this.checkIsExist(query);
 		this.checkPassword(query, founded);
 
-		if (!query.name || !query.name.length) {
-			throw new HttpException(
-				'Enter valid event name',
-				HttpStatus.BAD_REQUEST
-			);
-		}
+		if (!query.name || !query.name.length)
+			throw new InvalidProperty('event name');
 
 		try {
-			const updated = await this.calendarModel.findByIdAndUpdate(
-				query.id,
-				{
-					$set: {
-						events: [
-							...founded.events,
-							{
-								name: query.name,
-								description: query.description,
-								id: founded.events.length.toString(),
-							},
-						],
-					},
-				}
-			);
-
-			return updated;
+			return await this.calendarModel.findByIdAndUpdate(query.id, {
+				$set: {
+					events: [
+						...founded.events,
+						{
+							name: query.name,
+							description: query.description,
+							id: founded.events.length.toString(),
+						},
+					],
+				},
+			});
 		} catch (err) {
-			throw new HttpException(
-				'Internal error',
-				HttpStatus.INTERNAL_SERVER_ERROR
-			);
+			throw new InternalError();
 		}
 	}
 
@@ -136,10 +110,7 @@ export class EventService {
 				},
 			});
 		} catch (err) {
-			throw new HttpException(
-				'Internal error',
-				HttpStatus.INTERNAL_SERVER_ERROR
-			);
+			throw new InternalError();
 		}
 	}
 
@@ -151,25 +122,17 @@ export class EventService {
 		this.checkIsEventExist(query, founded);
 
 		try {
-			const updated = await this.calendarModel.findByIdAndUpdate(
-				query.id,
-				{
-					$set: {
-						events: [
-							...founded.events.filter(
-								item => item.id !== query.eventId
-							),
-						],
-					},
-				}
-			);
-
-			return updated;
+			return await this.calendarModel.findByIdAndUpdate(query.id, {
+				$set: {
+					events: [
+						...founded.events.filter(
+							item => item.id !== query.eventId
+						),
+					],
+				},
+			});
 		} catch (err) {
-			throw new HttpException(
-				'Internal error',
-				HttpStatus.INTERNAL_SERVER_ERROR
-			);
+			throw new InternalError();
 		}
 	}
 }

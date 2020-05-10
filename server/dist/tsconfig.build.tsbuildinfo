@@ -1233,8 +1233,12 @@
         "version": "9322b531a229289628e5f776ad2e88182bed84228f0d8023c2ae1544f6c3d1e4",
         "signature": "514cec3b5b26ba1fb5f4ad626588ef4b1dec71b495a293b8b3eab7a60e6addf2"
       },
+      "../src/exceptions.ts": {
+        "version": "12e1c79337d65e7193738a052e507a26bbebff1bb3b067f9e059fce4f79d74cf",
+        "signature": "5a0e18f20d949ddadb2a3eeac426d019ec319ba6da36e6709df2f4ca0a4c616c"
+      },
       "../src/calendar/calendar.service.ts": {
-        "version": "0103aa30e7f35de16a21db3ce40e08f9cd975277a6125ecca072b9dc16a6d287",
+        "version": "3f8435754959c69bc766216d7e2a069bc3379aa260dc2f4bd4235adb0695f60b",
         "signature": "760398cfe02c20a2bbe38db25a0c8675fff9a83f39f980c50dbba6b576d0aa54"
       },
       "../src/calendar/calendar.controller.ts": {
@@ -1254,7 +1258,7 @@
         "signature": "f0d59adf80ff17ba06c4cc2a807b861341d7d36688577517c7929c9b62879f4d"
       },
       "../src/event/event.service.ts": {
-        "version": "bd8c3cdb0b33db92a459700e0669d63907b69e6eaa57e1d668064851c17bab98",
+        "version": "8f0ca76c969c804f2737675abcc8661da3cc6fb5f2803273a10c7d1c25928540",
         "signature": "884cd58b017040fc6890371a48f5453e358898b869c7439e96e6cfd6a1e8a46e"
       },
       "../src/event/event.controller.ts": {
@@ -4379,12 +4383,21 @@
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts"
       ],
+      "../src/exceptions.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts"
+      ],
       "../src/calendar/calendar.service.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@nestjs/mongoose/index.d.ts",
         "../node_modules/@types/mongoose/index.d.ts",
         "../src/calendar/interfaces/calendar.interface.ts",
         "../src/calendar/dto/calendar.dto.ts",
+        "../src/exceptions.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/graceful-fs/index.d.ts",
@@ -4433,6 +4446,7 @@
         "../node_modules/@types/mongoose/index.d.ts",
         "../src/calendar/interfaces/calendar.interface.ts",
         "../src/event/dto/event.dto.ts",
+        "../src/exceptions.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/graceful-fs/index.d.ts",
@@ -7972,6 +7986,9 @@
       "../src/calendar/dto/calendar.dto.ts": [
         "../src/event/interfaces/event.interface.ts"
       ],
+      "../src/exceptions.ts": [
+        "../node_modules/@nestjs/common/index.d.ts"
+      ],
       "../src/calendar/calendar.service.ts": [
         "../node_modules/@types/mongoose/index.d.ts",
         "../src/calendar/interfaces/calendar.interface.ts",
@@ -9049,6 +9066,18 @@
       "../node_modules/@nestjs/config/dist/utils/index.d.ts",
       "../node_modules/@nestjs/config/dist/index.d.ts",
       "../node_modules/@nestjs/config/index.d.ts",
+      "../src/event/interfaces/event.interface.ts",
+      "../src/calendar/interfaces/calendar.interface.ts",
+      "../src/calendar/dto/calendar.dto.ts",
+      "../src/exceptions.ts",
+      "../src/calendar/calendar.service.ts",
+      "../src/calendar/calendar.controller.ts",
+      "../src/calendar/schemas/calendar.schema.ts",
+      "../src/calendar/calendar.module.ts",
+      "../src/event/dto/event.dto.ts",
+      "../src/event/event.controller.ts",
+      "../src/event/event.module.ts",
+      "../src/app.module.ts",
       "../node_modules/@nestjs/core/adapters/http-adapter.d.ts",
       "../node_modules/@nestjs/core/adapters/index.d.ts",
       "../node_modules/@nestjs/core/injector/module-token-factory.d.ts",
@@ -9085,6 +9114,8 @@
       "../node_modules/@nestjs/core/services/reflector.service.d.ts",
       "../node_modules/@nestjs/core/services/index.d.ts",
       "../node_modules/@nestjs/core/index.d.ts",
+      "../src/main.ts",
+      "../src/event/schemas/event.schema.ts",
       "../node_modules/@types/anymatch/index.d.ts",
       "../node_modules/@babel/types/lib/index.d.ts",
       "../node_modules/@types/babel__generator/index.d.ts",
@@ -9133,20 +9164,7 @@
       "../node_modules/@types/webpack/index.d.ts",
       "../node_modules/@types/yargs-parser/index.d.ts",
       "../node_modules/@types/yargs/index.d.ts",
-      "../src/event/interfaces/event.interface.ts",
-      "../src/calendar/interfaces/calendar.interface.ts",
-      "../src/calendar/dto/calendar.dto.ts",
-      "../src/calendar/calendar.service.ts",
-      "../src/calendar/calendar.controller.ts",
-      "../src/calendar/schemas/calendar.schema.ts",
-      "../src/calendar/calendar.module.ts",
-      "../src/event/dto/event.dto.ts",
-      "../src/event/event.service.ts",
-      "../src/event/event.controller.ts",
-      "../src/event/event.module.ts",
-      "../src/app.module.ts",
-      "../src/main.ts",
-      "../src/event/schemas/event.schema.ts"
+      "../src/event/event.service.ts"
     ]
   },
   "version": "3.8.3"
