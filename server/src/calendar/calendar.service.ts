@@ -1,4 +1,4 @@
-import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 
@@ -9,7 +9,7 @@ import {
 	InvalidProperty,
 	WrongPassword,
 	NeedPassword,
-	AlreadyExist,
+	NotExist
 } from '../exceptions';
 
 @Injectable()
@@ -34,11 +34,11 @@ export class CalendarService {
 	}
 
 	async checkIsExist(query) {
-		try {
-			return await this.calendarModel.findById(query.id);
-		} catch (err) {
-			throw new AlreadyExist('Calendar', 'id');
-		}
+
+		if (query.id.length > 24) throw new NotExist('Calendar', 'id');
+		const founded = await this.calendarModel.findById(query.id);
+		if (!founded) throw new NotExist('Calendar', 'id');
+		return founded;
 	}
 
 	async get(query) {
@@ -49,37 +49,27 @@ export class CalendarService {
 
 	async create(calendarDto: CalendarDto) {
 		if (!calendarDto.name) throw new InvalidProperty('calendar name');
-
-		const founded = await this.calendarModel.find({
-			name: calendarDto.name,
-		});
-
-		if (founded.length) {
-			throw new AlreadyExist('Calendar', 'name');
+		
+		try {
+			return await new this.calendarModel(calendarDto).save();
+		} catch (err) {
+			throw new InternalError();
 		}
-
-		const createdCalendar = new this.calendarModel(calendarDto);
-		return createdCalendar.save();
 	}
 
 	async update(query) {
 		this.checkId(query);
 		const founded = await this.checkIsExist(query);
-
 		this.checkPassword(query, founded);
-
-		if (!query.name || !query.name.length) {
-			throw new InvalidProperty('calendar name');
-		}
 
 		try {
 			return await this.calendarModel.findByIdAndUpdate(query.id, {
 				$set: {
 					name: query.name ? query.name : founded.name,
-					description: query.description
-						? query.description
-						: founded.description,
+					description: query.description ? query.description : founded.description,
 				},
+			}, {
+				new: true
 			});
 		} catch (err) {
 			throw new InternalError();
@@ -92,17 +82,19 @@ export class CalendarService {
 		this.checkPassword(query, founded);
 
 		try {
-			return await this.calendarModel.findByIdAndDelete(query.id);
+			await this.calendarModel.findByIdAndDelete(query.id);
+			return {
+				status: 200, 
+				message: 'ok'
+			};
 		} catch (err) {
 			throw new InternalError();
 		}
 	}
 
-	async setPassword(query) {
+	async changePassword(query) {
 		this.checkId(query);
-
-		const founded = await this.calendarModel.findById(query.id);
-
+		const founded = await this.checkIsExist(query);
 		this.checkPassword(query, founded);
 
 		if (!query.newPassword || query.newPassword.length < 4) {
@@ -111,7 +103,11 @@ export class CalendarService {
 
 		try {
 			return await this.calendarModel.findByIdAndUpdate(query.id, {
-				$set: { password: query.password },
+				$set: { 
+					password: query.newPassword 
+				},
+			}, {
+				new: true
 			});
 		} catch (err) {
 			throw new InternalError();

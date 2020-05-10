@@ -27,6 +27,6 @@ export class CalendarController {
 
 	@Post('change-password')
 	setPassword(@Query() query) {
-		return this.calendarService.setPassword(query);
+		return this.calendarService.changePassword(query);
 	}
 }

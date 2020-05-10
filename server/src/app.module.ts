@@ -13,6 +13,7 @@ import { EventModule } from './event/event.module';
 		MongooseModule.forRoot(`mongodb://localhost/${process.env.DBname}`, {
 			useNewUrlParser: true,
 			useUnifiedTopology: true,
+			useFindAndModify: false
 		}),
 		CalendarModule,
 		EventModule,

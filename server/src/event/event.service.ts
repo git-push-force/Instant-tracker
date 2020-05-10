@@ -1,4 +1,4 @@
-import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 
@@ -9,7 +9,7 @@ import {
 	NeedPassword,
 	WrongPassword,
 	InvalidProperty,
-	AlreadyExist,
+	NotExist
 } from '../exceptions';
 
 @Injectable()
@@ -37,21 +37,19 @@ export class EventService {
 	}
 
 	async checkIsExist(query) {
-		try {
-			return await this.calendarModel.findById(query.id);
-		} catch (err) {
-			throw new AlreadyExist('Calendar', 'id');
-		}
+
+		if (query.id.length > 24) throw new NotExist('Calendar', 'id');
+		const founded = await this.calendarModel.findById(query.id);
+		if (!founded) throw new NotExist('Calendar', 'id');
+		return founded;
 	}
 
-	checkEventId(query) {
+	checkEvent(query, founded) {
 		if (!query.eventId || !query.eventId.length)
 			throw new InvalidProperty('event id');
-	}
 
-	checkIsEventExist(query, founded) {
 		if (!founded.events.find(item => item.id === query.eventId)) {
-			throw new AlreadyExist('Event', 'id');
+			throw new NotExist('Event', 'id');
 		}
 	}
 
@@ -71,10 +69,12 @@ export class EventService {
 						{
 							name: query.name,
 							description: query.description,
-							id: founded.events.length.toString(),
+							id: founded.events.length.toString()
 						},
 					],
 				},
+			}, {
+				new: true
 			});
 		} catch (err) {
 			throw new InternalError();
@@ -85,8 +85,7 @@ export class EventService {
 		this.checkId(query);
 		const founded = await this.checkIsExist(query);
 		this.checkPassword(query, founded);
-		this.checkEventId(query);
-		this.checkIsEventExist(query, founded);
+		this.checkEvent(query, founded);
 
 		try {
 			const foundedEvent = founded.events.find(
@@ -108,6 +107,8 @@ export class EventService {
 						},
 					],
 				},
+			}, {
+				new: true
 			});
 		} catch (err) {
 			throw new InternalError();
@@ -118,8 +119,7 @@ export class EventService {
 		this.checkId(query);
 		const founded = await this.checkIsExist(query);
 		this.checkPassword(query, founded);
-		this.checkEventId(query);
-		this.checkIsEventExist(query, founded);
+		this.checkEvent(query, founded);
 
 		try {
 			return await this.calendarModel.findByIdAndUpdate(query.id, {

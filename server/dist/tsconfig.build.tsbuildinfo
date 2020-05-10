@@ -1234,16 +1234,16 @@
         "signature": "514cec3b5b26ba1fb5f4ad626588ef4b1dec71b495a293b8b3eab7a60e6addf2"
       },
       "../src/exceptions.ts": {
-        "version": "12e1c79337d65e7193738a052e507a26bbebff1bb3b067f9e059fce4f79d74cf",
-        "signature": "5a0e18f20d949ddadb2a3eeac426d019ec319ba6da36e6709df2f4ca0a4c616c"
+        "version": "99ea31b2b91b187fd319e73e902c50294b1ecfc4ff33713c42c922a2001925ab",
+        "signature": "eab84831e307ebec3209f4bb1f783a8140d19408d70d1ea23e6edee96f6d6a9e"
       },
       "../src/calendar/calendar.service.ts": {
-        "version": "3f8435754959c69bc766216d7e2a069bc3379aa260dc2f4bd4235adb0695f60b",
-        "signature": "760398cfe02c20a2bbe38db25a0c8675fff9a83f39f980c50dbba6b576d0aa54"
+        "version": "8a3c499912e721d15176449431a216acbe8961f9684f982b786b080e993e0e30",
+        "signature": "f47d8f30e655a4ef467b7437930d687bba456bfe093e0fce42861d69d62ec9c0"
       },
       "../src/calendar/calendar.controller.ts": {
-        "version": "29e9a51e211053add21f2c48e9ea108a062fe56fb4ecc9909483ded8395523a7",
-        "signature": "6b60f2c116ef889f2cfde871a7dc15535ea37e6f900fd751b5fca2c6a3fc609b"
+        "version": "542a7fc594b41a9d757810e0d160448dcddeba5ad29aaa12fc59012cd36f2fea",
+        "signature": "027dfa056439bf3dff608ecf0363c57592eb4364ff97dc2210a0cfe75f24e57d"
       },
       "../src/calendar/schemas/calendar.schema.ts": {
         "version": "462256c7c161f3b64b4034d15cb37edc26cd617b86f79652487a6e5a1982dd97",
@@ -1258,11 +1258,11 @@
         "signature": "f0d59adf80ff17ba06c4cc2a807b861341d7d36688577517c7929c9b62879f4d"
       },
       "../src/event/event.service.ts": {
-        "version": "8f0ca76c969c804f2737675abcc8661da3cc6fb5f2803273a10c7d1c25928540",
-        "signature": "884cd58b017040fc6890371a48f5453e358898b869c7439e96e6cfd6a1e8a46e"
+        "version": "d2c1989cc50270cd120b37a7400237f89e0e1a6a5ba911d76071fe274d8a3a36",
+        "signature": "15ea8b975c384fed71db8b5b70f485f141b759c5e2904527f53e597280ad05e6"
       },
       "../src/event/event.controller.ts": {
-        "version": "19e5305cc589b4394ec5829f32a12f66220713a2416331c08dcf2321075e353a",
+        "version": "506aebcc287ea4f38464b06e2efd65a5c744af0e9f56c10113b10e26e45dabca",
         "signature": "21fa544aadae85ea93c1ec7b8ec30d7c9bb423a6675a6f2c17979e95d836b5d1"
       },
       "../src/event/event.module.ts": {
@@ -1270,7 +1270,7 @@
         "signature": "d2161b4958427240fd5c1876e243e6e7f170db5cb48df3889d4e91f107c454aa"
       },
       "../src/app.module.ts": {
-        "version": "8dc003df3a3593e6daa63402cfa560f0fd6bc59387fe9aa4ca75bb1c9e80a69a",
+        "version": "7b77bc47d5678cfb80223fa8e3f4d3cf3063d5f8e50042d7761c2807b6479485",
         "signature": "b82491e2990291580288c5602d4c017238977749d52b17391f0e45d9a29be644"
       },
       "../node_modules/@nestjs/core/adapters/http-adapter.d.ts": {

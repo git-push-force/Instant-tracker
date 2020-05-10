@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Query } from '@nestjs/common';
+import { Controller, Post, Query } from '@nestjs/common';
 import { EventService } from './event.service';
 
 @Controller('api/event')
