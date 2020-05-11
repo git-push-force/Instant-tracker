@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 
+import { DateService } from '../date/date.service';
 import { ICalendar } from '../calendar/interfaces/calendar.interface';
 import { EventDto } from './dto/event.dto';
 import {
@@ -16,7 +17,8 @@ import {
 export class EventService {
 	constructor(
 		@InjectModel('Calendar')
-		private calendarModel: Model<ICalendar>
+		private calendarModel: Model<ICalendar>,
+		private dateService: DateService
 	) {}
 
 	checkPassword(query, founded) {
@@ -61,6 +63,9 @@ export class EventService {
 		if (!query.name || !query.name.length)
 			throw new InvalidProperty('event name');
 
+		if (!query.date || !query.date.length)
+			throw new InvalidProperty('event date');
+
 		try {
 			return await this.calendarModel.findByIdAndUpdate(query.id, {
 				$set: {
@@ -69,7 +74,8 @@ export class EventService {
 						{
 							name: query.name,
 							description: query.description,
-							id: founded.events.length.toString()
+							id: founded.events.length.toString(),
+							date: this.dateService.parseDate(query.date)
 						},
 					],
 				},
