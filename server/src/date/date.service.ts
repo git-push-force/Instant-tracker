@@ -4,7 +4,11 @@ import { InvalidProperty } from '../exceptions';
 
 @Injectable()
 export class DateService {
-	parseDate(date) {
+	parseDate(query) {
+
+		if (!query.date) throw new InvalidProperty('date');
+
+		const { date } = query;
 		const dateFormat = 'YYYY-MM-DD';
 		const dateTimeFormat = 'YYYY-MM-DD HH:mm:ss';
 

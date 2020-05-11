@@ -73,7 +73,7 @@ export class CalendarService {
 	}
 
 	async remove(query) {
-		const founded = await this.check(query);
+		await this.check(query);
 
 		try {
 			await this.calendarModel.findByIdAndDelete(query.id);
@@ -87,7 +87,7 @@ export class CalendarService {
 	}
 
 	async changePassword(query) {
-		const founded = await this.check(query);
+		await this.check(query);
 
 		if (!query.newPassword || query.newPassword.length < 4) {
 			throw new InvalidProperty('new password');
