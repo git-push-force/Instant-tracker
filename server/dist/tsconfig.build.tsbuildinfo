@@ -1234,16 +1234,16 @@
         "signature": "514cec3b5b26ba1fb5f4ad626588ef4b1dec71b495a293b8b3eab7a60e6addf2"
       },
       "../src/exceptions.ts": {
-        "version": "faa0d9f9a5b83df233f7138e0c1ef908f5a3a89cf145be647ad01e4ffa15c54d",
+        "version": "99ea31b2b91b187fd319e73e902c50294b1ecfc4ff33713c42c922a2001925ab",
         "signature": "eab84831e307ebec3209f4bb1f783a8140d19408d70d1ea23e6edee96f6d6a9e"
       },
       "../src/calendar/calendar.service.ts": {
-        "version": "8a3c499912e721d15176449431a216acbe8961f9684f982b786b080e993e0e30",
-        "signature": "f47d8f30e655a4ef467b7437930d687bba456bfe093e0fce42861d69d62ec9c0"
+        "version": "fa3f1fe3c521ebc91365d608d70aee22f9bc4778b7863067d52c10549783da75",
+        "signature": "bed8f764f00b880614241f669ddc6caca6c2ea3f556aaf772a31cdb1c4d7e471"
       },
       "../src/calendar/calendar.controller.ts": {
         "version": "542a7fc594b41a9d757810e0d160448dcddeba5ad29aaa12fc59012cd36f2fea",
-        "signature": "027dfa056439bf3dff608ecf0363c57592eb4364ff97dc2210a0cfe75f24e57d"
+        "signature": "e2aa6a168b9226808d0a7c619bafd097237b1807cbf65e71cf245a0187b014f9"
       },
       "../src/calendar/schemas/calendar.schema.ts": {
         "version": "462256c7c161f3b64b4034d15cb37edc26cd617b86f79652487a6e5a1982dd97",
@@ -1258,7 +1258,7 @@
         "signature": "1544ab3b5a57eed886c3bac6e18a65327b1b1caa633941d721530f6493a068d9"
       },
       "../src/date/date.service.ts": {
-        "version": "6ce8969f8a1eb1ac08605eb206cbff43cdc66607860d891744d3511ffd7410cc",
+        "version": "4dc0e2b291fbef8abdc7eb6b27a36f81fa58664b4e20b562954bd65388feefdd",
         "signature": "c62448d7fb3914b897f9fd4ad901c4f8578b12c39ef9062d13b963fb46a664c9"
       },
       "../src/event/dto/event.dto.ts": {
@@ -1266,7 +1266,7 @@
         "signature": "893e107ea9fdb1fafd2671a25a7eb072b2ff395f1ff293fc3885e60636e00860"
       },
       "../src/event/event.service.ts": {
-        "version": "29e27a74524916681e077befaeee4ace86d10f6291d4f58f0c76fd6ac216a314",
+        "version": "a55ac9fe786a12fcca23a5bbb67404896f61cf2153df71a152462e729c731eae",
         "signature": "de9a3449731336464367831dee1edee9e7f5e682fb3e2b59e60709ec6f14f396"
       },
       "../src/event/event.controller.ts": {
@@ -1274,7 +1274,7 @@
         "signature": "21fa544aadae85ea93c1ec7b8ec30d7c9bb423a6675a6f2c17979e95d836b5d1"
       },
       "../src/date/date.module.ts": {
-        "version": "d0e30ce40e9b47d44d0d77536c6c7f14a89cf05bedd9da88292cff62d545e91c",
+        "version": "36aac96019f352363f20094ac9cae6f102120dad3bd8be3fc51e885854a780e3",
         "signature": "cc576b4efceb33be817aad7f3ba63057f97bf31addfea59e952cbc641b200631"
       },
       "../src/event/event.module.ts": {
@@ -1282,7 +1282,7 @@
         "signature": "d2161b4958427240fd5c1876e243e6e7f170db5cb48df3889d4e91f107c454aa"
       },
       "../src/app.module.ts": {
-        "version": "d60e1e77620f1a2af930379170b0a1f27ea4518dcad5276549c7993dc49a6e30",
+        "version": "f22f6895c9a5a524def8f8a44d67361160226e172a5ab2dfe4d4a20bbbf8e8b5",
         "signature": "b82491e2990291580288c5602d4c017238977749d52b17391f0e45d9a29be644"
       },
       "../node_modules/@nestjs/core/adapters/http-adapter.d.ts": {
@@ -1433,8 +1433,12 @@
         "version": "dc2bf6b7c79c14c24731095e3f0e15eeb2a7d9925c98e991453833b2aff7fd66",
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
       },
+      "../src/calendar/calendar.guard.ts": {
+        "version": "fd65a0a04ba825d4793f6b563f4a8a6fd22ee50bf150ddf8dc336a004dcdd41f",
+        "signature": "dbe1676f87318068db1e5bc68ef6be04324b1b20197d85ec5f89c1adef987dd9"
+      },
       "../src/event/schemas/event.schema.ts": {
-        "version": "3952a054c92d19bc4be08ffb780bc0fc678dd3fed17232351e5ba60c83ab6085",
+        "version": "c49e408ea54dc601b15264b8aeebe62452f1f8484817d8df8979d90986bb280f",
         "signature": "168eb76a7d2708d8f96026c93765f0a9d11e5ad4d3bfe6e4a5be76c476c32f3e"
       },
       "../node_modules/@types/anymatch/index.d.ts": {
@@ -4881,6 +4885,15 @@
       "../src/main.ts": [
         "../node_modules/@nestjs/core/index.d.ts",
         "../src/app.module.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "../src/calendar/calendar.guard.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/rxjs/index.d.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/graceful-fs/index.d.ts",
@@ -8411,6 +8424,10 @@
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts"
       ],
+      "../src/calendar/calendar.guard.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/rxjs/index.d.ts"
+      ],
       "../src/event/schemas/event.schema.ts": [
         "../node_modules/@types/mongoose/index.d.ts"
       ],
@@ -9120,13 +9137,16 @@
       "../src/calendar/dto/calendar.dto.ts",
       "../src/exceptions.ts",
       "../src/calendar/calendar.service.ts",
-      "../src/calendar/calendar.controller.ts",
       "../src/calendar/schemas/calendar.schema.ts",
       "../src/calendar/calendar.module.ts",
       "../node_modules/moment/ts3.1-typings/moment.d.ts",
       "../src/date/date.service.ts",
       "../src/event/dto/event.dto.ts",
+      "../src/event/event.service.ts",
+      "../src/event/event.controller.ts",
       "../src/date/date.module.ts",
+      "../src/event/event.module.ts",
+      "../src/app.module.ts",
       "../node_modules/@nestjs/core/adapters/http-adapter.d.ts",
       "../node_modules/@nestjs/core/adapters/index.d.ts",
       "../node_modules/@nestjs/core/injector/module-token-factory.d.ts",
@@ -9164,6 +9184,7 @@
       "../node_modules/@nestjs/core/services/index.d.ts",
       "../node_modules/@nestjs/core/index.d.ts",
       "../src/main.ts",
+      "../src/calendar/calendar.guard.ts",
       "../src/event/schemas/event.schema.ts",
       "../node_modules/@types/anymatch/index.d.ts",
       "../node_modules/@babel/types/lib/index.d.ts",
@@ -9213,10 +9234,7 @@
       "../node_modules/@types/webpack/index.d.ts",
       "../node_modules/@types/yargs-parser/index.d.ts",
       "../node_modules/@types/yargs/index.d.ts",
-      "../src/event/event.service.ts",
-      "../src/event/event.module.ts",
-      "../src/event/event.controller.ts",
-      "../src/app.module.ts"
+      "../src/calendar/calendar.controller.ts"
     ]
   },
   "version": "3.8.3"

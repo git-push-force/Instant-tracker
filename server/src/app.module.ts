@@ -14,11 +14,11 @@ import { DateModule } from './date/date.module';
 		MongooseModule.forRoot(`mongodb://localhost/${process.env.DBname}`, {
 			useNewUrlParser: true,
 			useUnifiedTopology: true,
-			useFindAndModify: false
+			useFindAndModify: false,
 		}),
 		CalendarModule,
 		EventModule,
-		DateModule
+		DateModule,
 	],
 	controllers: [],
 	providers: [],

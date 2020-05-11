@@ -24,11 +24,11 @@ AppModule = __decorate([
             mongoose_1.MongooseModule.forRoot(`mongodb://localhost/${process.env.DBname}`, {
                 useNewUrlParser: true,
                 useUnifiedTopology: true,
-                useFindAndModify: false
+                useFindAndModify: false,
             }),
             calendar_module_1.CalendarModule,
             event_module_1.EventModule,
-            date_module_1.DateModule
+            date_module_1.DateModule,
         ],
         controllers: [],
         providers: [],

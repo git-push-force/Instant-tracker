@@ -10,7 +10,7 @@ import {
 	NeedPassword,
 	WrongPassword,
 	InvalidProperty,
-	NotExist
+	NotExist,
 } from '../exceptions';
 
 @Injectable()
@@ -39,7 +39,6 @@ export class EventService {
 	}
 
 	async checkIsExist(query) {
-
 		if (query.id.length > 24) throw new NotExist('Calendar', 'id');
 		const founded = await this.calendarModel.findById(query.id);
 		if (!founded) throw new NotExist('Calendar', 'id');
@@ -67,21 +66,25 @@ export class EventService {
 			throw new InvalidProperty('event date');
 
 		try {
-			return await this.calendarModel.findByIdAndUpdate(query.id, {
-				$set: {
-					events: [
-						...founded.events,
-						{
-							name: query.name,
-							description: query.description,
-							id: founded.events.length.toString(),
-							date: this.dateService.parseDate(query.date)
-						},
-					],
+			return await this.calendarModel.findByIdAndUpdate(
+				query.id,
+				{
+					$set: {
+						events: [
+							...founded.events,
+							{
+								name: query.name,
+								description: query.description,
+								id: founded.events.length.toString(),
+								date: this.dateService.parseDate(query.date),
+							},
+						],
+					},
 				},
-			}, {
-				new: true
-			});
+				{
+					new: true,
+				}
+			);
 		} catch (err) {
 			throw new InternalError();
 		}
@@ -98,24 +101,30 @@ export class EventService {
 				item => item.id === query.eventId
 			);
 
-			return await this.calendarModel.findByIdAndUpdate(query.id, {
-				$set: {
-					events: [
-						...founded.events.filter(
-							item => item.id !== query.eventId
-						),
-						{
-							...foundedEvent,
-							name: query.name ? query.name : foundedEvent.name,
-							description: query.description
-								? query.description
-								: foundedEvent.description,
-						},
-					],
+			return await this.calendarModel.findByIdAndUpdate(
+				query.id,
+				{
+					$set: {
+						events: [
+							...founded.events.filter(
+								item => item.id !== query.eventId
+							),
+							{
+								...foundedEvent,
+								name: query.name
+									? query.name
+									: foundedEvent.name,
+								description: query.description
+									? query.description
+									: foundedEvent.description,
+							},
+						],
+					},
 				},
-			}, {
-				new: true
-			});
+				{
+					new: true,
+				}
+			);
 		} catch (err) {
 			throw new InternalError();
 		}
