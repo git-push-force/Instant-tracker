@@ -1,7 +1,9 @@
-import { Controller, Post, Query } from '@nestjs/common';
+import { Controller, Post, Query, UseGuards } from '@nestjs/common';
 import { CalendarService } from './calendar.service';
+import { CalendarGuard } from './calendar.guard';
 
 @Controller('api/calendar')
+@UseGuards(CalendarGuard)
 export class CalendarController {
 	constructor(private calendarService: CalendarService) {}
 

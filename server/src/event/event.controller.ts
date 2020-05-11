@@ -1,7 +1,9 @@
-import { Controller, Post, Query } from '@nestjs/common';
+import { Controller, Post, Query, UseGuards } from '@nestjs/common';
 import { EventService } from './event.service';
+import { EventGuard } from './event.guard';
 
 @Controller('api/event')
+@UseGuards(EventGuard)
 export class EventController {
 	constructor(private eventService: EventService) {}
 

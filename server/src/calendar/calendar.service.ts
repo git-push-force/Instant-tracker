@@ -4,13 +4,7 @@ import { Model } from 'mongoose';
 
 import { ICalendar } from './interfaces/calendar.interface';
 import { CalendarDto } from './dto/calendar.dto';
-import {
-	InternalError,
-	InvalidProperty,
-	WrongPassword,
-	NeedPassword,
-	NotExist,
-} from '../exceptions';
+import { InternalError } from '../exceptions';
 
 @Injectable()
 export class CalendarService {
@@ -19,38 +13,20 @@ export class CalendarService {
 		private calendarModel: Model<ICalendar>
 	) {}
 
-	async check(query) {
-		if (!query.id) throw new InvalidProperty('calendar id');
-		if (query.id.length > 24) throw new NotExist('Calendar', 'id');
-
-		const founded = await this.calendarModel.findById(query.id);
-
-		if (!founded) throw new NotExist('Calendar', 'id');
-
-		if (founded.password) {
-			if (!query.password) throw new NeedPassword();
-			if (query.password !== founded.password) throw new WrongPassword();
-		}
-
-		return founded;
-	}
-
 	async get(query) {
-		return await this.check(query);
+		return await this.calendarModel.findById(query.id);
 	}
 
-	async create(calendarDto: CalendarDto) {
-		if (!calendarDto.name) throw new InvalidProperty('calendar name');
-
+	async create(query: CalendarDto) {
 		try {
-			return await new this.calendarModel(calendarDto).save();
+			return await new this.calendarModel(query).save();
 		} catch (err) {
 			throw new InternalError();
 		}
 	}
 
 	async update(query) {
-		const founded = await this.check(query);
+		const founded = await this.calendarModel.findById(query.id);
 
 		try {
 			return await this.calendarModel.findByIdAndUpdate(
@@ -73,8 +49,6 @@ export class CalendarService {
 	}
 
 	async remove(query) {
-		await this.check(query);
-
 		try {
 			await this.calendarModel.findByIdAndDelete(query.id);
 			return {
@@ -87,12 +61,6 @@ export class CalendarService {
 	}
 
 	async changePassword(query) {
-		await this.check(query);
-
-		if (!query.newPassword || query.newPassword.length < 4) {
-			throw new InvalidProperty('new password');
-		}
-
 		try {
 			return await this.calendarModel.findByIdAndUpdate(
 				query.id,

@@ -1,7 +1,9 @@
-import { Controller, Post, Query } from '@nestjs/common';
+import { Controller, Post, Query, UseGuards } from '@nestjs/common';
 import { NoteService } from './note.service';
+import { NoteGuard } from './note.guard';
 
 @Controller('api/note')
+@UseGuards(NoteGuard)
 export class NoteController {
 	constructor(private noteService: NoteService) {}
 
