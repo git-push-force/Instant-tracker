@@ -43,7 +43,7 @@ export class NoteService {
 										likes: 0,
 										content: query.content,
 										id: activeEvent.notes.length.toString(),
-										date: query.date,
+										date: new Date(),
 									},
 								],
 							},
@@ -89,10 +89,7 @@ export class NoteService {
 										content: query.content
 											? query.content
 											: activeNote.content,
-										id: activeNote.id,
-										date: query.date
-											? query.date
-											: activeNote.date,
+										id: activeNote.id
 									},
 								],
 							},

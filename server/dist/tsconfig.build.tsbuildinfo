@@ -1222,8 +1222,8 @@
         "signature": "8f1241f5d9f0d3d72117768b3c974e462840fbd85026fb66685078945404cf2f"
       },
       "../src/note/interfaces/note.interface.ts": {
-        "version": "f5b2da8e5c8dad187934301bfbd00e97fd18eda3acd14ca1ddf93fe0a0bce8c6",
-        "signature": "b8a2801fb7d720c7fdb73072a5ca8e42e5db5af7b30eb1d5423c2810d36601ad"
+        "version": "f146a05c64bf05cc38666735868de9612e36b9fed92aaf66c8f71b508ca376d2",
+        "signature": "c5dc2d4c96bd88f59d2fdaac24cf1a355f45fac5028697a19bb0378953715f00"
       },
       "../src/event/interfaces/event.interface.ts": {
         "version": "d0200edd6c2a9b5b206a820a56db849ca4351b3942805ec76df7133ff6b7a85d",
@@ -1246,7 +1246,7 @@
         "signature": "6da806a3f993074b657864cd34388d8a46e74e8cceab6a71adb4cc7645aa5c4d"
       },
       "../src/calendar/calendar.guard.ts": {
-        "version": "132520c850f2ad2b5e10a841f829c57994f0b0858990822933c7c5aee5251e7d",
+        "version": "bd6af7cee9462a94c5b56c8b2f93e80b8387df5dfe0d407a28403458f9813750",
         "signature": "f8f240f47f07e309b907b4c790baf75f6e4d31bf26a09954b2d64cd2f04648c4"
       },
       "../src/calendar/calendar.controller.ts": {
@@ -1290,12 +1290,12 @@
         "signature": "3a34056296b04a61ae12df981713d5a1896db9317691c29ed79ab6a11a24d706"
       },
       "../src/note/note.service.ts": {
-        "version": "ec154856231a5d804200e5c63c3112963bac29e894e956c7e294f48c0a17ebb8",
+        "version": "ef90f40db3215209d9073ddce6a7749ac4d3699e680ef00f870c51531869cddc",
         "signature": "2db0f01473e32eede7d99f015dd0ba2753945f436b0cadf928d1a76c5128d90f"
       },
       "../src/note/note.guard.ts": {
-        "version": "135babd505abc05e4c46ad06be035ffe1a2cc6950b84813a5d58536ed7abc094",
-        "signature": "f68dca63e7c0e78f7ffc57414f0d581789abe9520d6132766fe836ff8c2dfcb2"
+        "version": "4c18ee7e2977f11b5b1111f77a9a25ec210972bdb8cff90088d23d85bc7b9212",
+        "signature": "7f03eeec4394a12a116efbc3500ae703ba34c776d80dc5f0a72affea405df76e"
       },
       "../src/note/note.controller.ts": {
         "version": "b7c6b60a4805f0cf78c0ef1c4d08442ac5c8500a15d6d86ad6db2d40172dddff",
@@ -9235,9 +9235,12 @@
       "../src/calendar/calendar.module.ts",
       "../node_modules/moment/ts3.1-typings/moment.d.ts",
       "../src/event/dto/event.dto.ts",
+      "../src/event/event.service.ts",
+      "../src/event/event.guard.ts",
       "../src/event/event.controller.ts",
       "../src/event/event.module.ts",
       "../src/note/dto/note.dto.ts",
+      "../src/note/note.service.ts",
       "../src/note/note.controller.ts",
       "../src/note/note.module.ts",
       "../src/app.module.ts",
@@ -9326,9 +9329,6 @@
       "../node_modules/@types/webpack/index.d.ts",
       "../node_modules/@types/yargs-parser/index.d.ts",
       "../node_modules/@types/yargs/index.d.ts",
-      "../src/event/event.service.ts",
-      "../src/event/event.guard.ts",
-      "../src/note/note.service.ts",
       "../src/note/note.guard.ts"
     ]
   },

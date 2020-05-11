@@ -54,6 +54,7 @@ export class CalendarGuard implements CanActivate {
 				await this.generalCheck(query);
 				if (!query.newPassword || query.newPassword.length < 4)
 					throw new InvalidProperty('new password');
+				break;
 			}
 		}
 
