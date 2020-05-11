@@ -57,6 +57,7 @@ export class NoteGuard implements CanActivate {
 		const { query, path } = request;
 
 		switch (path) {
+			case '/api/note/remove':
 			case '/api/note/like':
 			case '/api/note/update': {
 				await this.generalCheck(query, false);
@@ -64,11 +65,6 @@ export class NoteGuard implements CanActivate {
 			}
 			case '/api/note/create': {
 				await this.generalCheck(query, true);
-				break;
-			}
-			case '/api/note/remove': {
-				await this.generalCheck(query, false);
-				if (!query.noteId) throw new InvalidProperty('note id');
 				break;
 			}
 		}
