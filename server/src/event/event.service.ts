@@ -20,53 +20,8 @@ export class EventService {
 		private calendarModel: Model<ICalendar>
 	) {}
 
-	async check(query, forCreate) {
-		if (!query.id) throw new InvalidProperty('calendar id');
-		if (query.id.length > 24) throw new NotExist('Calendar', 'id');
-
-		const founded = await this.calendarModel.findById(query.id);
-
-		if (!founded) throw new NotExist('Calendar', 'id');
-
-		if (founded.password) {
-			if (!query.password) {
-				throw new NeedPassword();
-			}
-
-			if (query.password !== founded.password) {
-				throw new WrongPassword();
-			}
-		}
-
-		if (!forCreate) {
-			if (!query.eventId || !query.eventId.length)
-				throw new InvalidProperty('event id');
-
-			if (!founded.events.find(item => item.id === query.eventId)) {
-				throw new NotExist('Event', 'id');
-			}
-		} else {
-			if (!query.name || !query.name.length)
-				throw new InvalidProperty('event name');
-		}
-
-		return founded;
-	}
-
 	async create(query: EventDto) {
-		const founded = await this.check(query, true);
-
-		if (!query.date) throw new InvalidProperty('date');
-
-		const dateFormat = 'YYYY-MM-DD';
-		const dateTimeFormat = 'YYYY-MM-DD HH:mm:ss';
-
-		if (
-			!moment(query.date, dateTimeFormat, true).isValid() &&
-			!moment(query.date, dateFormat, true).isValid()
-		) {
-			throw new InvalidProperty('date');
-		}
+		const founded = await this.calendarModel.findById(query.id);
 
 		try {
 			return await this.calendarModel.findByIdAndUpdate(
@@ -99,7 +54,7 @@ export class EventService {
 	}
 
 	async update(query) {
-		const founded = await this.check(query, false);
+		const founded = await this.calendarModel.findById(query.id);
 
 		try {
 			const foundedEvent = founded.events.find(
@@ -136,7 +91,7 @@ export class EventService {
 	}
 
 	async remove(query) {
-		const founded = await this.check(query, false);
+		const founded = await this.calendarModel.findById(query.id);
 
 		try {
 			return await this.calendarModel.findByIdAndUpdate(query.id, {
@@ -154,7 +109,7 @@ export class EventService {
 	}
 
 	async like(query) {
-		const founded = await this.check(query, false);
+		const founded = await this.calendarModel.findById(query.id);
 
 		try {
 			const foundedEvent = founded.events.find(
