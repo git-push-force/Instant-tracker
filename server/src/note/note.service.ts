@@ -20,72 +20,10 @@ export class NoteService {
 		private calendarModel: Model<ICalendar>
 	) {}
 
-	async checkDate(query) {
-		const dateFormat = 'YYYY-MM-DD';
-		const dateTimeFormat = 'YYYY-MM-DD HH:mm:ss';
-
-		if (query.date) {
-			if (
-				!moment(query.date, dateTimeFormat, true).isValid() &&
-				!moment(query.date, dateFormat, true).isValid()
-			) {
-				throw new InvalidProperty('date');
-			}
-		}
-	}
-
-	async check(query, forCreate) {
-		if (!query.id) throw new InvalidProperty('calendar id');
-		if (query.id.length > 24) throw new NotExist('Calendar', 'id');
-
-		const founded = await this.calendarModel.findById(query.id);
-		if (!founded) throw new NotExist('Calendar', 'id');
-
-		if (founded.password) {
-			if (!query.password) {
-				throw new NeedPassword();
-			}
-
-			if (query.password !== founded.password) {
-				throw new WrongPassword();
-			}
-		}
-
-		if (!query.eventId || !query.eventId.length)
-			throw new InvalidProperty('event id');
-
-		if (!founded.events.find(item => item.id === query.eventId)) {
-			throw new NotExist('Event', 'id');
-		}
-
-		if (!forCreate) {
-			if (!query.noteId) throw new InvalidProperty('note id');
-		}
-
-		if (!query.content) throw new InvalidProperty('note content');
-
-		if (!query.date) throw new InvalidProperty('note date');
-
-		return founded;
-	}
-
 	async create(query: NoteDto) {
-		const founded = await this.check(query, true);
+		const founded = await this.calendarModel.findById(query.id);
 		const { events } = founded;
-		const activeEvent =
-			events[events.findIndex(event => event.id === query.eventId)];
-
-		if (!query.date) throw new InvalidProperty('date');
-
-		const dateFormat = 'YYYY-MM-DD';
-		const dateTimeFormat = 'YYYY-MM-DD HH:mm:ss';
-
-		if (
-			!moment(query.date, dateTimeFormat, true).isValid() &&
-			!moment(query.date, dateFormat, true).isValid()
-		) {
-			throw new InvalidProperty('date');
-		}
+		const activeEvent = events[events.findIndex(event => event.id === query.eventId)];
 
 		try {
 			return await this.calendarModel.findByIdAndUpdate(
@@ -119,7 +57,7 @@ export class NoteService {
 	}
 
 	async update(query) {
-		const founded = await this.check(query, false);
+		const founded = await this.calendarModel.findById(query.id);
 		const { events } = founded;
 		const activeEvent =
 			events[events.findIndex(event => event.id === query.eventId)];
@@ -129,8 +67,6 @@ export class NoteService {
 			];
 
 		if (!activeNote) throw new NotExist('Note', 'id');
-
-		if (query.date) this.checkDate(query);
 
 		try {
 			return await this.calendarModel.findByIdAndUpdate(
@@ -170,12 +106,10 @@ export class NoteService {
 	}
 
 	async remove(query) {
-		const founded = await this.check(query, false);
+		const founded = await this.calendarModel.findById(query.id);
 		const { events } = founded;
 		const activeEvent =
 			events[events.findIndex(event => event.id === query.eventId)];
-
-		if (!query.noteId) throw new InvalidProperty('note id');
 
 		try {
 			return await this.calendarModel.findByIdAndUpdate(
@@ -203,18 +137,14 @@ export class NoteService {
 	}
 
 	async like(query) {
-		const founded = await this.check(query, false);
+		const founded = await this.calendarModel.findById(query.id);
 		const { events } = founded;
-		const activeEvent =
-			events[events.findIndex(event => event.id === query.eventId)];
-		const activeNote =
-			activeEvent.notes[
+		const activeEvent = events[events.findIndex(event => event.id === query.eventId)];
+		const activeNote = activeEvent.notes[
 				activeEvent.notes.findIndex(note => note.id === query.noteId)
 			];
 
 		if (!activeNote) throw new NotExist('Note', 'id');
-
-		if (query.date) this.checkDate(query);
 
 		try {
 			return await this.calendarModel.findByIdAndUpdate(
