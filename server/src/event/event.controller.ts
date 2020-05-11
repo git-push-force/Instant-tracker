@@ -19,4 +19,9 @@ export class EventController {
 	remove(@Query() query) {
 		return this.eventService.remove(query);
 	}
+
+	@Post('like')
+	like(@Query() query) {
+		return this.eventService.like(query);
+	}
 }

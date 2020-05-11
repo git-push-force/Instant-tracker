@@ -1,7 +1,6 @@
 export class NoteDto {
-	name: string;
-	description: string;
-	id: string; //calendar id
-	eventId: string; //event id
+	content: string;
+	id: string;
+	eventId: string;
 	date: string;
 }

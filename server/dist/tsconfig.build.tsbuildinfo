@@ -1222,8 +1222,8 @@
         "signature": "8f1241f5d9f0d3d72117768b3c974e462840fbd85026fb66685078945404cf2f"
       },
       "../src/note/interfaces/note.interface.ts": {
-        "version": "f67c486a473d3a48e21c26518e98fc5f77463e579b0526ff2da9aa75a803e6a5",
-        "signature": "2d5b45b5d46e102fde8947205496e3e6b90418f2220158cba9dee40a9730fb62"
+        "version": "f5b2da8e5c8dad187934301bfbd00e97fd18eda3acd14ca1ddf93fe0a0bce8c6",
+        "signature": "b8a2801fb7d720c7fdb73072a5ca8e42e5db5af7b30eb1d5423c2810d36601ad"
       },
       "../src/event/interfaces/event.interface.ts": {
         "version": "d0200edd6c2a9b5b206a820a56db849ca4351b3942805ec76df7133ff6b7a85d",
@@ -1266,31 +1266,31 @@
         "signature": "b128e95f18c669f7e1a034f5307357fe803c58431857f0c134c2df7326a84fea"
       },
       "../src/event/event.service.ts": {
-        "version": "8ae25ed568f5efa1ad47ac8ff0e3db0a5f7d35b680ba9e13539171e7d9af8bc5",
-        "signature": "3cf0d9ebc0f18620ccc0f19296889bd6d77d18c20e68e313d291b149037f1f71"
+        "version": "20b3e45ee276d219cee11621eb76fa6fc8e22248751c01791a388ed5202a4399",
+        "signature": "d6cbad87f7c9e214d146d2cb7e9897d090c8c4c8c09134abe7c974d7b42ff2b5"
       },
       "../src/event/event.controller.ts": {
-        "version": "506aebcc287ea4f38464b06e2efd65a5c744af0e9f56c10113b10e26e45dabca",
-        "signature": "21fa544aadae85ea93c1ec7b8ec30d7c9bb423a6675a6f2c17979e95d836b5d1"
+        "version": "797ee16f47ac6fc903e1c8573a8feaef976cc94d65fff0d80ec50ee9214eef38",
+        "signature": "fdc56a642432b6c24f5f27848a9c17ff02b6ee26cc7c96c6bd2ef9097b3515f5"
       },
       "../src/event/event.module.ts": {
         "version": "2e26940485048c124a8d2fc5ac744fa3a15461703fedae85d0333628d556713d",
         "signature": "d2161b4958427240fd5c1876e243e6e7f170db5cb48df3889d4e91f107c454aa"
       },
       "../src/note/dto/note.dto.ts": {
-        "version": "e310e43cf70f6e60b66365f7d4cf547fd7e4a176a3a1a8d4fae63bbf9f9ffd7f",
-        "signature": "0297e313c7c65293ab9cf6be0aa80eee166020f4fe2537c099ba1495c4babb9b"
+        "version": "2795cb7c5b244ae689386d24449a3aca8f05862da8af323423d589d8a743baa0",
+        "signature": "3a34056296b04a61ae12df981713d5a1896db9317691c29ed79ab6a11a24d706"
       },
       "../src/note/note.service.ts": {
-        "version": "7756ae0aaf49a919ee25208d7d9963f6f7c495a95b78067d8bf78d182b44ecb8",
-        "signature": "b43357bf5749d83014c98d5b7edfb2e7230f9f3e759782689656565ee1cebcad"
+        "version": "152b80029c47ab959681b8010e5a8425dea18a5f82707019f155cfbf76b68fe8",
+        "signature": "fb6132fbff01a408ed744a1cfe5d3214f8804b0ae586d9ae57b4d24b2742a5a2"
       },
       "../src/note/note.controller.ts": {
-        "version": "92930d0c6d300df14916486efe0b627737ebdccb39551f7986613cf8dbb53d77",
-        "signature": "15df476f920a16ba48ea028ba4aab6b5f97b3bff963e8f9f680b0eb94c5436e7"
+        "version": "177e6977ea228cd51854c0d8bc7f9580bb9cad94684edbb9ac66611bd60159af",
+        "signature": "83af46dcec7195035fb9f89c9931a88fbbc7131ed502294bd8e4a94ebf5e5b77"
       },
       "../src/note/note.module.ts": {
-        "version": "beeb1c392586867aaec021742299326066118110e71b124567a0a42fe382bdc5",
+        "version": "890a2a084237013abae537ddedf8b878cad5879f335a256a47382a74ad71cbdf",
         "signature": "5978d5d3673d5988aa0b00c317ec88b5f8adfdb49f617f518d57727501034bd7"
       },
       "../src/app.module.ts": {
@@ -4521,6 +4521,7 @@
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@nestjs/mongoose/index.d.ts",
         "../node_modules/@types/mongoose/index.d.ts",
+        "../node_modules/moment/ts3.1-typings/moment.d.ts",
         "../src/note/dto/note.dto.ts",
         "../src/calendar/interfaces/calendar.interface.ts",
         "../src/exceptions.ts",
@@ -9164,12 +9165,9 @@
       "../src/calendar/calendar.module.ts",
       "../node_modules/moment/ts3.1-typings/moment.d.ts",
       "../src/event/dto/event.dto.ts",
-      "../src/event/event.service.ts",
       "../src/event/event.controller.ts",
       "../src/event/event.module.ts",
       "../src/note/dto/note.dto.ts",
-      "../src/note/note.controller.ts",
-      "../src/note/note.module.ts",
       "../src/app.module.ts",
       "../node_modules/@nestjs/core/adapters/http-adapter.d.ts",
       "../node_modules/@nestjs/core/adapters/index.d.ts",
@@ -9256,7 +9254,10 @@
       "../node_modules/@types/webpack/index.d.ts",
       "../node_modules/@types/yargs-parser/index.d.ts",
       "../node_modules/@types/yargs/index.d.ts",
-      "../src/note/note.service.ts"
+      "../src/event/event.service.ts",
+      "../src/note/note.service.ts",
+      "../src/note/note.controller.ts",
+      "../src/note/note.module.ts"
     ]
   },
   "version": "3.8.3"

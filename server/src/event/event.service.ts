@@ -17,7 +17,7 @@ import {
 export class EventService {
 	constructor(
 		@InjectModel('Calendar')
-		private calendarModel: Model<ICalendar>,
+		private calendarModel: Model<ICalendar>
 	) {}
 
 	async check(query, forCreate) {
@@ -148,6 +148,38 @@ export class EventService {
 					],
 				},
 			});
+		} catch (err) {
+			throw new InternalError();
+		}
+	}
+
+	async like(query) {
+		const founded = await this.check(query, false);
+
+		try {
+			const foundedEvent = founded.events.find(
+				item => item.id === query.eventId
+			);
+
+			return await this.calendarModel.findByIdAndUpdate(
+				query.id,
+				{
+					$set: {
+						events: [
+							...founded.events.filter(
+								item => item.id !== query.eventId
+							),
+							{
+								...foundedEvent,
+								likes: Number(foundedEvent.likes) + 1,
+							},
+						],
+					},
+				},
+				{
+					new: true,
+				}
+			);
 		} catch (err) {
 			throw new InternalError();
 		}

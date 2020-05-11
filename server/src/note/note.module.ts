@@ -6,9 +6,7 @@ import { NoteService } from './note.service';
 import { NoteController } from './note.controller';
 
 @Module({
-	imports: [
-		CalendarModule
-	],
+	imports: [CalendarModule],
 	providers: [NoteService],
 	controllers: [NoteController],
 })
