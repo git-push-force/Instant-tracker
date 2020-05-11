@@ -38,22 +38,22 @@ export class CalendarGuard implements CanActivate {
 		const { query, path } = request;
 
 		switch (path) {
+			case '/api/calendar/get':
 			case '/api/calendar/update':
-			case '/api/calendar/remove':
-			case '/api/calendar/get': {
-				this.generalCheck(query);
+			case '/api/calendar/remove': {
+				await this.generalCheck(query);
+				break;
 			}
 
 			case '/api/calendar/create': {
-				this.generalCheck(query);
 				if (!query.name) throw new InvalidProperty('calendar name');
+				break;
 			}
 
 			case '/api/calendar/change-password': {
-				this.generalCheck(query);
-				if (!query.newPassword || query.newPassword.length < 4) {
+				await this.generalCheck(query);
+				if (!query.newPassword || query.newPassword.length < 4)
 					throw new InvalidProperty('new password');
-				}
 			}
 		}
 

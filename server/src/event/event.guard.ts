@@ -22,7 +22,7 @@ export class EventGuard implements CanActivate {
 
 	async generalCheck(query, forCreate) {
 		if (!query.id) throw new InvalidProperty('calendar id');
-		if (query.id.length > 24) throw new NotExist('Calendar', 'id');
+		if (query.id.length > 24 || query.id.length < 24) throw new NotExist('Calendar', 'id');
 
 		const founded = await this.calendarModel.findById(query.id);
 
