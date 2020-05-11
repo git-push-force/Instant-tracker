@@ -1,22 +1,21 @@
 import { Document } from 'mongoose';
+import { INote } from '../../note/interfaces/note.interface';
 
 export interface IEvent {
 	name: string;
 	description: string;
 	id: string;
-	date: object;
+	date: string;
 	likes: number;
-	permanent: boolean;
 	important: boolean;
-	notes: [];
+	notes: INote[];
 }
 
 export interface IEventCreate extends Document {
 	name: string;
 	description: string;
-	date: object;
+	date: string;
 	likes: number;
-	permanent: boolean;
 	important: boolean;
-	notes: [];
+	notes: INote[];
 }

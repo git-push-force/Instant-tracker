@@ -1221,13 +1221,17 @@
         "version": "8f1241f5d9f0d3d72117768b3c974e462840fbd85026fb66685078945404cf2f",
         "signature": "8f1241f5d9f0d3d72117768b3c974e462840fbd85026fb66685078945404cf2f"
       },
+      "../src/note/interfaces/note.interface.ts": {
+        "version": "f67c486a473d3a48e21c26518e98fc5f77463e579b0526ff2da9aa75a803e6a5",
+        "signature": "2d5b45b5d46e102fde8947205496e3e6b90418f2220158cba9dee40a9730fb62"
+      },
       "../src/event/interfaces/event.interface.ts": {
-        "version": "33e68ca3e8eb84df489b79c5ca987ec0768c38ff620878b6a2410dbbe98f29be",
-        "signature": "4f268e23771d4d53ba8b94be325e05ec426ea24a5d9f6d57785182a32f6e932e"
+        "version": "d0200edd6c2a9b5b206a820a56db849ca4351b3942805ec76df7133ff6b7a85d",
+        "signature": "9e39bb1efe38469b68a2ee8593cf9a334154c5391f512d01e008c8e3ac889ed7"
       },
       "../src/calendar/interfaces/calendar.interface.ts": {
-        "version": "db30b5e394567932efe66d399381ff580ba28b897947373e98618db030ed965b",
-        "signature": "2698ecb0d1f5d7adcb465949112a077787b5dfe4aa71576a9bf2745330b2280c"
+        "version": "84ce05b0e893bf51759c44caf453721bb9fcfbfe69e0182da7cbab6da4fefc2c",
+        "signature": "452fa24fbcadaafa5d7a103448780edd3a9032843cd934a2918d2cb5a33c8151"
       },
       "../src/calendar/dto/calendar.dto.ts": {
         "version": "9322b531a229289628e5f776ad2e88182bed84228f0d8023c2ae1544f6c3d1e4",
@@ -1242,7 +1246,7 @@
         "signature": "bed8f764f00b880614241f669ddc6caca6c2ea3f556aaf772a31cdb1c4d7e471"
       },
       "../src/calendar/calendar.controller.ts": {
-        "version": "542a7fc594b41a9d757810e0d160448dcddeba5ad29aaa12fc59012cd36f2fea",
+        "version": "0a03fce017415978063c77ae3e9e469758ddea49d473243c704db6cabc2c573d",
         "signature": "e2aa6a168b9226808d0a7c619bafd097237b1807cbf65e71cf245a0187b014f9"
       },
       "../src/calendar/schemas/calendar.schema.ts": {
@@ -1257,56 +1261,40 @@
         "version": "1544ab3b5a57eed886c3bac6e18a65327b1b1caa633941d721530f6493a068d9",
         "signature": "1544ab3b5a57eed886c3bac6e18a65327b1b1caa633941d721530f6493a068d9"
       },
-      "../src/date/date.service.ts": {
-        "version": "e0776912bcedbac19b23e225cd3b8ef9751905c355f571923379aa63ca4cc58d",
-        "signature": "092eb7d47def4c446c4f028bb93a4919b7fe4882abd43860bc5742623c51f413"
-      },
       "../src/event/dto/event.dto.ts": {
-        "version": "7a259130e2df12c3023509f455f1bf4f121eb0665a4c8b0340a9af223e4c503a",
-        "signature": "ec1223e516eda70f06f208fd21acd968a14f111071cc50d3f86501da1a7018f6"
+        "version": "18929b8f4dabf835ca3fe1d8a69a6342815ae50a03dca8776c9a00fce3f752ff",
+        "signature": "b128e95f18c669f7e1a034f5307357fe803c58431857f0c134c2df7326a84fea"
       },
       "../src/event/event.service.ts": {
-        "version": "5f5f4ba7698eb84abbb7347c30aa3dd8d71a475c9b1a09c934ef8402c95ee061",
-        "signature": "93c4e4afac9d79594a6bd9e652cc7ccd7bd14f87f973caf750c8f96745dd3ed2"
+        "version": "8ae25ed568f5efa1ad47ac8ff0e3db0a5f7d35b680ba9e13539171e7d9af8bc5",
+        "signature": "3cf0d9ebc0f18620ccc0f19296889bd6d77d18c20e68e313d291b149037f1f71"
       },
       "../src/event/event.controller.ts": {
         "version": "506aebcc287ea4f38464b06e2efd65a5c744af0e9f56c10113b10e26e45dabca",
         "signature": "21fa544aadae85ea93c1ec7b8ec30d7c9bb423a6675a6f2c17979e95d836b5d1"
       },
-      "../src/date/date.module.ts": {
-        "version": "36aac96019f352363f20094ac9cae6f102120dad3bd8be3fc51e885854a780e3",
-        "signature": "cc576b4efceb33be817aad7f3ba63057f97bf31addfea59e952cbc641b200631"
-      },
       "../src/event/event.module.ts": {
-        "version": "0c91f0a20a6ea59540083c64f2d2c1dda0585fe787aca86b05f227279499964d",
+        "version": "2e26940485048c124a8d2fc5ac744fa3a15461703fedae85d0333628d556713d",
         "signature": "d2161b4958427240fd5c1876e243e6e7f170db5cb48df3889d4e91f107c454aa"
       },
-      "../src/note/interfaces/note.interface.ts": {
-        "version": "84eec2759aed296b20fcf19996036f2c93b697859fc0933462090e8ffe60fc05",
-        "signature": "e2e03d9331f85820648325e0685869c3121f26507f182fe88e4572d34db1bb06"
-      },
       "../src/note/dto/note.dto.ts": {
-        "version": "fa3f2e4e4c982ae2636b311bd80266e9968145effe7339698c46a2065bb8e323",
-        "signature": "52973e468e90ca6a0844f92dcc7b1bb390d2d317822fe817f5eff7f017206980"
+        "version": "e310e43cf70f6e60b66365f7d4cf547fd7e4a176a3a1a8d4fae63bbf9f9ffd7f",
+        "signature": "0297e313c7c65293ab9cf6be0aa80eee166020f4fe2537c099ba1495c4babb9b"
       },
       "../src/note/note.service.ts": {
-        "version": "4796a2ebb315cda6e864ada45511a743e3113acbd0d2b828b321f7cc2afcb200",
-        "signature": "61139b8e349d574e5b10a53785018c6eb58274ad437f1b1e230eed070ece5f75"
+        "version": "7756ae0aaf49a919ee25208d7d9963f6f7c495a95b78067d8bf78d182b44ecb8",
+        "signature": "b43357bf5749d83014c98d5b7edfb2e7230f9f3e759782689656565ee1cebcad"
       },
       "../src/note/note.controller.ts": {
-        "version": "4a953bfffc3b3bbfb96b624e0d785ddf488e293a555f678fe38eda1ff4bb3c28",
-        "signature": "52bcac23aadcedd2cc05bc1506dc2bdc964c137bf2fd59163680358ef9ee4666"
-      },
-      "../src/note/schemas/note.schema.ts": {
-        "version": "da937c0613d113c889757759c0548e99451b503731fe49d89087edaffc971d04",
-        "signature": "d2c951855772e22ba60a163c5a188a9736b4658516c3083533301da7e8cfad2b"
+        "version": "92930d0c6d300df14916486efe0b627737ebdccb39551f7986613cf8dbb53d77",
+        "signature": "15df476f920a16ba48ea028ba4aab6b5f97b3bff963e8f9f680b0eb94c5436e7"
       },
       "../src/note/note.module.ts": {
-        "version": "ade8d5c48e02c2f9808b6b106ddc93e2755d42f4f364d0f91cab484a5a4390b2",
+        "version": "beeb1c392586867aaec021742299326066118110e71b124567a0a42fe382bdc5",
         "signature": "5978d5d3673d5988aa0b00c317ec88b5f8adfdb49f617f518d57727501034bd7"
       },
       "../src/app.module.ts": {
-        "version": "c6f5cce3cad7630d48f51661216aac243515d854b8f2dd17ec9c4c6b0a418f66",
+        "version": "57a102611b9c7786a01109647675bb5f3658f26e56552e81be94d779f4be35b0",
         "signature": "b82491e2990291580288c5602d4c017238977749d52b17391f0e45d9a29be644"
       },
       "../node_modules/@nestjs/core/adapters/http-adapter.d.ts": {
@@ -1456,10 +1444,6 @@
       "../src/main.ts": {
         "version": "dc2bf6b7c79c14c24731095e3f0e15eeb2a7d9925c98e991453833b2aff7fd66",
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
-      },
-      "../src/event/schemas/event.schema.ts": {
-        "version": "dd0c1a812a9b908d506661890f9130178bc1db2f6e09862316d561f2ee7c6806",
-        "signature": "168eb76a7d2708d8f96026c93765f0a9d11e5ad4d3bfe6e4a5be76c476c32f3e"
       },
       "../node_modules/@types/anymatch/index.d.ts": {
         "version": "48b52264fa193879a074197839dbb4796fa07e86350ff888e5361e06aa46df76",
@@ -4394,8 +4378,17 @@
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts"
       ],
+      "../src/note/interfaces/note.interface.ts": [
+        "../node_modules/@types/mongoose/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts"
+      ],
       "../src/event/interfaces/event.interface.ts": [
         "../node_modules/@types/mongoose/index.d.ts",
+        "../src/note/interfaces/note.interface.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/graceful-fs/index.d.ts",
@@ -4476,16 +4469,6 @@
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts"
       ],
-      "../src/date/date.service.ts": [
-        "../node_modules/@nestjs/common/index.d.ts",
-        "../node_modules/moment/ts3.1-typings/moment.d.ts",
-        "../src/exceptions.ts",
-        "../node_modules/@types/node/fs.d.ts",
-        "../node_modules/@types/node/ts3.2/fs.d.ts",
-        "../node_modules/@types/graceful-fs/index.d.ts",
-        "../node_modules/@types/node/util.d.ts",
-        "../node_modules/@types/node/ts3.2/util.d.ts"
-      ],
       "../src/event/dto/event.dto.ts": [
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
@@ -4497,7 +4480,7 @@
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@nestjs/mongoose/index.d.ts",
         "../node_modules/@types/mongoose/index.d.ts",
-        "../src/date/date.service.ts",
+        "../node_modules/moment/ts3.1-typings/moment.d.ts",
         "../src/calendar/interfaces/calendar.interface.ts",
         "../src/event/dto/event.dto.ts",
         "../src/exceptions.ts",
@@ -4516,29 +4499,11 @@
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts"
       ],
-      "../src/date/date.module.ts": [
-        "../node_modules/@nestjs/common/index.d.ts",
-        "../src/date/date.service.ts",
-        "../node_modules/@types/node/fs.d.ts",
-        "../node_modules/@types/node/ts3.2/fs.d.ts",
-        "../node_modules/@types/graceful-fs/index.d.ts",
-        "../node_modules/@types/node/util.d.ts",
-        "../node_modules/@types/node/ts3.2/util.d.ts"
-      ],
       "../src/event/event.module.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
         "../src/event/event.service.ts",
         "../src/event/event.controller.ts",
         "../src/calendar/calendar.module.ts",
-        "../src/date/date.module.ts",
-        "../node_modules/@types/node/fs.d.ts",
-        "../node_modules/@types/node/ts3.2/fs.d.ts",
-        "../node_modules/@types/graceful-fs/index.d.ts",
-        "../node_modules/@types/node/util.d.ts",
-        "../node_modules/@types/node/ts3.2/util.d.ts"
-      ],
-      "../src/note/interfaces/note.interface.ts": [
-        "../node_modules/@types/mongoose/index.d.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/graceful-fs/index.d.ts",
@@ -4556,8 +4521,9 @@
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@nestjs/mongoose/index.d.ts",
         "../node_modules/@types/mongoose/index.d.ts",
-        "../src/note/interfaces/note.interface.ts",
         "../src/note/dto/note.dto.ts",
+        "../src/calendar/interfaces/calendar.interface.ts",
+        "../src/exceptions.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/graceful-fs/index.d.ts",
@@ -4566,14 +4532,7 @@
       ],
       "../src/note/note.controller.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
-        "../node_modules/@types/node/fs.d.ts",
-        "../node_modules/@types/node/ts3.2/fs.d.ts",
-        "../node_modules/@types/graceful-fs/index.d.ts",
-        "../node_modules/@types/node/util.d.ts",
-        "../node_modules/@types/node/ts3.2/util.d.ts"
-      ],
-      "../src/note/schemas/note.schema.ts": [
-        "../node_modules/@types/mongoose/index.d.ts",
+        "../src/note/note.service.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/graceful-fs/index.d.ts",
@@ -4582,11 +4541,9 @@
       ],
       "../src/note/note.module.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
-        "../node_modules/@nestjs/mongoose/index.d.ts",
         "../src/calendar/calendar.module.ts",
         "../src/note/note.service.ts",
         "../src/note/note.controller.ts",
-        "../src/note/schemas/note.schema.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/graceful-fs/index.d.ts",
@@ -4599,7 +4556,6 @@
         "../node_modules/@nestjs/config/index.d.ts",
         "../src/calendar/calendar.module.ts",
         "../src/event/event.module.ts",
-        "../src/date/date.module.ts",
         "../src/note/note.module.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
@@ -4962,14 +4918,6 @@
       "../src/main.ts": [
         "../node_modules/@nestjs/core/index.d.ts",
         "../src/app.module.ts",
-        "../node_modules/@types/node/fs.d.ts",
-        "../node_modules/@types/node/ts3.2/fs.d.ts",
-        "../node_modules/@types/graceful-fs/index.d.ts",
-        "../node_modules/@types/node/util.d.ts",
-        "../node_modules/@types/node/ts3.2/util.d.ts"
-      ],
-      "../src/event/schemas/event.schema.ts": [
-        "../node_modules/@types/mongoose/index.d.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/graceful-fs/index.d.ts",
@@ -8098,7 +8046,11 @@
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts"
       ],
+      "../src/note/interfaces/note.interface.ts": [
+        "../node_modules/@types/mongoose/index.d.ts"
+      ],
       "../src/event/interfaces/event.interface.ts": [
+        "../src/note/interfaces/note.interface.ts",
         "../node_modules/@types/mongoose/index.d.ts"
       ],
       "../src/calendar/interfaces/calendar.interface.ts": [
@@ -8133,22 +8085,20 @@
       "../src/event/event.service.ts": [
         "../node_modules/@types/mongoose/index.d.ts",
         "../src/calendar/interfaces/calendar.interface.ts",
-        "../src/date/date.service.ts",
         "../src/event/dto/event.dto.ts"
       ],
       "../src/event/event.controller.ts": [
         "../src/calendar/interfaces/calendar.interface.ts",
         "../src/event/event.service.ts"
       ],
-      "../src/note/interfaces/note.interface.ts": [
-        "../node_modules/@types/mongoose/index.d.ts"
-      ],
       "../src/note/note.service.ts": [
         "../node_modules/@types/mongoose/index.d.ts",
-        "../src/note/interfaces/note.interface.ts"
+        "../src/calendar/interfaces/calendar.interface.ts",
+        "../src/note/dto/note.dto.ts"
       ],
-      "../src/note/schemas/note.schema.ts": [
-        "../node_modules/@types/mongoose/index.d.ts"
+      "../src/note/note.controller.ts": [
+        "../src/calendar/interfaces/calendar.interface.ts",
+        "../src/note/note.service.ts"
       ],
       "../node_modules/@nestjs/core/adapters/http-adapter.d.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
@@ -8501,9 +8451,6 @@
         "../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts"
-      ],
-      "../src/event/schemas/event.schema.ts": [
-        "../node_modules/@types/mongoose/index.d.ts"
       ],
       "../node_modules/@types/anymatch/index.d.ts": [
         "../node_modules/@types/node/fs.d.ts",
@@ -9206,6 +9153,7 @@
       "../node_modules/@nestjs/config/dist/utils/index.d.ts",
       "../node_modules/@nestjs/config/dist/index.d.ts",
       "../node_modules/@nestjs/config/index.d.ts",
+      "../src/note/interfaces/note.interface.ts",
       "../src/event/interfaces/event.interface.ts",
       "../src/calendar/interfaces/calendar.interface.ts",
       "../src/calendar/dto/calendar.dto.ts",
@@ -9215,17 +9163,13 @@
       "../src/calendar/schemas/calendar.schema.ts",
       "../src/calendar/calendar.module.ts",
       "../node_modules/moment/ts3.1-typings/moment.d.ts",
-      "../src/date/date.service.ts",
       "../src/event/dto/event.dto.ts",
       "../src/event/event.service.ts",
       "../src/event/event.controller.ts",
-      "../src/date/date.module.ts",
       "../src/event/event.module.ts",
-      "../src/note/interfaces/note.interface.ts",
       "../src/note/dto/note.dto.ts",
-      "../src/note/note.service.ts",
       "../src/note/note.controller.ts",
-      "../src/note/schemas/note.schema.ts",
+      "../src/note/note.module.ts",
       "../src/app.module.ts",
       "../node_modules/@nestjs/core/adapters/http-adapter.d.ts",
       "../node_modules/@nestjs/core/adapters/index.d.ts",
@@ -9264,7 +9208,6 @@
       "../node_modules/@nestjs/core/services/index.d.ts",
       "../node_modules/@nestjs/core/index.d.ts",
       "../src/main.ts",
-      "../src/event/schemas/event.schema.ts",
       "../node_modules/@types/anymatch/index.d.ts",
       "../node_modules/@babel/types/lib/index.d.ts",
       "../node_modules/@types/babel__generator/index.d.ts",
@@ -9313,7 +9256,7 @@
       "../node_modules/@types/webpack/index.d.ts",
       "../node_modules/@types/yargs-parser/index.d.ts",
       "../node_modules/@types/yargs/index.d.ts",
-      "../src/note/note.module.ts"
+      "../src/note/note.service.ts"
     ]
   },
   "version": "3.8.3"

@@ -4,7 +4,6 @@ export class EventDto {
 	id: string; //calendar id
 	date: string;
 	likes: number;
-	permanent: boolean;
 	important: boolean;
 	notes: object[];
 }

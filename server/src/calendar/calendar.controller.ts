@@ -1,11 +1,11 @@
-import { Controller, Get, Post, Query } from '@nestjs/common';
+import { Controller, Post, Query } from '@nestjs/common';
 import { CalendarService } from './calendar.service';
 
 @Controller('api/calendar')
 export class CalendarController {
 	constructor(private calendarService: CalendarService) {}
 
-	@Get('get')
+	@Post('get')
 	get(@Query() query) {
 		return this.calendarService.get(query);
 	}

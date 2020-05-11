@@ -11,7 +11,6 @@ const mongoose_1 = require("@nestjs/mongoose");
 const config_1 = require("@nestjs/config");
 const calendar_module_1 = require("./calendar/calendar.module");
 const event_module_1 = require("./event/event.module");
-const date_module_1 = require("./date/date.module");
 const note_module_1 = require("./note/note.module");
 let AppModule = class AppModule {
 };
@@ -29,7 +28,6 @@ AppModule = __decorate([
             }),
             calendar_module_1.CalendarModule,
             event_module_1.EventModule,
-            date_module_1.DateModule,
             note_module_1.NoteModule,
         ],
         controllers: [],

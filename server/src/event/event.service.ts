@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+import * as moment from 'moment';
 
-import { DateService } from '../date/date.service';
 import { ICalendar } from '../calendar/interfaces/calendar.interface';
 import { EventDto } from './dto/event.dto';
 import {
@@ -18,7 +18,6 @@ export class EventService {
 	constructor(
 		@InjectModel('Calendar')
 		private calendarModel: Model<ICalendar>,
-		private dateService: DateService
 	) {}
 
 	async check(query, forCreate) {
@@ -56,7 +55,18 @@ export class EventService {
 
 	async create(query: EventDto) {
 		const founded = await this.check(query, true);
-		const date = this.dateService.parseDate(query);
+
+		if (!query.date) throw new InvalidProperty('date');
+
+		const dateFormat = 'YYYY-MM-DD';
+		const dateTimeFormat = 'YYYY-MM-DD HH:mm:ss';
+
+		if (
+			!moment(query.date, dateTimeFormat, true).isValid() &&
+			!moment(query.date, dateFormat, true).isValid()
+		) {
+			throw new InvalidProperty('date');
+		}
 
 		try {
 			return await this.calendarModel.findByIdAndUpdate(
@@ -69,11 +79,8 @@ export class EventService {
 								name: query.name,
 								description: query.description,
 								id: founded.events.length.toString(),
-								date,
+								date: query.date,
 								likes: 0,
-								permanent: query.permanent
-									? query.permanent
-									: false,
 								important: query.important
 									? query.important
 									: false,

@@ -5,5 +5,5 @@ export interface ICalendar extends Document {
 	name: string;
 	description: string;
 	password?: string;
-	events?: IEvent[];
+	events: IEvent[];
 }
