@@ -5,7 +5,6 @@ import { InvalidProperty } from '../exceptions';
 @Injectable()
 export class DateService {
 	parseDate(query) {
-
 		if (!query.date) throw new InvalidProperty('date');
 
 		const { date } = query;

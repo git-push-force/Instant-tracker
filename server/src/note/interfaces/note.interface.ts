@@ -1,6 +1,6 @@
 import { Document } from 'mongoose';
 
-export interface IEvent {
+export interface INote {
 	name: string;
 	description: string;
 	id: string;
@@ -11,7 +11,7 @@ export interface IEvent {
 	notes: [];
 }
 
-export interface IEventCreate extends Document {
+export interface INoteCreate extends Document {
 	name: string;
 	description: string;
 	date: object;

@@ -4,6 +4,7 @@ import { ConfigModule } from '@nestjs/config';
 import { CalendarModule } from './calendar/calendar.module';
 import { EventModule } from './event/event.module';
 import { DateModule } from './date/date.module';
+import { NoteModule } from './note/note.module';
 
 @Module({
 	imports: [
@@ -19,6 +20,7 @@ import { DateModule } from './date/date.module';
 		CalendarModule,
 		EventModule,
 		DateModule,
+		NoteModule,
 	],
 	controllers: [],
 	providers: [],

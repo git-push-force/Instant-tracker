@@ -24,7 +24,7 @@ export class CalendarService {
 		if (query.id.length > 24) throw new NotExist('Calendar', 'id');
 
 		const founded = await this.calendarModel.findById(query.id);
-		
+
 		if (!founded) throw new NotExist('Calendar', 'id');
 
 		if (founded.password) {

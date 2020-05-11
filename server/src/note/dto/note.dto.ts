@@ -1,7 +1,7 @@
-export class EventDto {
+export class NoteDto {
 	name: string;
 	description: string;
-	id: string; //calendar id
+	id: string; //note id
 	date: string;
 	likes: number;
 	permanent: boolean;

@@ -24,13 +24,12 @@ export class EventService {
 	async check(query, forCreate) {
 		if (!query.id) throw new InvalidProperty('calendar id');
 		if (query.id.length > 24) throw new NotExist('Calendar', 'id');
-		
+
 		const founded = await this.calendarModel.findById(query.id);
 
 		if (!founded) throw new NotExist('Calendar', 'id');
 
 		if (founded.password) {
-
 			if (!query.password) {
 				throw new NeedPassword();
 			}
@@ -42,15 +41,13 @@ export class EventService {
 
 		if (!forCreate) {
 			if (!query.eventId || !query.eventId.length)
-			throw new InvalidProperty('event id');
+				throw new InvalidProperty('event id');
 
 			if (!founded.events.find(item => item.id === query.eventId)) {
 				throw new NotExist('Event', 'id');
 			}
-		}
-
-		if (forCreate) {
-			if (!query.name || !query.name.length) 
+		} else {
+			if (!query.name || !query.name.length)
 				throw new InvalidProperty('event name');
 		}
 
@@ -72,7 +69,15 @@ export class EventService {
 								name: query.name,
 								description: query.description,
 								id: founded.events.length.toString(),
-								date
+								date,
+								likes: 0,
+								permanent: query.permanent
+									? query.permanent
+									: false,
+								important: query.important
+									? query.important
+									: false,
+								notes: [],
 							},
 						],
 					},

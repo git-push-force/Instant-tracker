@@ -1222,8 +1222,8 @@
         "signature": "8f1241f5d9f0d3d72117768b3c974e462840fbd85026fb66685078945404cf2f"
       },
       "../src/event/interfaces/event.interface.ts": {
-        "version": "4092326dec9ccaa0a9abf0fb62f2f1db713f9a9caefd054d510870d879c11e25",
-        "signature": "b5198caf35369b1aa996b924da9331280f974337439b59466a3ec60812be606b"
+        "version": "33e68ca3e8eb84df489b79c5ca987ec0768c38ff620878b6a2410dbbe98f29be",
+        "signature": "4f268e23771d4d53ba8b94be325e05ec426ea24a5d9f6d57785182a32f6e932e"
       },
       "../src/calendar/interfaces/calendar.interface.ts": {
         "version": "db30b5e394567932efe66d399381ff580ba28b897947373e98618db030ed965b",
@@ -1238,7 +1238,7 @@
         "signature": "eab84831e307ebec3209f4bb1f783a8140d19408d70d1ea23e6edee96f6d6a9e"
       },
       "../src/calendar/calendar.service.ts": {
-        "version": "6ead0042f938851b0a3bcf487a17c715c470e8dde1854e8d8e7a77059387f3bf",
+        "version": "a42c366e52d49246dab945fc86c21595949d88dcf1d36085c90bfe7e960eb3e7",
         "signature": "bed8f764f00b880614241f669ddc6caca6c2ea3f556aaf772a31cdb1c4d7e471"
       },
       "../src/calendar/calendar.controller.ts": {
@@ -1258,15 +1258,15 @@
         "signature": "1544ab3b5a57eed886c3bac6e18a65327b1b1caa633941d721530f6493a068d9"
       },
       "../src/date/date.service.ts": {
-        "version": "b0ff8ac158807dd770fbb7d3791471f550667abeb1cb757a8bc70d7b07c6445a",
+        "version": "e0776912bcedbac19b23e225cd3b8ef9751905c355f571923379aa63ca4cc58d",
         "signature": "092eb7d47def4c446c4f028bb93a4919b7fe4882abd43860bc5742623c51f413"
       },
       "../src/event/dto/event.dto.ts": {
-        "version": "076a2c8eaf481bed73a164cd312cb7e9c60238f0c7e1799914af813ea8b1f940",
-        "signature": "893e107ea9fdb1fafd2671a25a7eb072b2ff395f1ff293fc3885e60636e00860"
+        "version": "7a259130e2df12c3023509f455f1bf4f121eb0665a4c8b0340a9af223e4c503a",
+        "signature": "ec1223e516eda70f06f208fd21acd968a14f111071cc50d3f86501da1a7018f6"
       },
       "../src/event/event.service.ts": {
-        "version": "d3ce15f264f780146380f4e07091690e7177a6f74f6fc9d0a716128702ddd4c3",
+        "version": "5f5f4ba7698eb84abbb7347c30aa3dd8d71a475c9b1a09c934ef8402c95ee061",
         "signature": "93c4e4afac9d79594a6bd9e652cc7ccd7bd14f87f973caf750c8f96745dd3ed2"
       },
       "../src/event/event.controller.ts": {
@@ -1281,8 +1281,28 @@
         "version": "0c91f0a20a6ea59540083c64f2d2c1dda0585fe787aca86b05f227279499964d",
         "signature": "d2161b4958427240fd5c1876e243e6e7f170db5cb48df3889d4e91f107c454aa"
       },
+      "../src/note/note.service.ts": {
+        "version": "c9875d156a1e34443487f8e8b4ecf888a7766c0a4109a80e498328f912682fd6",
+        "signature": "60238a2ed8ff1aa37910dcf2a5efc2c26199a1ab75f20be52c33db83150c7d70"
+      },
+      "../src/note/interfaces/note.interface.ts": {
+        "version": "84eec2759aed296b20fcf19996036f2c93b697859fc0933462090e8ffe60fc05",
+        "signature": "e2e03d9331f85820648325e0685869c3121f26507f182fe88e4572d34db1bb06"
+      },
+      "../src/note/dto/note.dto.ts": {
+        "version": "fa3f2e4e4c982ae2636b311bd80266e9968145effe7339698c46a2065bb8e323",
+        "signature": "52973e468e90ca6a0844f92dcc7b1bb390d2d317822fe817f5eff7f017206980"
+      },
+      "../src/note/note.controller.ts": {
+        "version": "094642c597571e862b80b364e6de2a8257dba559bfe0e0b156b0a58f9740d27d",
+        "signature": "2ed1a48b1487823e4f10f579d1d4119e1a487a4b7c0fd4d44455c8fb0b571e1c"
+      },
+      "../src/note/note.module.ts": {
+        "version": "8f93fe648d1689ee48a01283dd496549ae1f7acf45ee74918ddb8e395b07e46d",
+        "signature": "5978d5d3673d5988aa0b00c317ec88b5f8adfdb49f617f518d57727501034bd7"
+      },
       "../src/app.module.ts": {
-        "version": "f22f6895c9a5a524def8f8a44d67361160226e172a5ab2dfe4d4a20bbbf8e8b5",
+        "version": "c6f5cce3cad7630d48f51661216aac243515d854b8f2dd17ec9c4c6b0a418f66",
         "signature": "b82491e2990291580288c5602d4c017238977749d52b17391f0e45d9a29be644"
       },
       "../node_modules/@nestjs/core/adapters/http-adapter.d.ts": {
@@ -1434,11 +1454,15 @@
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
       },
       "../src/calendar/calendar.guard.ts": {
-        "version": "fd65a0a04ba825d4793f6b563f4a8a6fd22ee50bf150ddf8dc336a004dcdd41f",
+        "version": "aae28c0e3782cad727deed49a58604ddbf87f85fc6db2b7c04dbd89114fa1a1d",
         "signature": "dbe1676f87318068db1e5bc68ef6be04324b1b20197d85ec5f89c1adef987dd9"
       },
       "../src/event/schemas/event.schema.ts": {
-        "version": "c49e408ea54dc601b15264b8aeebe62452f1f8484817d8df8979d90986bb280f",
+        "version": "dd0c1a812a9b908d506661890f9130178bc1db2f6e09862316d561f2ee7c6806",
+        "signature": "168eb76a7d2708d8f96026c93765f0a9d11e5ad4d3bfe6e4a5be76c476c32f3e"
+      },
+      "../src/note/schemas/note.schema.ts": {
+        "version": "c0c406d4ec923cf835901bf96695c6eddb6a564b5d2214ee275a8d1cd830afa1",
         "signature": "168eb76a7d2708d8f96026c93765f0a9d11e5ad4d3bfe6e4a5be76c476c32f3e"
       },
       "../node_modules/@types/anymatch/index.d.ts": {
@@ -4517,6 +4541,51 @@
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts"
       ],
+      "../src/note/note.service.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "../src/note/interfaces/note.interface.ts": [
+        "../node_modules/@types/mongoose/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "../src/note/dto/note.dto.ts": [
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "../src/note/note.controller.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@nestjs/mongoose/index.d.ts",
+        "../node_modules/@types/mongoose/index.d.ts",
+        "../src/note/interfaces/note.interface.ts",
+        "../src/note/dto/note.dto.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "../src/note/note.module.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../src/note/note.service.ts",
+        "../src/note/note.controller.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts"
+      ],
       "../src/app.module.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@nestjs/mongoose/index.d.ts",
@@ -4524,6 +4593,7 @@
         "../src/calendar/calendar.module.ts",
         "../src/event/event.module.ts",
         "../src/date/date.module.ts",
+        "../src/note/note.module.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/graceful-fs/index.d.ts",
@@ -4901,6 +4971,14 @@
         "../node_modules/@types/node/ts3.2/util.d.ts"
       ],
       "../src/event/schemas/event.schema.ts": [
+        "../node_modules/@types/mongoose/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "../src/note/schemas/note.schema.ts": [
         "../node_modules/@types/mongoose/index.d.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
@@ -8072,6 +8150,13 @@
         "../src/calendar/interfaces/calendar.interface.ts",
         "../src/event/event.service.ts"
       ],
+      "../src/note/interfaces/note.interface.ts": [
+        "../node_modules/@types/mongoose/index.d.ts"
+      ],
+      "../src/note/note.controller.ts": [
+        "../node_modules/@types/mongoose/index.d.ts",
+        "../src/note/interfaces/note.interface.ts"
+      ],
       "../node_modules/@nestjs/core/adapters/http-adapter.d.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@nestjs/common/interfaces/index.d.ts",
@@ -8429,6 +8514,9 @@
         "../node_modules/rxjs/index.d.ts"
       ],
       "../src/event/schemas/event.schema.ts": [
+        "../node_modules/@types/mongoose/index.d.ts"
+      ],
+      "../src/note/schemas/note.schema.ts": [
         "../node_modules/@types/mongoose/index.d.ts"
       ],
       "../node_modules/@types/anymatch/index.d.ts": [
@@ -9146,6 +9234,9 @@
       "../src/event/event.controller.ts",
       "../src/date/date.module.ts",
       "../src/event/event.module.ts",
+      "../src/note/note.service.ts",
+      "../src/note/interfaces/note.interface.ts",
+      "../src/note/dto/note.dto.ts",
       "../src/app.module.ts",
       "../node_modules/@nestjs/core/adapters/http-adapter.d.ts",
       "../node_modules/@nestjs/core/adapters/index.d.ts",
@@ -9185,7 +9276,6 @@
       "../node_modules/@nestjs/core/index.d.ts",
       "../src/main.ts",
       "../src/calendar/calendar.guard.ts",
-      "../src/event/schemas/event.schema.ts",
       "../node_modules/@types/anymatch/index.d.ts",
       "../node_modules/@babel/types/lib/index.d.ts",
       "../node_modules/@types/babel__generator/index.d.ts",
@@ -9234,7 +9324,11 @@
       "../node_modules/@types/webpack/index.d.ts",
       "../node_modules/@types/yargs-parser/index.d.ts",
       "../node_modules/@types/yargs/index.d.ts",
-      "../src/event/event.service.ts"
+      "../src/event/event.service.ts",
+      "../src/note/note.controller.ts",
+      "../src/note/note.module.ts",
+      "../src/event/schemas/event.schema.ts",
+      "../src/note/schemas/note.schema.ts"
     ]
   },
   "version": "3.8.3"
