@@ -94,15 +94,19 @@ export class EventService {
 		const founded = await this.calendarModel.findById(query.id);
 
 		try {
-			return await this.calendarModel.findByIdAndUpdate(query.id, {
-				$set: {
-					events: [
-						...founded.events.filter(
-							item => item.id !== query.eventId
-						),
-					],
+			return await this.calendarModel.findByIdAndUpdate(
+				query.id,
+				{
+					$set: {
+						events: [
+							...founded.events.filter(
+								item => item.id !== query.eventId
+							),
+						],
+					},
 				},
-			});
+				{ new: true }
+			);
 		} catch (err) {
 			throw new InternalError();
 		}

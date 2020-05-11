@@ -22,38 +22,28 @@ export class EventGuard implements CanActivate {
 
 	async generalCheck(query, forCreate) {
 		if (!query.id) throw new InvalidProperty('calendar id');
-		if (query.id.length > 24 || query.id.length < 24) throw new NotExist('Calendar', 'id');
+		if (query.id.length > 24 || query.id.length < 24)
+			throw new NotExist('Calendar', 'id');
 
 		const founded = await this.calendarModel.findById(query.id);
 
 		if (!founded) throw new NotExist('Calendar', 'id');
 
 		if (founded.password) {
-			if (!query.password) {
-				throw new NeedPassword();
-			}
-
-			if (query.password !== founded.password) {
-				throw new WrongPassword();
-			}
+			if (!query.password) throw new NeedPassword();
+			if (query.password !== founded.password) throw new WrongPassword();
 		}
 
 		if (!forCreate) {
 			if (!query.eventId || !query.eventId.length)
 				throw new InvalidProperty('event id');
 
-			if (!founded.events.find(item => item.id === query.eventId)) {
+			if (!founded.events.find(item => item.id === query.eventId))
 				throw new NotExist('Event', 'id');
-			}
-		} else {
-			if (!query.name || !query.name.length)
-				throw new InvalidProperty('event name');
 		}
 	}
 
-	canActivate(
-		context: ExecutionContext
-	): boolean | Promise<boolean> | Observable<boolean> {
+	async canActivate(context: ExecutionContext) {
 		const request = context.switchToHttp().getRequest();
 		const { query, path } = request;
 
@@ -61,12 +51,14 @@ export class EventGuard implements CanActivate {
 			case '/api/event/update':
 			case '/api/event/remove':
 			case '/api/event/like': {
-				this.generalCheck(query, false);
-
+				await this.generalCheck(query, false);
 				break;
 			}
 			case '/api/event/create': {
-				this.generalCheck(query, true);
+				await this.generalCheck(query, true);
+
+				if (!query.name) throw new InvalidProperty('event name');
+
 				if (!query.date) throw new InvalidProperty('date');
 
 				const dateFormat = 'YYYY-MM-DD';
@@ -78,7 +70,6 @@ export class EventGuard implements CanActivate {
 				) {
 					throw new InvalidProperty('date');
 				}
-
 				break;
 			}
 		}

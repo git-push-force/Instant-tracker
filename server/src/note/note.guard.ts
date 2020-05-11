@@ -20,9 +20,9 @@ export class NoteGuard implements CanActivate {
 	) {}
 
 	async generalCheck(query, forCreate) {
-
 		if (!query.id) throw new InvalidProperty('calendar id');
-		if (query.id.length > 24 || query.id.length < 24) throw new NotExist('Calendar', 'id');
+		if (query.id.length > 24 || query.id.length < 24)
+			throw new NotExist('Calendar', 'id');
 
 		const founded = await this.calendarModel.findById(query.id);
 		if (!founded) throw new NotExist('Calendar', 'id');
@@ -51,7 +51,6 @@ export class NoteGuard implements CanActivate {
 		if (!query.content) throw new InvalidProperty('note content');
 
 		if (!query.date) throw new InvalidProperty('note date');
-
 	}
 
 	checkDate(query) {
@@ -68,9 +67,7 @@ export class NoteGuard implements CanActivate {
 		}
 	}
 
-	async canActivate(
-		context: ExecutionContext
-	) {
+	async canActivate(context: ExecutionContext) {
 		const request = context.switchToHttp().getRequest();
 		const { query, path } = request;
 

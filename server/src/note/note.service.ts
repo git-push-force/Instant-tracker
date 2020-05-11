@@ -23,7 +23,8 @@ export class NoteService {
 	async create(query: NoteDto) {
 		const founded = await this.calendarModel.findById(query.id);
 		const { events } = founded;
-		const activeEvent = events[events.findIndex(event => event.id === query.eventId)];
+		const activeEvent =
+			events[events.findIndex(event => event.id === query.eventId)];
 
 		try {
 			return await this.calendarModel.findByIdAndUpdate(
@@ -139,8 +140,10 @@ export class NoteService {
 	async like(query) {
 		const founded = await this.calendarModel.findById(query.id);
 		const { events } = founded;
-		const activeEvent = events[events.findIndex(event => event.id === query.eventId)];
-		const activeNote = activeEvent.notes[
+		const activeEvent =
+			events[events.findIndex(event => event.id === query.eventId)];
+		const activeNote =
+			activeEvent.notes[
 				activeEvent.notes.findIndex(note => note.id === query.noteId)
 			];
 
