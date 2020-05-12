@@ -1,4 +1,4 @@
-import { Controller, Post, Query, UseGuards } from '@nestjs/common';
+import { Controller, Post, Query, UseGuards, Body } from '@nestjs/common';
 import { EventService } from './event.service';
 import { EventGuard } from './event.guard';
 
@@ -8,22 +8,22 @@ export class EventController {
 	constructor(private eventService: EventService) {}
 
 	@Post('create')
-	create(@Query() query) {
+	create(@Body() query) {
 		return this.eventService.create(query);
 	}
 
 	@Post('update')
-	update(@Query() query) {
+	update(@Body() query) {
 		return this.eventService.update(query);
 	}
 
 	@Post('remove')
-	remove(@Query() query) {
+	remove(@Body() query) {
 		return this.eventService.remove(query);
 	}
 
 	@Post('like')
-	like(@Query() query) {
+	like(@Body() query) {
 		return this.eventService.like(query);
 	}
 }

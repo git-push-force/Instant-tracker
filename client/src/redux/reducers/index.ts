@@ -1,5 +1,12 @@
 import { combineReducers } from 'redux';
 
-export default combineReducers({
+import calendar from './calendar';
+import { ICalendarReducer } from './calendar';
 
+export interface IRootReducer {
+	calendar: ICalendarReducer;
+}
+
+export default combineReducers({
+	calendar,
 });

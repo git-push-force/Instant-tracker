@@ -1,4 +1,4 @@
-import { Controller, Post, Query, UseGuards } from '@nestjs/common';
+import { Controller, Post, Query, UseGuards, Body } from '@nestjs/common';
 import { CalendarService } from './calendar.service';
 import { CalendarGuard } from './calendar.guard';
 
@@ -13,22 +13,22 @@ export class CalendarController {
 	}
 
 	@Post('create')
-	create(@Query() query) {
+	create(@Body() query) {
 		return this.calendarService.create(query);
 	}
 
 	@Post('update')
-	update(@Query() query) {
+	update(@Body() query) {
 		return this.calendarService.update(query);
 	}
 
 	@Post('remove')
-	remove(@Query() query) {
+	remove(@Body() query) {
 		return this.calendarService.remove(query);
 	}
 
 	@Post('change-password')
-	setPassword(@Query() query) {
+	setPassword(@Body() query) {
 		return this.calendarService.changePassword(query);
 	}
 }

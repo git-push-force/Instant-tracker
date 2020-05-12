@@ -1,4 +1,4 @@
-import { Controller, Post, Query, UseGuards } from '@nestjs/common';
+import { Controller, Post, Query, UseGuards, Body } from '@nestjs/common';
 import { NoteService } from './note.service';
 import { NoteGuard } from './note.guard';
 
@@ -8,22 +8,22 @@ export class NoteController {
 	constructor(private noteService: NoteService) {}
 
 	@Post('create')
-	create(@Query() query) {
+	create(@Body() query) {
 		return this.noteService.create(query);
 	}
 
 	@Post('update')
-	update(@Query() query) {
+	update(@Body() query) {
 		return this.noteService.update(query);
 	}
 
 	@Post('remove')
-	remove(@Query() query) {
+	remove(@Body() query) {
 		return this.noteService.remove(query);
 	}
 
 	@Post('like')
-	like(@Query() query) {
+	like(@Body() query) {
 		return this.noteService.like(query);
 	}
 }

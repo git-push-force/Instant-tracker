@@ -1,3 +1,3 @@
-export const checkActiveCalendar = () => {
-    return localStorage.getItem('activeCalendar');
-}
+export const savePassword = (password: string) => {
+	sessionStorage.setItem('password', password);
+};

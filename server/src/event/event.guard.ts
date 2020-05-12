@@ -45,7 +45,7 @@ export class EventGuard implements CanActivate {
 
 	async canActivate(context: ExecutionContext) {
 		const request = context.switchToHttp().getRequest();
-		const { query, path } = request;
+		const { body:query, path } = request;
 
 		switch (path) {
 			case '/api/event/update':
