@@ -60,3 +60,19 @@ export const getInputs = (): IGroup[] => {
         }
     ];
 }
+
+export const clearFields = (setData: React.Dispatch<React.SetStateAction<{
+    dateStart: string;
+    dateEnd: string;
+    name: string;
+    description: string;
+    important: boolean;
+}>>) => {
+    setData({
+        dateStart: '',
+        dateEnd: '',
+        name: '',
+        description: '',
+        important: false
+    })
+}

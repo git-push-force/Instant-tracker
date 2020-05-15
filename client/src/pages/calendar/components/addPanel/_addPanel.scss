@@ -1,6 +1,6 @@
 .addPanel {
     border: 1px solid rgb(202, 202, 202);
-    padding: 15px 0px;
+    padding: 15px 0px 10px 0;
 
     button {
         width: 100%;
@@ -10,6 +10,7 @@
 
     .bp3-checkbox {
         margin-top: 10px;
+        margin-bottom: 0;
     }
 }
 
@@ -22,6 +23,10 @@
 
         button {
             margin-top: 5px;
+        }
+
+        .bp3-checkbox {
+            margin-top: 15px;
         }
     }
 }

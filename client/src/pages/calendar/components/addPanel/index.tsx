@@ -5,7 +5,7 @@ import { Row, Col } from 'react-bootstrap';
 import { Button, InputGroup, ControlGroup, Checkbox } from '@blueprintjs/core';
 import Loader from 'react-loader-spinner';
 
-import { checkDate, getInputs } from '../../helpers';
+import { checkDate, getInputs, clearFields } from '../../helpers';
 import { createEvent } from '../../../../redux/actions/event';
 import { IRootReducer } from '../../../../redux/reducers';
 
@@ -21,16 +21,6 @@ const AddPanel: React.FC = () => {
         description: '',
         important: false
     });
-
-    const clearFields = () => {
-        setData({
-            dateStart: '',
-            dateEnd: '',
-            name: '',
-            description: '',
-            important: false
-        })
-    }
 
     const setField = (fieldName: string, event: React.ChangeEvent<HTMLInputElement> | string | boolean): void => {
         if (typeof event === 'string' || typeof event === 'boolean') {
@@ -48,7 +38,7 @@ const AddPanel: React.FC = () => {
                 password: calendar.data.password
             }));
 
-            clearFields();
+            clearFields(setData);
         } catch (err) {}
     }
 
@@ -59,7 +49,6 @@ const AddPanel: React.FC = () => {
                 return (
                     <Col xs={group.size.xs} md={group.size.md} lg={group.size.lg}>
                         <ControlGroup fill={true} vertical>
-
                             {group.inputs.map(input => {
                                 return (
                                     <InputGroup
@@ -71,14 +60,12 @@ const AddPanel: React.FC = () => {
                                         onFocus={() => {if(input.checkDate) setOld(data[input.name])}}
                                         onBlur={() => {
                                             // @ts-ignore
-                                            if (input.checkDate && !checkDate(data[input.name])) {
+                                            if (input.checkDate && !checkDate(data[input.name]))
                                                 setField(input.name, oldValue)
-                                            }
                                         }}
                                     />
                                 )
                             })}
-                            
                         </ControlGroup>
                     </Col>
                 )
@@ -90,7 +77,9 @@ const AddPanel: React.FC = () => {
                     onClick={handleSubmit}
                 >
                     {!calendar.eventFetching && data.name && checkDate(data.dateStart) && 'Create'}
+                    
                     {!calendar.eventFetching && (!data.name || !checkDate(data.dateStart)) && 'Fill fields to create event'}
+
                     {calendar.eventFetching && (
                         <Loader
                             type='Grid'
