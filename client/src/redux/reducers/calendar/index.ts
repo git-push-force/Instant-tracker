@@ -1,21 +1,21 @@
 import * as calendarTypes from '../../types/calendar';
 import * as eventTypes from '../../types/event';
 
-const initState = {
-	data: {
-		events: []
-	},
-	isFetching: false,
-	isCreated: false,
-	eventFetching: false
-};
-
+export interface IEvent {
+	name: string;
+	description: string;
+	dateStart: string;
+	dateEnd?: string;
+	likes: number;
+	important: boolean;
+	notes: [];
+}
 export interface ICalendarReducer {
 	data: {
 		name: string;
 		id: string;
 		description: string;
-		events: [];
+		events: IEvent[];
 		password: string;
 	};
 	isFetching: boolean;
@@ -27,6 +27,15 @@ interface IAction {
 	type: string;
 	payload: any;
 }
+
+const initState = {
+	data: {
+		events: []
+	},
+	isFetching: false,
+	isCreated: false,
+	eventFetching: false
+};
 
 const createReducer = (state = initState, action: IAction) => {
 	switch (action.type) {

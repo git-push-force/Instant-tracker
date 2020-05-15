@@ -23,7 +23,6 @@ export class EventService {
 				{
 					$set: {
 						events: [
-							...founded.events,
 							{
 								name: query.name,
 								description: query.description,
@@ -36,6 +35,7 @@ export class EventService {
 									: false,
 								notes: [],
 							},
+							...founded.events,
 						],
 					},
 				},

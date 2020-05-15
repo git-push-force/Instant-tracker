@@ -1270,7 +1270,7 @@
         "signature": "a9f3446ec2f3de04c65b97ef5e2f5fbd3f3954d7151ce8f3ad2e8069bcf89714"
       },
       "../src/event/event.service.ts": {
-        "version": "cf68f3d0c7fa0c42dd30ab42c3390f7d4469472903cd20b07dcc67f7ad78e241",
+        "version": "c1657024cbb780ab4506c28771caa056c1b71b89bbffdb4ece7479e8945dd99d",
         "signature": "c030edc22275975f1f26beb5488dc7466166b8d280a21fa7dddc8cf2d7ae6633"
       },
       "../src/event/event.guard.ts": {

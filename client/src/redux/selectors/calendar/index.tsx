@@ -1,0 +1,27 @@
+import { createSelector } from 'reselect';
+import { IRootReducer } from '../../reducers';
+
+const getCalendarState = (state: IRootReducer) => state.calendar;
+
+export const calendarSelector = createSelector(
+    [getCalendarState],
+    (calendarState) => {
+        const { 
+            data, 
+            isFetching
+        } = calendarState;
+
+        const { 
+            events,
+            name, 
+            id
+        } = data;
+        
+        return {
+            events,
+            isFetching,
+            name,
+            id
+        }
+    }
+)

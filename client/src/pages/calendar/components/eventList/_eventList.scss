@@ -1,0 +1,29 @@
+.eventList {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    margin-right: 0;
+    box-shadow: 0 0 15px 0 rgb(179, 179, 179);
+    height: 100%;
+    border-radius: 6px;
+
+    .eventCard {
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    .eventCard__title {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .eventCard__eventDate {
+        white-space: nowrap;
+    }
+
+    .eventName {
+        padding-right: 30px;
+    }
+}
