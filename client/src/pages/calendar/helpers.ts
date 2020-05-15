@@ -28,7 +28,7 @@ export const getInputs = (): IGroup[] => {
 
             inputs: [
                 {
-                    placeholder: 'Name of event',
+                    placeholder: 'Name of event *',
                     name: 'name'
                 },
                 {
@@ -47,7 +47,7 @@ export const getInputs = (): IGroup[] => {
 
             inputs: [
                 {
-                    placeholder: 'Start of event',
+                    placeholder: 'Start of event *',
                     name: 'dateStart',
                     checkDate: true
                 },
@@ -69,7 +69,7 @@ export const clearFields = (setData: React.Dispatch<React.SetStateAction<{
     important: boolean;
 }>>) => {
     setData({
-        dateStart: '',
+        dateStart: moment(new Date()).format('YYYY-MM-DD'),
         dateEnd: '',
         name: '',
         description: '',

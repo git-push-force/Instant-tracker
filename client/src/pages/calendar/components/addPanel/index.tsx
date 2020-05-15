@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col } from 'react-bootstrap';
 import { Button, InputGroup, ControlGroup, Checkbox } from '@blueprintjs/core';
 import Loader from 'react-loader-spinner';
+import moment from 'moment';
 
 import { checkDate, getInputs, clearFields } from '../../helpers';
 import { createEvent } from '../../../../redux/actions/event';
@@ -15,7 +16,7 @@ const AddPanel: React.FC = () => {
 
     const [oldValue, setOld] = useState('');
     const [data, setData] = useState({
-        dateStart: '',
+        dateStart: moment(new Date()).format('YYYY-MM-DD'),
         dateEnd: '',
         name: '',
         description: '',
