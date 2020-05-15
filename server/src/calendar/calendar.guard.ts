@@ -20,13 +20,13 @@ export class CalendarGuard implements CanActivate {
 
 	async generalCheck(query) {
 		if (!query.id) throw new InvalidProperty('calendar id');
-		if (query.id.length > 24 && query.id.length < 24)
+		if (query.id.length > 24 || query.id.length < 24)
 			throw new NotExist('Calendar', 'id');
 
 		const founded = await this.calendarModel.findById(query.id);
 
 		if (!founded) throw new NotExist('Calendar', 'id');
-
+		
 		if (founded.password) {
 			if (!query.password) throw new NeedPassword();
 			if (query.password !== founded.password) throw new WrongPassword();

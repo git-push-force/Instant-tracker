@@ -5,7 +5,8 @@ export interface IEvent {
 	name: string;
 	description: string;
 	id: string;
-	date: string;
+	dateStart: string;
+	dateEnd: string;
 	likes: number;
 	important: boolean;
 	notes: INote[];
@@ -14,7 +15,8 @@ export interface IEvent {
 export interface IEventCreate extends Document {
 	name: string;
 	description: string;
-	date: string;
+	dateStart: string;
+	dateEnd: string;
 	likes: number;
 	important: boolean;
 	notes: INote[];

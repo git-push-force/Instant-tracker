@@ -5,13 +5,7 @@ import * as moment from 'moment';
 
 import { ICalendar } from '../calendar/interfaces/calendar.interface';
 import { EventDto } from './dto/event.dto';
-import {
-	InternalError,
-	NeedPassword,
-	WrongPassword,
-	InvalidProperty,
-	NotExist,
-} from '../exceptions';
+import { InternalError } from '../exceptions';
 
 @Injectable()
 export class EventService {
@@ -34,7 +28,8 @@ export class EventService {
 								name: query.name,
 								description: query.description,
 								id: founded.events.length.toString(),
-								date: query.date,
+								dateStart: query.dateStart,
+								dateEnd: query.dateEnd,
 								likes: 0,
 								important: query.important
 									? query.important

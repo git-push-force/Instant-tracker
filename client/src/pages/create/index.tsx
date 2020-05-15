@@ -41,7 +41,7 @@ const CreatePage: React.FC = () => {
                     />
                     }
 
-                    {calendarState.isCreated && <Created id={data._id}/>}
+                    {calendarState.isCreated && <Created id={data.id}/>}
                 </Card>
             </Col>
         </Row>

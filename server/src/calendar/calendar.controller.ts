@@ -8,7 +8,7 @@ export class CalendarController {
 	constructor(private calendarService: CalendarService) {}
 
 	@Post('get')
-	get(@Query() query) {
+	get(@Body() query) {
 		return this.calendarService.get(query);
 	}
 

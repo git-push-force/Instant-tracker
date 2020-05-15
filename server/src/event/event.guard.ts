@@ -59,14 +59,14 @@ export class EventGuard implements CanActivate {
 
 				if (!query.name) throw new InvalidProperty('event name');
 
-				if (!query.date) throw new InvalidProperty('date');
+				if (!query.dateStart) throw new InvalidProperty('date start');
 
 				const dateFormat = 'YYYY-MM-DD';
 				const dateTimeFormat = 'YYYY-MM-DD HH:mm:ss';
 
 				if (
-					!moment(query.date, dateTimeFormat, true).isValid() &&
-					!moment(query.date, dateFormat, true).isValid()
+					!moment(query.dateStart, dateTimeFormat, true).isValid() &&
+					!moment(query.dateStart, dateFormat, true).isValid()
 				) {
 					throw new InvalidProperty('date');
 				}

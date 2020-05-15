@@ -30,10 +30,11 @@ const Created = ({ id }: IProps) => {
             </p>
 
             <Link to={`/calendar?id=${id}`}>
-                <Button rightIcon='arrow-right' intent='success'>
-                    Go to calendar
+                <Button rightIcon='arrow-right' intent='success'> 
+                        Go to calendar    
                 </Button>
             </Link>
+            
         </div>
     )
 }
