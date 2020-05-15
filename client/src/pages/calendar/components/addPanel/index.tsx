@@ -2,7 +2,7 @@ import './_addPanel.scss';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col } from 'react-bootstrap';
-import { Button, InputGroup, ControlGroup } from '@blueprintjs/core';
+import { Button, InputGroup, ControlGroup, Checkbox } from '@blueprintjs/core';
 import Loader from 'react-loader-spinner';
 
 import { checkDate, getInputs } from '../../helpers';
@@ -32,8 +32,8 @@ const AddPanel: React.FC = () => {
         })
     }
 
-    const setField = (fieldName: string, event: React.ChangeEvent<HTMLInputElement> | string): void => {
-        if (typeof event === 'string') {
+    const setField = (fieldName: string, event: React.ChangeEvent<HTMLInputElement> | string | boolean): void => {
+        if (typeof event === 'string' || typeof event === 'boolean') {
             setData({ ...data, [fieldName]: event });
         } else {
             setData({ ...data, [fieldName]: event.target.value});
@@ -100,6 +100,15 @@ const AddPanel: React.FC = () => {
                         />
                     )}
                 </Button>
+            </Col>
+
+            <Col xs={12}>
+                <Checkbox
+                    checked={data.important}
+                    onChange={() => setField('important', !data.important)}
+                >
+                    Mark as important
+                </Checkbox>
             </Col>
         </Row>
     )
