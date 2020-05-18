@@ -3,11 +3,12 @@ import * as eventTypes from '../../types/event';
 
 export interface IEvent {
 	name: string;
+	id: string;
 	description: string;
 	dateStart: string;
 	dateEnd?: string;
 	likes: number;
-	important: boolean;
+	important: boolean | string;
 	notes: [];
 }
 export interface ICalendarReducer {
@@ -21,6 +22,7 @@ export interface ICalendarReducer {
 	isFetching: boolean;
 	isCreated: boolean;
 	eventFetching: boolean;
+	eventActionFetching: boolean;
 }
 
 interface IAction {
@@ -34,7 +36,8 @@ const initState = {
 	},
 	isFetching: false,
 	isCreated: false,
-	eventFetching: false
+	eventFetching: false,
+	eventActionFetching: false
 };
 
 const createReducer = (state = initState, action: IAction) => {
@@ -100,6 +103,31 @@ const createReducer = (state = initState, action: IAction) => {
 			return {
 				...state,
 				eventFetching: false
+			}
+		}
+
+		case eventTypes.MARK_AS_IMPORTANT: {
+			return {
+				...state,
+				eventActionFetching: true
+			}
+		}
+
+		case eventTypes.MARK_AS_IMPORTANT_SUCCESS: {
+			return {
+				...state,
+				eventActionFetching: false,
+				data: {
+					...action.payload,
+					id: action.payload._id
+				}
+			}
+		}
+
+		case eventTypes.MARK_AS_IMPORTANT_ERROR: {
+			return {
+				...state,
+				eventActionFetching: false
 			}
 		}
 

@@ -3,8 +3,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 10px;
-    margin-right: 0;
     box-shadow: 0 0 15px 0 rgb(179, 179, 179);
     height: 100%;
     border-radius: 6px;
@@ -12,6 +10,35 @@
     .eventCard {
         width: 100%;
         margin: 5px 0;
+        position: relative;
+        padding: 10px 60px 20px 10px;
+
+        .eventCard_important {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            transition: .3s;
+            cursor: pointer;
+        }
+
+        .eventCard_more {
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            cursor: pointer;
+                svg {
+                    color: #0f9960;
+
+                    &:hover {
+                        color: lighten(#0f9960, 5);
+                    }
+                }
+        }
+    }
+
+    .withDescription {
+        padding-bottom: 0;
     }
 
     .eventCard__title {

@@ -9,6 +9,7 @@ import moment from 'moment';
 import { checkDate, getInputs, clearFields } from '../../helpers';
 import { createEvent } from '../../../../redux/actions/event';
 import { IRootReducer } from '../../../../redux/reducers';
+import { getPassword } from '../../../../utils/localStorage';
 
 const AddPanel: React.FC = () => {
     const dispatch = useDispatch();
@@ -32,11 +33,12 @@ const AddPanel: React.FC = () => {
     }
 
     const handleSubmit = async () => {
+        
         try {
             await dispatch(createEvent({
                 ...data,
                 id: calendar.data.id,
-                password: calendar.data.password
+                password: getPassword()
             }));
 
             clearFields(setData);
@@ -46,13 +48,14 @@ const AddPanel: React.FC = () => {
     return (
         <Row className='addPanel'>
 
-            {getInputs().map(group => {
+            {getInputs().map((group, index) => {
                 return (
-                    <Col xs={group.size.xs} md={group.size.md} lg={group.size.lg}>
+                    <Col xs={group.size.xs} md={group.size.md} lg={group.size.lg} key={index}>
                         <ControlGroup fill={true} vertical>
-                            {group.inputs.map(input => {
+                            {group.inputs.map((input, index) => {
                                 return (
                                     <InputGroup
+                                        key={index}
                                         placeholder={input.placeholder}
                                         // @ts-ignore
                                         value={data[input.name]}

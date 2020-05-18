@@ -1,16 +1,17 @@
 .calendarInfo {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+
 
     button {
         background: #0f9960 !important;
         color: #fff !important;
-        height: 20px;
         margin-top: 5px;
         margin-left: -10px;
     }
     
     h3 {
-        text-align: center;
+        
     }
 }

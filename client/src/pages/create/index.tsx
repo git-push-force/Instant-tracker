@@ -1,5 +1,5 @@
 import './_create.scss';
-import React, { useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col } from 'react-bootstrap';
 import { Card } from "@blueprintjs/core";
@@ -26,6 +26,10 @@ const CreatePage: React.FC = () => {
             setValue(initValue);
         } catch (err) {}
     };
+
+    useEffect(() => {
+        document.title = 'Create calendar';
+    }, []);
 
     return (
         <Row className='createPage'>

@@ -26,8 +26,9 @@ const CalendarPage: React.FC = () => {
     } = useSelector(calendarSelector);
 
     useEffect(() => {
-        const password = getPassword();
+        document.title = 'Calendar';
 
+        const password = getPassword();
         if (queryString.id) {
             dispatch(getCalendar({
                 id: queryString.id.toString(),
@@ -44,12 +45,12 @@ const CalendarPage: React.FC = () => {
             <AddPanel />
 
             <Row>
-                <Col xs={12} md={9}>
+                <Col xs={12}  md={7} lg={9}>
                     <Calendar/>
                 </Col>
 
-                <Col xs={12} md={3}>
-                    <EventsList events={events} isFetching={isFetching}/>
+                <Col xs={12}  md={5} lg={3}>
+                    <EventsList id={id} events={events} isFetching={isFetching}/>
                 </Col>
             </Row>
         </>

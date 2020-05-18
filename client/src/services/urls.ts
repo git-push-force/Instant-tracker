@@ -28,5 +28,16 @@ export interface ICreateEvent {
 	password?: string;
 }
 export const createEventUrl = (payload: ICreateEvent) => {
-	return axiosInstance.post(`/event/create`, qs.stringify({ ...payload }))
+	return axiosInstance.post(`/event/create`, qs.stringify({ ...payload }));
+}
+
+
+export interface IMarkAsImportant {
+	id: string;
+	eventId: string;
+	important: boolean;
+	password?: string;
+}
+export const markAsImportantUrl = (payload: IMarkAsImportant) => {
+	return axiosInstance.post(`/event/important`, qs.stringify({ ...payload }));
 }
