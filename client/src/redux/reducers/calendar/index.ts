@@ -8,7 +8,7 @@ export interface IEvent {
 	dateStart: string;
 	dateEnd?: string;
 	likes: number;
-	important: boolean | string;
+	important: number;
 	notes: [];
 }
 export interface ICalendarReducer {

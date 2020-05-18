@@ -38,6 +38,7 @@ const AddPanel: React.FC = () => {
             await dispatch(createEvent({
                 ...data,
                 id: calendar.data.id,
+                important: data.important ? 1 : 0,
                 password: getPassword()
             }));
 

@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import * as moment from 'moment';
 
 import { ICalendar } from '../calendar/interfaces/calendar.interface';
 import { EventDto } from './dto/event.dto';
@@ -30,9 +29,7 @@ export class EventService {
 								dateStart: query.dateStart,
 								dateEnd: query.dateEnd,
 								likes: 0,
-								important: query.important
-									? query.important
-									: false,
+								important: query.important,
 								notes: [],
 							},
 							...founded.events,
@@ -61,9 +58,6 @@ export class EventService {
 				{
 					$set: {
 						events: [
-							...founded.events.filter(
-								item => item.id !== query.eventId
-							),
 							{
 								...foundedEvent,
 								name: query.name
@@ -73,6 +67,9 @@ export class EventService {
 									? query.description
 									: foundedEvent.description,
 							},
+							...founded.events.filter(
+								item => item.id !== query.eventId
+							)
 						],
 					},
 				},
@@ -125,7 +122,9 @@ export class EventService {
 							),
 							{
 								...foundedEvent,
-								likes: Number(foundedEvent.likes) + 1,
+								likes: Number(foundedEvent.likes) + Number(
+									query.important ? '1' : '-1'
+								),
 							},
 						],
 					},
@@ -136,6 +135,46 @@ export class EventService {
 			);
 		} catch (err) {
 			throw new InternalError();
+		}
+	}
+
+	async important(query) {
+		const founded = await this.calendarModel.findById(query.id);
+
+		try {
+			const foundedEvent = founded.events.find(
+				item => item.id === query.eventId
+			);
+
+			const foundedEventIndex = founded.events.findIndex(
+				item => item.id === query.eventId
+			);
+
+
+			return await this.calendarModel.findByIdAndUpdate(
+				query.id,
+				{
+					$set: {
+						events: [
+
+							...founded.events.map(event => {
+								if (event.id === query.eventId) {
+									return {
+										...event,
+										important: query.important
+									}
+								}
+								return event;
+							})
+						],
+					},
+				},
+				{
+					new: true,
+				}
+			);
+		} catch (err) {
+
 		}
 	}
 }

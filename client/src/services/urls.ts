@@ -23,7 +23,7 @@ export interface ICreateEvent {
 	description: string;
 	dateStart: string;
 	dateEnd?: string;
-	important?: boolean;
+	important?: number;
 	id: string;
 	password?: string;
 }
@@ -35,7 +35,7 @@ export const createEventUrl = (payload: ICreateEvent) => {
 export interface IMarkAsImportant {
 	id: string;
 	eventId: string;
-	important: boolean;
+	important: number;
 	password?: string;
 }
 export const markAsImportantUrl = (payload: IMarkAsImportant) => {

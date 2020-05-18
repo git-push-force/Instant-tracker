@@ -5,6 +5,6 @@ export class EventDto {
 	dateStart: string;
 	dateEnd: string;
 	likes: number;
-	important: boolean;
+	important: number;
 	notes: object[];
 }

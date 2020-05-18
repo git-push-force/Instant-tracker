@@ -26,4 +26,9 @@ export class EventController {
 	like(@Body() query) {
 		return this.eventService.like(query);
 	}
+
+	@Post('important')
+	important(@Body() query) {
+		return this.eventService.important(query);
+	}
 }

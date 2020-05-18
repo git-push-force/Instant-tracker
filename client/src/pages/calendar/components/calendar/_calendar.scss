@@ -1,0 +1,20 @@
+.mainCalendar {
+    box-shadow: 0 0 15px 0 rgb(179, 179, 179);
+    border-radius: 6px;
+    height: 100%;
+    margin-left: -5px !important;
+    margin-right: -5px !important;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (max-width: 767px) {
+    .mainCalendar {
+        margin: 10px 0;
+        border-radius: 0px;
+        margin-left: -15px !important;
+        margin-right: -15px !important;
+    }
+}

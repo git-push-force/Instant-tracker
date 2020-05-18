@@ -44,7 +44,7 @@ const CalendarPage: React.FC = () => {
 
             <AddPanel />
 
-            <Row>
+            <Row className='contentPanel'>
                 <Col xs={12}  md={7} lg={9}>
                     <Calendar/>
                 </Col>

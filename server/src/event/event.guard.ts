@@ -54,6 +54,11 @@ export class EventGuard implements CanActivate {
 				await this.generalCheck(query, false);
 				break;
 			}
+			case '/api/event/important': {
+				await this.generalCheck(query, false);
+				if (!query.important) throw new InvalidProperty('important');
+				break;
+			}
 			case '/api/event/create': {
 				await this.generalCheck(query, true);
 

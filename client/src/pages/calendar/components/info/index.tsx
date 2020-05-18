@@ -14,7 +14,7 @@ const CalendarInfo = ({ name, id, description }: IProps) => {
     const history = useHistory();
 
     return (
-        <Row>
+        <Row className='infoPanel'>
             <Col className='calendarInfo'>
                 <Button onClick={() => history.push('/create')}>
                     Create new

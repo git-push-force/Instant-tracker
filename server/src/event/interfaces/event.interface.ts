@@ -8,7 +8,7 @@ export interface IEvent {
 	dateStart: string;
 	dateEnd: string;
 	likes: number;
-	important: boolean;
+	important: number;
 	notes: INote[];
 }
 
@@ -18,6 +18,6 @@ export interface IEventCreate extends Document {
 	dateStart: string;
 	dateEnd: string;
 	likes: number;
-	important: boolean;
+	important: number;
 	notes: INote[];
 }
