@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { Row, Col } from 'react-bootstrap';
@@ -12,10 +12,13 @@ import Info from './components/info';
 import AddPanel from './components/addPanel';
 import Calendar from './components/calendar';
 import EventsList from './components/eventList';
+import PasswordModal from './components/passwordModal';
 
 const CalendarPage: React.FC = () => {
     const dispatch = useDispatch();
     const location = useLocation();
+    const [open, setOpen] = useState(false);
+    const [wrong, setWrong] = useState(false);
 
     const queryString = qs.parse(location.search.substring(1));
     const { 
@@ -26,31 +29,42 @@ const CalendarPage: React.FC = () => {
     } = useSelector(calendarSelector);
 
     useEffect(() => {
-        document.title = 'Calendar';
+        (async () => {
+            document.title = 'Calendar';
+            const password = getPassword();
 
-        const password = getPassword();
-        if (queryString.id) {
-            dispatch(getCalendar({
-                id: queryString.id.toString(),
-                password
-            }));
-        }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+            if (queryString.id) {
+                try {
+                    await dispatch(getCalendar({
+                        id: queryString.id.toString(),
+                        password
+                    }));
+                } catch (err) {
+                    if (err === 'Request failed with status code 401') {
+                        setOpen(true);
+                        setWrong(false);
+                    } else if (err === 'Request failed with status code 400') {
+                        setOpen(true);
+                        setWrong(true);
+                    }
+                }
+            }
+        })();
+    }, [dispatch, queryString.id, open]);
+
 
     return (
         <>
-            <Info name={name} id={id}/>
-
+            <PasswordModal open={open} wrong={wrong} setOpen={setOpen} />
+            <Info name={name} id={id} />
             <AddPanel />
-
             <Row className='contentPanel'>
                 <Col xs={12}  md={7} lg={9}>
                     <Calendar/>
                 </Col>
 
                 <Col xs={12}  md={5} lg={3}>
-                    <EventsList id={id} events={events} isFetching={isFetching}/>
+                    <EventsList id={id} events={events} isFetching={isFetching} />
                 </Col>
             </Row>
         </>

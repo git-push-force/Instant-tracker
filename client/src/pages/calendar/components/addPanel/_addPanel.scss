@@ -9,6 +9,11 @@
         text-align: center;
     }
 
+    .optionsCol {
+        display: flex;
+        justify-content: flex-start;
+    }
+
     .bp3-checkbox {
         margin-top: 10px;
         margin-bottom: 0;

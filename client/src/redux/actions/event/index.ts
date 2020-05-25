@@ -2,7 +2,12 @@ import * as actionTypes from '../../types/event';
 import { ThunkAction } from 'redux-thunk';
 import { Action } from 'redux';
 
-import { createEventUrl, ICreateEvent, markAsImportantUrl, IMarkAsImportant } from '../../../services/urls';
+import {
+	createEventUrl,
+	ICreateEvent,
+	markAsImportantUrl,
+	IMarkAsImportant,
+} from '../../../services/urls';
 
 export const createEvent = (
 	payload: ICreateEvent
@@ -14,13 +19,12 @@ export const createEvent = (
 		const { data } = response;
 		dispatch({
 			type: actionTypes.CREATE_EVENT_SUCCESS,
-			payload: data
+			payload: data,
 		});
 	} catch (err) {
 		dispatch({ type: actionTypes.CREATE_EVENT_ERROR });
 	}
 };
-
 
 export const markAsImportant = (
 	payload: IMarkAsImportant
@@ -32,7 +36,7 @@ export const markAsImportant = (
 		const { data } = response;
 		dispatch({
 			type: actionTypes.MARK_AS_IMPORTANT_SUCCESS,
-			payload: data
+			payload: data,
 		});
 	} catch (err) {
 		dispatch({ type: actionTypes.MARK_AS_IMPORTANT_ERROR });

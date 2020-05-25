@@ -32,12 +32,12 @@ interface IAction {
 
 const initState = {
 	data: {
-		events: []
+		events: [],
 	},
 	isFetching: false,
 	isCreated: false,
 	eventFetching: false,
-	eventActionFetching: false
+	eventActionFetching: false,
 };
 
 const createReducer = (state = initState, action: IAction) => {
@@ -56,7 +56,7 @@ const createReducer = (state = initState, action: IAction) => {
 				isFetching: false,
 				data: {
 					...action.payload,
-					id: action.payload._id
+					id: action.payload._id,
 				},
 				isCreated: true,
 			};
@@ -68,8 +68,8 @@ const createReducer = (state = initState, action: IAction) => {
 				isFetching: false,
 				data: {
 					...action.payload,
-					id: action.payload._id
-				}
+					id: action.payload._id,
+				},
 			};
 		}
 
@@ -84,8 +84,8 @@ const createReducer = (state = initState, action: IAction) => {
 		case eventTypes.CREATE_EVENT: {
 			return {
 				...state,
-				eventFetching: true
-			}
+				eventFetching: true,
+			};
 		}
 
 		case eventTypes.CREATE_EVENT_SUCCESS: {
@@ -94,23 +94,23 @@ const createReducer = (state = initState, action: IAction) => {
 				eventFetching: false,
 				data: {
 					...action.payload,
-					id: action.payload._id
-				}
-			}
+					id: action.payload._id,
+				},
+			};
 		}
 
 		case eventTypes.CREATE_EVENT_ERROR: {
 			return {
 				...state,
-				eventFetching: false
-			}
+				eventFetching: false,
+			};
 		}
 
 		case eventTypes.MARK_AS_IMPORTANT: {
 			return {
 				...state,
-				eventActionFetching: true
-			}
+				eventActionFetching: true,
+			};
 		}
 
 		case eventTypes.MARK_AS_IMPORTANT_SUCCESS: {
@@ -119,16 +119,16 @@ const createReducer = (state = initState, action: IAction) => {
 				eventActionFetching: false,
 				data: {
 					...action.payload,
-					id: action.payload._id
-				}
-			}
+					id: action.payload._id,
+				},
+			};
 		}
 
 		case eventTypes.MARK_AS_IMPORTANT_ERROR: {
 			return {
 				...state,
-				eventActionFetching: false
-			}
+				eventActionFetching: false,
+			};
 		}
 
 		default:

@@ -1,78 +1,83 @@
 import moment from 'moment';
 
-export const checkDate = (date: string): boolean => moment(date, 'YYYY-MM-DD', true).isValid(); 
+export const checkDate = (date: string): boolean =>
+	moment(date, 'YYYY-MM-DD', true).isValid();
 
 interface IInput {
-    placeholder: string;
-    name: string;
-    checkDate?: boolean;
+	placeholder: string;
+	name: string;
+	checkDate?: boolean;
 }
 
 interface IGroup {
-    size: {
-        xs: number;
-        md: number;
-        lg: number;
-    }
-    inputs: IInput[];
+	size: {
+		xs: number;
+		md: number;
+		lg: number;
+	};
+	inputs: IInput[];
 }
 
 export const getInputs = (): IGroup[] => {
-    return [
-        {
-            size: {
-                xs: 12,
-                md: 7,
-                lg: 8
-            },
+	return [
+		{
+			size: {
+				xs: 12,
+				md: 7,
+				lg: 8,
+			},
 
-            inputs: [
-                {
-                    placeholder: 'Name of event *',
-                    name: 'name'
-                },
-                {
-                    placeholder: 'Description of event',
-                    name: 'description'
-                }
-            ]
-        },
+			inputs: [
+				{
+					placeholder: 'Name of event *',
+					name: 'name',
+				},
+				{
+					placeholder: 'Description of event',
+					name: 'description',
+				},
+			],
+		},
 
-        {
-            size: {
-                xs: 12,
-                md: 3,
-                lg: 2
-            },
+		{
+			size: {
+				xs: 12,
+				md: 3,
+				lg: 2,
+			},
 
-            inputs: [
-                {
-                    placeholder: 'Start of event *',
-                    name: 'dateStart',
-                    checkDate: true
-                },
-                {
-                    placeholder: 'End of event',
-                    name: 'dateEnd',
-                    checkDate: true
-                }
-            ]
-        }
-    ];
-}
+			inputs: [
+				{
+					placeholder: 'Start of event *',
+					name: 'dateStart',
+					checkDate: true,
+				},
+				{
+					placeholder: 'End of event',
+					name: 'dateEnd',
+					checkDate: true,
+				},
+			],
+		},
+	];
+};
 
-export const clearFields = (setData: React.Dispatch<React.SetStateAction<{
-    dateStart: string;
-    dateEnd: string;
-    name: string;
-    description: string;
-    important: boolean;
-}>>) => {
-    setData({
-        dateStart: moment(new Date()).format('YYYY-MM-DD'),
-        dateEnd: '',
-        name: '',
-        description: '',
-        important: false
-    })
-}
+export const clearFields = (
+	setData: React.Dispatch<
+		React.SetStateAction<{
+			dateStart: string;
+			dateEnd: string;
+			name: string;
+			description: string;
+			important: boolean;
+		}>
+	>
+) => {
+	setData({
+		dateStart: moment(new Date()).format('YYYY-MM-DD'),
+		dateEnd: '',
+		name: '',
+		description: '',
+		important: false,
+	});
+};

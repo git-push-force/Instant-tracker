@@ -96,7 +96,7 @@ const AddPanel: React.FC = () => {
                 </Button>
             </Col>
 
-            <Col xs={12}>
+            <Col xs={12} className='optionsCol'>
                 <Checkbox
                     checked={data.important}
                     onChange={() => setField('important', !data.important)}

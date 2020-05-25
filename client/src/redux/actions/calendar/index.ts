@@ -2,13 +2,12 @@ import * as actionTypes from '../../types/calendar';
 import { ThunkAction } from 'redux-thunk';
 import { Action } from 'redux';
 
-import { 
+import {
 	createCalendarUrl,
 	ICreateCalendar,
 	getCalendarUrl,
-	IGetCalendar
+	IGetCalendar,
 } from '../../../services/urls';
-
 
 export const createCalendar = (
 	payload: ICreateCalendar
@@ -27,11 +26,10 @@ export const createCalendar = (
 	}
 };
 
-
 export const getCalendar = (
 	payload: IGetCalendar
 ): ThunkAction<void, Object, unknown, Action<string>> => async dispatch => {
-	dispatch({ type: actionTypes.GET_CALENDAR});
+	dispatch({ type: actionTypes.GET_CALENDAR });
 
 	try {
 		const response = await getCalendarUrl(payload);
@@ -42,5 +40,6 @@ export const getCalendar = (
 		});
 	} catch (err) {
 		dispatch({ type: actionTypes.GET_CALENDAR_ERROR });
+		throw err.message;
 	}
-}
+};

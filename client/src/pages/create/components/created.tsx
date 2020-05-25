@@ -8,7 +8,7 @@ interface IProps {
 }
 
 const Created = ({ id }: IProps) => {
-    const calendarLink: string = `http://localhost:3000/calendar/id=${id}`;
+    const calendarLink: string = `http://localhost:3000/calendar?id=${id}`;
 
     const copy = () => {
         navigator.clipboard.writeText(calendarLink);
