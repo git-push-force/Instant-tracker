@@ -20,10 +20,10 @@ const Modal = ({ open, wrong, setOpen }: IProps) => {
     }
 
     const lockButton = (
-        <Tooltip content={`${showPassword ? "Hide" : "Show"} Password`}>
+        <Tooltip content={`${showPassword ? 'Hide' : 'Show'} Password`}>
             <Button
                 disabled={!value.length}
-                icon={showPassword ? "unlock" : "lock"}
+                icon={showPassword ? 'unlock' : 'lock'}
                 intent={Intent.WARNING}
                 minimal={true}
                 onClick={handleLockClick}
@@ -50,7 +50,6 @@ const Modal = ({ open, wrong, setOpen }: IProps) => {
             />
 
             <Button 
-                icon='saved' 
                 intent='success' 
                 disabled={!value.length}
                 onClick={handleSubmit}

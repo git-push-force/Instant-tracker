@@ -42,18 +42,22 @@ const CalendarPage: React.FC = () => {
                         password
                     }));
                 } catch (err) {
-                    if (err === 'Request failed with status code 401') {
+                    const statusCode = err.split(' ')[5];
+                    if (statusCode === '401') {
                         setOpen(true);
                         setWrong(false);
-                    } else if (err === 'Request failed with status code 400') {
+                    } else if (statusCode === '400') {
                         setOpen(true);
                         setWrong(true);
-                    } else if (err === 'Request failed with status code 404') {
+                    } else if (statusCode === '404') {
                         history.push('/notExist');
                     }
                 }
+            } else {
+                history.push('/notExist');
             }
         })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [dispatch, queryString.id, open]);
 
     return (
@@ -61,6 +65,8 @@ const CalendarPage: React.FC = () => {
             <PasswordModal open={open} wrong={wrong} setOpen={setOpen} />
             <Info name={name} id={id} />
             <AddPanel />
+
+
             <Row className='contentPanel'>
                 <Col xs={12}  md={7} lg={9}>
                     <Calendar/>

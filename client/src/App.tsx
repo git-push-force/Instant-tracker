@@ -5,30 +5,14 @@ import '@blueprintjs/icons/lib/css/blueprint-icons.css';
 import './assets/scss/index.scss';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
-import qs from 'qs';
-import React, { useEffect } from 'react';
-import { Route, Switch, useLocation } from 'react-router-dom';
-// import { useSelector } from 'react-redux';
-import { Container } from 'react-bootstrap';
+import React from 'react';
 import Notifications from 'react-notify-toast';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import { Container } from 'react-bootstrap';
 
 import { ROUTES } from './services/routes';
-// import { IRootReducer } from './redux/reducers';
 
 const App: React.FC = () => {
-	// const history = useHistory();
-	const location = useLocation();
-
-	// const calendarState = useSelector((state: IRootReducer) => state.calendar);
-	const queryString = qs.parse(location.search.substring(1));
-
-	useEffect(() => {
-		if (!queryString.id) {
-			// history.push('/create');
-		}
-	// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
-
 	return (
 		<>
 		<Notifications />
@@ -40,6 +24,9 @@ const App: React.FC = () => {
 						<Route key={index} path={item.path} exact={item.exact} component={item.component}/>
 					)
 				})}
+				<Route component={() => (
+					<Redirect to='/create'/>
+				)}/>
 			</Switch>
 		</Container>
 		</>
