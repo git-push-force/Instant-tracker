@@ -40,7 +40,7 @@ export class NotExist extends HttpException {
 	constructor(item, property) {
 		super(
 			`${item} with this ${property} doesn\'t exists`,
-			HttpStatus.BAD_REQUEST
+			HttpStatus.NOT_FOUND
 		);
 	}
 }

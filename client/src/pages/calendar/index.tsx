@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 import { Row, Col } from 'react-bootstrap';
 import qs from 'qs';
 
@@ -17,6 +17,8 @@ import PasswordModal from './components/passwordModal';
 const CalendarPage: React.FC = () => {
     const dispatch = useDispatch();
     const location = useLocation();
+    const history = useHistory();
+
     const [open, setOpen] = useState(false);
     const [wrong, setWrong] = useState(false);
 
@@ -46,12 +48,13 @@ const CalendarPage: React.FC = () => {
                     } else if (err === 'Request failed with status code 400') {
                         setOpen(true);
                         setWrong(true);
+                    } else if (err === 'Request failed with status code 404') {
+                        history.push('/notExist');
                     }
                 }
             }
         })();
     }, [dispatch, queryString.id, open]);
-
 
     return (
         <>

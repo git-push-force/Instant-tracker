@@ -1238,7 +1238,7 @@
         "signature": "514cec3b5b26ba1fb5f4ad626588ef4b1dec71b495a293b8b3eab7a60e6addf2"
       },
       "../src/exceptions.ts": {
-        "version": "99ea31b2b91b187fd319e73e902c50294b1ecfc4ff33713c42c922a2001925ab",
+        "version": "239647f234bc27f2446721bb874f53aba71a9add2a9b749060d982d94737dbad",
         "signature": "eab84831e307ebec3209f4bb1f783a8140d19408d70d1ea23e6edee96f6d6a9e"
       },
       "../src/calendar/calendar.service.ts": {
@@ -9226,13 +9226,13 @@
       "../src/event/interfaces/event.interface.ts",
       "../src/calendar/interfaces/calendar.interface.ts",
       "../src/calendar/dto/calendar.dto.ts",
-      "../src/exceptions.ts",
       "../src/calendar/calendar.service.ts",
       "../src/calendar/calendar.guard.ts",
       "../src/calendar/calendar.controller.ts",
       "../src/calendar/schemas/calendar.schema.ts",
       "../src/calendar/calendar.module.ts",
       "../src/event/dto/event.dto.ts",
+      "../src/event/event.service.ts",
       "../node_modules/moment/ts3.1-typings/moment.d.ts",
       "../src/event/event.guard.ts",
       "../src/event/event.controller.ts",
@@ -9328,7 +9328,7 @@
       "../node_modules/@types/webpack/index.d.ts",
       "../node_modules/@types/yargs-parser/index.d.ts",
       "../node_modules/@types/yargs/index.d.ts",
-      "../src/event/event.service.ts"
+      "../src/exceptions.ts"
     ]
   },
   "version": "3.8.3"
