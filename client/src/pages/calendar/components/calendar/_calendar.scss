@@ -1,13 +1,26 @@
 .mainCalendar {
     box-shadow: 0 0 15px 0 rgb(179, 179, 179);
     border-radius: 6px;
-    height: 100%;
     margin-left: -5px !important;
     margin-right: -5px !important;
 
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
+
+    h3 {
+        margin: 6px 0 0 0;
+    }
+}
+
+.chevronIcon {
+    transition: .2s;
+}
+
+.chevronIcon.opened {
+    transform: rotate(180deg);
 }
 
 @media screen and (max-width: 767px) {

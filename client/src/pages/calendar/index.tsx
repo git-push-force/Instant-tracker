@@ -69,7 +69,7 @@ const CalendarPage: React.FC = () => {
 
             <Row className='contentPanel'>
                 <Col xs={12}  md={7} lg={9}>
-                    <Calendar/>
+                    <Calendar isFetching={isFetching}/>
                 </Col>
 
                 <Col xs={12}  md={5} lg={3}>
