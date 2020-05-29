@@ -25,6 +25,7 @@
     "qs": "^6.9.4",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
+    "react-calendar": "^3.1.0",
     "react-dom": "^16.13.1",
     "react-loader-spinner": "^3.1.14",
     "react-notify-toast": "^0.5.1",
@@ -60,6 +61,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react-calendar": "^3.0.1",
     "@types/react-notify-toast": "^0.5.2",
     "@types/react-router-dom": "^5.1.5",
     "prettier": "2.0.5"

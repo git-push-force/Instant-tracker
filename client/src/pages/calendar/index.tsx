@@ -1,8 +1,8 @@
+import qs from 'qs';
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useLocation, useHistory } from 'react-router-dom';
 import { Row, Col } from 'react-bootstrap';
-import qs from 'qs';
 
 import { getCalendar } from '../../redux/actions/calendar';
 import { getPassword } from '../../utils/localStorage';
@@ -33,13 +33,12 @@ const CalendarPage: React.FC = () => {
     useEffect(() => {
         (async () => {
             document.title = 'Calendar';
-            const password = getPassword();
 
             if (queryString.id) {
                 try {
                     await dispatch(getCalendar({
                         id: queryString.id.toString(),
-                        password
+                        password: getPassword()
                     }));
                 } catch (err) {
                     const statusCode = err.split(' ')[5];

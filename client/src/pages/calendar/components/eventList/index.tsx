@@ -1,9 +1,8 @@
 import './_eventList.scss';
 import qs from 'qs';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { Row, Col } from 'react-bootstrap';
 import { Card, Divider, Icon, Collapse } from '@blueprintjs/core';
 import Loader from 'react-loader-spinner';
 
@@ -23,10 +22,8 @@ const EventList = ({ events, isFetching, id }: IProps) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const location = useLocation();
-
-    const [isOpen, setOpen] = useState(false);
     const screenSize = getScreenSize();
-    const [needCollapse] = useState(screenSize.width < 768);
+    const [isOpen, setOpen] = useState(screenSize.width > 768);
 
     const redirectToEvent = (eventId: string) => {
         const params = qs.parse(location.search.substring(1));
@@ -35,12 +32,11 @@ const EventList = ({ events, isFetching, id }: IProps) => {
     }
 
     const toggleImportant = (eventId: string, important: number) => {
-    const password = getPassword();
         dispatch(markAsImportant({
             id,
             eventId,
             important: Number(important) ? 0 : 1,
-            password
+            password: getPassword()
         }));
     }
 
@@ -92,48 +88,46 @@ const EventList = ({ events, isFetching, id }: IProps) => {
         )
     }
 
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth > 767) setOpen(true);
+        }
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    });
+
     return (
-        <Row>
-            <Col className='eventList'>
-                {isFetching ? (
-                    <Loader
-                        type='Grid'
-                        width={35}
-                        color='#0f9960'
-                    />
-                ) : (
+        <div className='eventList'>
+            {isFetching ? (
+                <Loader
+                    type='Grid'
+                    width={35}
+                    color='#0f9960'
+                />
+            ) : (
+            <>
+                <h3 className={events.length ? '' : 'bp3-text-muted'}>
+                    {events.length ? 'Event list' : 'No created events'}
+                </h3>
+                {events.length 
+                ?
                 <>
-                    <h3 className={events.length ? '' : 'bp3-text-muted'}>
-                        {events.length ? 'Event list' : 'No created events'}
-                    </h3>
-                    {events.length 
-                    ? 
-                    (
-                    <>
-                        {needCollapse 
-                        ?
-                        <>
-                            <img 
-                                src={ChevronIcon} 
-                                alt={isOpen ? 'Arrow close' : 'Arrow open'}
-                                onClick={() => setOpen(prev => !prev)}
-                                className={`chevronIcon ${isOpen ? 'opened' : ''}`}
-                            />
-                            <Collapse keepChildrenMounted isOpen={isOpen}>
-                                <Content />
-                            </Collapse>
-                        </>
-                        : 
-                            <Content />
-                        }
-                    </>
-                    ) 
-                    :
-                    null}
+                    <img 
+                        src={ChevronIcon} 
+                        alt={isOpen ? 'Arrow close' : 'Arrow open'}
+                        onClick={() => setOpen(prev => !prev)}
+                        className={`chevronIcon ${isOpen ? 'opened' : ''}`}
+                    />
+
+                    <Collapse keepChildrenMounted isOpen={isOpen}>
+                        <Content />
+                    </Collapse>
                 </>
-                )}
-            </Col>
-        </Row>
+                :
+                null}
+            </>
+            )}
+        </div>
     )
 }
 

@@ -1,8 +1,8 @@
 .mainCalendar {
-    padding: 5px 0;
+    padding: 5px 10px;
     box-shadow: 0 0 15px 0 rgb(194, 194, 194);
     border-radius: 6px;
-    margin-right: -5px !important;
+    margin-left: -15px !important;
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
 
@@ -12,16 +12,10 @@
     align-items: center;
     position: relative;
 
-    h3 {
-        margin: 2px 0;
-    }
-
-
-    h4 {
-        margin: 0;
+    .bp3-collapse {
+        width: 100%;
     }
 }
-
 
 @media screen and (max-width: 767px) {
     .mainCalendar {
@@ -32,8 +26,3 @@
     }
 }
 
-@media screen and (min-width: 767px) {
-    h3 {
-        display: none;
-    }
-}

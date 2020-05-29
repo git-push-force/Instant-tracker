@@ -1,11 +1,9 @@
 import './_calendar.scss';
-import React, { useState } from 'react';
-import { Row } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
 import { Collapse } from '@blueprintjs/core';
 import ChevronIcon from '../../../../assets/img/chevron.png';
 import Loader from 'react-loader-spinner';
-
-import { getScreenSize } from '../../../../utils/helpers';
+import Calendar from 'react-calendar';
 
 interface IProps {
     isFetching: boolean
@@ -13,18 +11,18 @@ interface IProps {
 
 const CalendarComponent = ({ isFetching }: IProps) => {
 
-    const screenSize = getScreenSize();
-    const [needCollapse] = useState(screenSize.width < 768);
     const [isOpen, setOpen] = useState(true);
 
-    const Content: React.FC = () => {
-        return (
-            <h4>Calendar here</h4>
-        )
-    }
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth > 767) setOpen(true);
+        }
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    });
 
     return (
-        <Row className='mainCalendar'>
+        <div className='mainCalendar'>
             {isFetching ? (
                     <Loader
                         type='Grid'
@@ -33,27 +31,22 @@ const CalendarComponent = ({ isFetching }: IProps) => {
                     />
                 ) : (
                 <>
-                    <h3>Calendar</h3>
-                    {needCollapse ? 
-                    <>
-                        <img 
-                            src={ChevronIcon} 
-                            alt={isOpen ? 'Arrow close' : 'Arrow open'}
-                            onClick={() => setOpen(prev => !prev)}
-                            className={`chevronIcon ${isOpen ? 'opened' : ''}`}
-                        />
-                        <Collapse
-                            keepChildrenMounted
-                            isOpen={isOpen}
-                        >
-                            <Content />
-                        </Collapse>
-                    </>
-                    : <Content />
-                    }
+                    <img 
+                        src={ChevronIcon} 
+                        alt={isOpen ? 'Arrow close' : 'Arrow open'}
+                        onClick={() => setOpen(prev => !prev)}
+                        className={`chevronIcon ${isOpen ? 'opened' : ''}`}
+                    />
+
+                    <Collapse
+                        keepChildrenMounted
+                        isOpen={isOpen}
+                    >
+                        <Calendar/>
+                    </Collapse>
                 </>
             )}
-        </Row>
+        </div>
     )
 }
 

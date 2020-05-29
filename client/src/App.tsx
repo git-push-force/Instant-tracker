@@ -3,6 +3,7 @@ import 'normalize.css';
 import '@blueprintjs/core/lib/css/blueprint.css';
 import '@blueprintjs/icons/lib/css/blueprint-icons.css';
 import './assets/scss/index.scss';
+import './assets/scss/react-calendar.scss';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
 import React from 'react';
@@ -14,10 +15,9 @@ import { ROUTES } from './services/routes';
 
 const App: React.FC = () => {
 	return (
-		<>
+		<Container fluid>
 		<Notifications />
 
-		<Container fluid>
 			<Switch>
 				{ROUTES().map((item, index) => {
 					return (
@@ -28,8 +28,8 @@ const App: React.FC = () => {
 					<Redirect to='/create'/>
 				)}/>
 			</Switch>
+			
 		</Container>
-		</>
 	)
 }
 
