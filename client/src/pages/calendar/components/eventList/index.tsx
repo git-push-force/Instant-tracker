@@ -89,7 +89,8 @@ const EventList = ({ events, isFetching, id }: IProps) => {
 
     useEffect(() => {
         const handleResize = () => {
-            if (window.innerWidth > 767) setOpen(true);
+            if (window.innerWidth > 767) return setOpen(true);
+            setOpen(false);
         }
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);

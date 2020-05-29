@@ -4,8 +4,8 @@ import { NonIdealState, Button } from '@blueprintjs/core';
 
 const ErrorPage = () => {
     const history = useHistory();
-    const description = 'Check your link to calendar and try again';
     const title = 'Sorry, but calendar with this id does not exist';
+    const description = 'Check your link to calendar and try again';
 
     return (
         <div>

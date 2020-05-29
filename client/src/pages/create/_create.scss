@@ -34,20 +34,20 @@
 
 .calendarLink {
     background-color: #fff;
+    border: none;
     padding: 5px;
-    border-radius: 8px;
-    word-break: break-all; 
+    border-radius: 6px;
+    resize: none;
 
-        svg {
-            margin: 0 2px 0 10px;
-            transition: .1s;
-            cursor: pointer;
-            
-            &:hover {
-                transform: scale(1.05);
-                
-            }
+    svg {
+        margin: 0 2px 0 5px;
+        transition: .1s;
+        cursor: pointer;
+        
+        &:hover {
+            transform: scale(1.05);
         }
+    }
 }
 
 .createTitle {

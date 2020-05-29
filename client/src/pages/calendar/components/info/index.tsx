@@ -15,7 +15,7 @@ const CalendarInfo = ({ name, description }: IProps) => {
     return (
         <Row className='calendarInfo'>
             <Button onClick={() => history.push('/create')}>
-                Create new
+                Create new calendar
             </Button>
             <div className='info'>
                 <h3 className='bp3-text-overflow-ellipsis'>Name: {name}</h3>
