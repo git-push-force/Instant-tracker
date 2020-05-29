@@ -1,8 +1,10 @@
 .mainCalendar {
-    box-shadow: 0 0 15px 0 rgb(179, 179, 179);
+    padding: 5px 0;
+    box-shadow: 0 0 15px 0 rgb(194, 194, 194);
     border-radius: 6px;
-    margin-left: -5px !important;
     margin-right: -5px !important;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
 
     display: flex;
     flex-direction: column;
@@ -11,17 +13,15 @@
     position: relative;
 
     h3 {
-        margin: 6px 0 0 0;
+        margin: 2px 0;
+    }
+
+
+    h4 {
+        margin: 0;
     }
 }
 
-.chevronIcon {
-    transition: .2s;
-}
-
-.chevronIcon.opened {
-    transform: rotate(180deg);
-}
 
 @media screen and (max-width: 767px) {
     .mainCalendar {
@@ -29,5 +29,11 @@
         border-radius: 0px;
         margin-left: -15px !important;
         margin-right: -15px !important;
+    }
+}
+
+@media screen and (min-width: 767px) {
+    h3 {
+        display: none;
     }
 }

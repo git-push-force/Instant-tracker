@@ -83,7 +83,7 @@ const AddPanel: React.FC = () => {
                 >
                     {!calendar.eventFetching && data.name && checkDate(data.dateStart) && 'Create'}
                     
-                    {!calendar.eventFetching && (!data.name || !checkDate(data.dateStart)) && 'Fill fields to create event'}
+                    {!calendar.eventFetching && (!data.name || !checkDate(data.dateStart)) && 'Fill required fields to create event'}
 
                     {calendar.eventFetching && (
                         <Loader

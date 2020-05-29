@@ -5,46 +5,22 @@
     margin-right: -15px !important;
 }
 
-.bg-main {
-    background-color: $mainColor !important;
-
-    &:hover {
-        background-color: lighten($mainColor, 5) !important;
-    }
-}
-
-.bg-light {
-    background-color: $lightColor !important;
-
-    &:hover {
-        background-color: lighten($lightColor, 5) !important;
-    }
-}
-
-.bg-subLight {
-    background-color: $subLightColor !important;
-
-    &:hover {
-        background-color: lighten($subLightColor, 5) !important;
-    }
-}
-
-.bg-sub {
-    background-color: $subColor !important;
-
-    &:hover {
-        background-color: lighten($subColor, 5) !important;
-    }
-}
-
-.bg-subDark {
-    background-color: $subDarkColor !important;
-
-    &:hover {
-        background-color: lighten($subDarkColor, 5) !important;
-    }
-}
-
 .text-green {
     color: $green1;
+}
+
+.chevronIcon {
+    transition: .2s;
+    cursor: pointer;
+    background-color: #0f9960;
+    padding: 5px;
+    border-radius: 50%;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.chevronIcon.opened {
+    transform: rotate(180deg);
 }

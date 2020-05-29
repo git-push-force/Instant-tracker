@@ -19,7 +19,7 @@ const CalendarComponent = ({ isFetching }: IProps) => {
 
     const Content: React.FC = () => {
         return (
-            <h3>Opened</h3>
+            <h4>Calendar here</h4>
         )
     }
 
@@ -33,7 +33,7 @@ const CalendarComponent = ({ isFetching }: IProps) => {
                     />
                 ) : (
                 <>
-                    <h3 className='bp3-text-muted'>Calendar</h3>
+                    <h3>Calendar</h3>
                     {needCollapse ? 
                     <>
                         <img 

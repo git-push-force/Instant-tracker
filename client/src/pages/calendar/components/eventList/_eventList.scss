@@ -3,22 +3,25 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 0 15px 0 rgb(179, 179, 179);
+    box-shadow: 0 0 15px 0 rgb(194, 194, 194);
     border-radius: 6px;
-    padding: 0px 6px 0px 6px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    padding: 5px 6px 5px 6px;
 
     .bp3-collapse {
         width: 100%;
     }
 
     h3 {
-        margin: 10px 0px 0px 0;
+        margin: 2px 0;
     }
 
     .eventCard {
         margin: 5px 0;
         position: relative;
         padding: 15px 60px 20px 10px;
+        width: 100%;
 
         .eventCard_important {
             position: absolute;
