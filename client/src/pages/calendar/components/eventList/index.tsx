@@ -10,7 +10,7 @@ import { markAsImportant } from '../../../../redux/actions/event';
 import { IEvent } from '../../../../redux/reducers/calendar';
 import { getPassword } from '../../../../utils/localStorage';
 import { getScreenSize } from '../../../../utils/helpers';
-import ChevronIcon from '../../../../assets/img/chevron.png';
+import ToggleButton from '../../../../components/Button/Toggle';
 
 interface IProps {
     events: IEvent[],
@@ -45,10 +45,7 @@ const EventList = ({ events, isFetching, id }: IProps) => {
             <>
             {events.map((event, index) => {                        
                 return (
-                    <Card 
-                        key={index}
-                        className={`eventCard ${event.description ? 'withDescription' : ''}`}
-                    >
+                    <Card key={index} className={`eventCard ${event.description ? 'withDescription' : ''}`}>
                         <span 
                             className='eventCard_important'
                             onClick={() => toggleImportant(event.id, event.important)}
@@ -60,19 +57,21 @@ const EventList = ({ events, isFetching, id }: IProps) => {
                             <Icon icon='star-empty' iconSize={Icon.SIZE_STANDARD}/>}
                         </span>
 
-                        <span
-                            className='eventCard_more'
+                        <span 
+                            className='eventCard_more' 
                             onClick={() => redirectToEvent(event.id)}
                         >
-                            <Icon icon='chevron-right' iconSize={36}/> 
+                            <Icon icon='chevron-right' iconSize={36}/>
                         </span>
 
                         <p className='bp3-text-large bp3-text-overflow-ellipsis eventName'>
                             {event.name}
                         </p>
+
                         <span className='bp3-text-muted'>
-                                {event.dateStart} {event.dateEnd && ` - ${event.dateEnd}`}    
+                            {event.dateStart} {event.dateEnd && ` - ${event.dateEnd}`}    
                         </span>
+
                         {event.description &&( 
                         <>
                             <Divider/>
@@ -105,28 +104,15 @@ const EventList = ({ events, isFetching, id }: IProps) => {
                     color='#0f9960'
                 />
             ) : (
-            <>
-                <h3 className={events.length ? '' : 'bp3-text-muted'}>
-                    {events.length ? 'Event list' : 'No created events'}
-                </h3>
-                {events.length 
+                events.length 
                 ?
-                <>
-                    <img 
-                        src={ChevronIcon} 
-                        alt={isOpen ? 'Arrow close' : 'Arrow open'}
-                        onClick={() => setOpen(prev => !prev)}
-                        className={`chevronIcon ${isOpen ? 'opened' : ''}`}
-                    />
-
-                    <Collapse keepChildrenMounted isOpen={isOpen}>
-                        <Content />
-                    </Collapse>
-                </>
-                :
-                null}
-            </>
+                <ToggleButton isOpen={isOpen} setOpen={setOpen}/>
+                : 
+                <h3 className={events.length ? '' : 'bp3-text-muted'}>No created events</h3>
             )}
+            <Collapse keepChildrenMounted isOpen={isOpen}>
+                <Content />
+            </Collapse>
         </div>
     )
 }

@@ -14,14 +14,16 @@ export const calendarSelector = createSelector(
         const { 
             events,
             name, 
-            id
+            id,
+            description
         } = data;
         
         return {
             events,
             isFetching,
             name,
-            id
+            id,
+            description
         }
     }
 )

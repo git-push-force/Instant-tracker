@@ -1,28 +1,26 @@
 import './_info.scss';
 import React from 'react';
-import { Row, Col } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 import { Button } from '@blueprintjs/core';
+import { Row } from 'react-bootstrap';
 
 interface IProps {
     name: string;
-    id: string
     description?: string
 }
 
-const CalendarInfo = ({ name, id, description }: IProps) => {
+const CalendarInfo = ({ name, description }: IProps) => {
     const history = useHistory();
 
     return (
-        <Row className='infoPanel'>
-            <Col className='calendarInfo'>
-                <Button onClick={() => history.push('/create')}>
-                    Create new
-                </Button>
-                <h3>
-                    {name} : {id}
-                </h3>
-            </Col>
+        <Row className='calendarInfo'>
+            <Button onClick={() => history.push('/create')}>
+                Create new
+            </Button>
+            <div className='info'>
+                <h3 className='bp3-text-overflow-ellipsis'>Name: {name}</h3>
+                {description && <h3 className='bp3-text-overflow-ellipsis'>Description: {description}</h3>}
+            </div>
         </Row>
     )
 }
