@@ -8,7 +8,8 @@ export const calendarSelector = createSelector(
     (calendarState) => {
         const { 
             data, 
-            isFetching
+            isFetching,
+            eventActionFetching
         } = calendarState;
 
         const { 
@@ -23,7 +24,8 @@ export const calendarSelector = createSelector(
             isFetching,
             name,
             id,
-            description
+            description,
+            eventActionFetching
         }
     }
 )

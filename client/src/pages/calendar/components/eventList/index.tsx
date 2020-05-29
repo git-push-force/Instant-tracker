@@ -3,10 +3,11 @@ import qs from 'qs';
 import React, { useState, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { Card, Divider, Icon, Collapse } from '@blueprintjs/core';
+import { Card, Divider, Icon, Collapse, Button, Menu, MenuDivider, MenuItem, Popover } from '@blueprintjs/core';
 import Loader from 'react-loader-spinner';
+import { confirmAlert } from 'react-confirm-alert';
 
-import { markAsImportant } from '../../../../redux/actions/event';
+import { markAsImportant, removeEvent } from '../../../../redux/actions/event';
 import { IEvent } from '../../../../redux/reducers/calendar';
 import { getPassword } from '../../../../utils/localStorage';
 import { getScreenSize } from '../../../../utils/helpers';
@@ -16,9 +17,10 @@ interface IProps {
     events: IEvent[],
     isFetching: boolean,
     id: string;
+    eventActionFetching: boolean;
 }
 
-const EventList = ({ events, isFetching, id }: IProps) => {
+const EventList = ({ events, isFetching, id, eventActionFetching }: IProps) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const location = useLocation();
@@ -40,22 +42,69 @@ const EventList = ({ events, isFetching, id }: IProps) => {
         }));
     }
 
+    const removeEventFunc = (eventId: string) => {
+        dispatch(removeEvent({ id, eventId, password: getPassword() }));
+    }
+
+    const submitAction = (
+        event: IEvent,
+        title?: string, 
+        message?: string, 
+        onSubmit?: Function, 
+        onReject?: Function) => {
+        confirmAlert({
+            title,
+            message,
+            buttons: [
+                { label: 'Yes', onClick: () => onSubmit && onSubmit(event.id) },
+                { label: 'No', onClick: () => onReject && onReject() }
+            ]
+        })
+    };
+
+    const ImportantIndicator = ({ event }: { event: IEvent }) => {
+        return (
+            <span>
+                {Number(event.important) === 1 
+                && 
+                <Icon icon='star' iconSize={Icon.SIZE_STANDARD}/>}
+            </span>
+        )
+    }
+
+    const ActionsMenu = ({ event }: { event: IEvent }) => {
+        return (
+            <Menu>
+                <MenuItem
+                    icon={Number(event.important) === 1 ? 'star-empty' : 'star'}
+                    text={`Mark as ${Number(event.important) === 1 ? 'unimportant' : 'important'}`}
+                    disabled={eventActionFetching}
+                    onClick={() => toggleImportant(event.id, event.important)}
+                />
+                <MenuDivider />
+                <MenuItem
+                    icon='trash'
+                    text='Remove event'
+                    disabled={eventActionFetching}
+                    onClick={() => submitAction(
+                        event,
+                        'Confirm to delete',
+                        'Are you sure want to remove event?',
+                        removeEventFunc)}
+                />
+            </Menu>
+        )
+    };
+
     const Content: React.FC = () => {
         return (
             <>
             {events.map((event, index) => {                        
                 return (
                     <Card key={index} className={`eventCard ${event.description ? 'withDescription' : ''}`}>
-                        <span 
-                            className='eventCard_important'
-                            onClick={() => toggleImportant(event.id, event.important)}
-                        >
-                            {Number(event.important) === 1 
-                            ? 
-                            <Icon icon='star' iconSize={Icon.SIZE_STANDARD}/> 
-                            : 
-                            <Icon icon='star-empty' iconSize={Icon.SIZE_STANDARD}/>}
-                        </span>
+                        <Popover className='eventCard_actions' content={<ActionsMenu event={event}/>}>
+                            <Button icon='layout-linear'/>
+                        </Popover>
 
                         <span 
                             className='eventCard_more' 
@@ -69,15 +118,13 @@ const EventList = ({ events, isFetching, id }: IProps) => {
                         </p>
 
                         <span className='bp3-text-muted'>
-                            {event.dateStart} {event.dateEnd && ` - ${event.dateEnd}`}    
+                            {event.dateStart} {event.dateEnd && ` - ${event.dateEnd}`} <ImportantIndicator event={event}/>
                         </span>
 
                         {event.description &&( 
                         <>
                             <Divider/>
-                            <p className='bp3-text-overflow-ellipsis'>
-                                {event.description}
-                            </p>
+                            <p className='bp3-text-overflow-ellipsis'>{event.description}</p>
                         </>
                         )}
                     </Card>

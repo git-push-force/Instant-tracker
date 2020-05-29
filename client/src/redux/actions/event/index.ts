@@ -7,6 +7,8 @@ import {
 	ICreateEvent,
 	markAsImportantUrl,
 	IMarkAsImportant,
+	removeEventUrl,
+	IRemoveEvent,
 } from '../../../services/urls';
 
 export const createEvent = (
@@ -40,5 +42,22 @@ export const markAsImportant = (
 		});
 	} catch (err) {
 		dispatch({ type: actionTypes.MARK_AS_IMPORTANT_ERROR });
+	}
+};
+
+export const removeEvent = (
+	payload: IRemoveEvent
+): ThunkAction<void, Object, unknown, Action<string>> => async dispatch => {
+	dispatch({ type: actionTypes.REMOVE_EVENT });
+
+	try {
+		const response = await removeEventUrl(payload);
+		const { data } = response;
+		dispatch({
+			type: actionTypes.REMOVE_EVENT_SUCCESS,
+			payload: data,
+		});
+	} catch (err) {
+		dispatch({ type: actionTypes.REMOVE_EVENT_ERROR });
 	}
 };

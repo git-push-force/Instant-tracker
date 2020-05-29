@@ -106,6 +106,7 @@ const createReducer = (state = initState, action: IAction) => {
 			};
 		}
 
+		case eventTypes.REMOVE_EVENT:
 		case eventTypes.MARK_AS_IMPORTANT: {
 			return {
 				...state,
@@ -113,6 +114,7 @@ const createReducer = (state = initState, action: IAction) => {
 			};
 		}
 
+		case eventTypes.REMOVE_EVENT_SUCCESS:
 		case eventTypes.MARK_AS_IMPORTANT_SUCCESS: {
 			return {
 				...state,
@@ -124,6 +126,7 @@ const createReducer = (state = initState, action: IAction) => {
 			};
 		}
 
+		case eventTypes.REMOVE_EVENT_ERROR:
 		case eventTypes.MARK_AS_IMPORTANT_ERROR: {
 			return {
 				...state,

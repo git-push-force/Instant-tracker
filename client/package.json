@@ -27,6 +27,7 @@
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
     "react-calendar": "^3.1.0",
+    "react-confirm-alert": "^2.6.1",
     "react-dom": "^16.13.1",
     "react-loader-spinner": "^3.1.14",
     "react-notify-toast": "^0.5.1",

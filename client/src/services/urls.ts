@@ -38,3 +38,12 @@ export interface IMarkAsImportant {
 export const markAsImportantUrl = (payload: IMarkAsImportant) => {
 	return axiosInstance.post(`/event/important`, qs.stringify({ ...payload }));
 };
+
+export interface IRemoveEvent {
+	id: string;
+	eventId: string;
+	password?: string;
+}
+export const removeEventUrl = (payload: IRemoveEvent) => {
+	return axiosInstance.post(`/event/remove`, qs.stringify({ ...payload }));
+};

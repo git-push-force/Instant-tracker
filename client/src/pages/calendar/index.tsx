@@ -23,7 +23,7 @@ const CalendarPage: React.FC = () => {
     const [wrong, setWrong] = useState(false);
 
     const queryString = qs.parse(location.search.substring(1));
-    const { description, isFetching, events, name, id } = useSelector(calendarSelector);
+    const { description, isFetching, events, name, id, eventActionFetching } = useSelector(calendarSelector);
 
     useEffect(() => {
         (async () => {
@@ -66,7 +66,7 @@ const CalendarPage: React.FC = () => {
                 </Col>
 
                 <Col xs={12}  md={5} lg={3} className='eventsCol'>
-                    <EventsList id={id} events={events} isFetching={isFetching} />
+                    <EventsList eventActionFetching={eventActionFetching} id={id} events={events} isFetching={isFetching} />
                 </Col>
             </Row>
         </>

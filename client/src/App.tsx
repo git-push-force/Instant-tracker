@@ -4,6 +4,7 @@ import '@blueprintjs/core/lib/css/blueprint.css';
 import '@blueprintjs/icons/lib/css/blueprint-icons.css';
 import './assets/scss/index.scss';
 import './assets/scss/react-calendar.scss';
+import './assets/scss/confirm-modal.scss';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
 import React from 'react';

@@ -25,18 +25,21 @@
         padding: 15px 60px 20px 10px;
         width: 100%;
 
-        .eventCard_important {
+        .bp3-popover-target button{
+            background-color: #fff !important;
+        }
+
+        .eventCard_actions {
             position: absolute;
-            top: 8px;
-            right: 8px;
-            transition: .3s;
+            top: 5px;
+            right: 5px;
             cursor: pointer;
         }
 
         .eventCard_more {
             position: absolute;
             top: 50%;
-            right: 20px;
+            right: 30px;
             transform: translateY(-50%);
             cursor: pointer;
                 svg {
