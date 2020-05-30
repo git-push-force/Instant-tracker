@@ -23,3 +23,13 @@ export const submitAction = (
 		]
 	})
 };
+
+export const setResizeHandler = (
+	setOpen: (value: React.SetStateAction<boolean>) => void
+) => {
+	const handleResize = () => { 
+		if (window.innerWidth > 767) setOpen(true);
+	}
+	window.addEventListener('resize', handleResize);
+	return () => window.removeEventListener('resize', handleResize);
+};

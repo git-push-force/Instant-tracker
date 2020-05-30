@@ -5,6 +5,7 @@ import { Collapse } from '@blueprintjs/core';
 
 import Loader from '../../../../components/Loader';
 import ToggleButton from '../../../../components/Button/Toggle';
+import { setResizeHandler } from '../../../../utils/helpers';
 
 interface IProps {
     isFetching: boolean
@@ -15,11 +16,7 @@ const CalendarComponent = ({ isFetching }: IProps) => {
     const [isOpen, setOpen] = useState(true);
 
     useEffect(() => {
-        const handleResize = () => { 
-            if (window.innerWidth > 767) setOpen(true);
-        }
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
+        setResizeHandler(setOpen);
     }, []);
 
     return (

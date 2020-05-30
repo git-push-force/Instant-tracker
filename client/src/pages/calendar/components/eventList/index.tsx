@@ -6,9 +6,9 @@ import { useDispatch } from 'react-redux';
 import { Collapse } from '@blueprintjs/core';
 
 import { markAsImportant, removeEvent } from '../../../../redux/actions/event';
+import { getScreenSize, setResizeHandler } from '../../../../utils/helpers';
 import { IEvent } from '../../../../redux/reducers/calendar';
 import { getPassword } from '../../../../utils/localStorage';
-import { getScreenSize } from '../../../../utils/helpers';
 
 import ToggleButton from '../../../../components/Button/Toggle';
 import Content from './content';
@@ -48,12 +48,7 @@ const EventList = ({ events, isFetching, id, eventActionFetching }: IProps) => {
     }
 
     useEffect(() => {
-        const handleResize = () => {
-            if (window.innerWidth > 767) return setOpen(true);
-            setOpen(false);
-        }
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
+        setResizeHandler(setOpen);
     }, []);
 
     return (
