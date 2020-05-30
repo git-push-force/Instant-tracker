@@ -9,17 +9,19 @@ interface IProps {
     buttonIcon?: IconName;
     buttonText?: string;
     items: IMenuItem[];
+    className?: string;
 }
 
-const Menu = ({ position, buttonIcon, buttonText, items }: IProps) => {
+const PopoverMenu: React.FC<IProps> = ({ position, buttonIcon, buttonText, items, className }) => {
     return (
-        <Popover 
+        <Popover
             position={position}
             content={<ActionsMenu items={items}/>}
+            className={className}
         >
             <Button icon={buttonIcon} text={buttonText} />
         </Popover>
     )
 }
 
-export default Menu;
+export default PopoverMenu;

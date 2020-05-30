@@ -1,17 +1,16 @@
-import React, { ReactNode } from 'react';
-import { Menu, MenuItem, MenuDivider } from '@blueprintjs/core';
+import React from 'react';
+import { Menu, MenuItem, MenuDivider, Intent } from '@blueprintjs/core';
 import { IconName } from "@blueprintjs/icons";
 
 interface IPropsMenuDivider {
-    children: ReactNode[];
     position?: 'before' | 'after' | 'both';
     title?: string;
 }
-const MenuItemDivider = ({ children, position, title }: IPropsMenuDivider) => {
+const MenuItemDivider: React.FC<IPropsMenuDivider> = ({ children, position, title }) => {
     return (
         <>
             {(position === 'before' || position === 'both') && <MenuDivider title={title} />}
-            {...children}
+            {children}
             {(position === 'after' || position === 'both') && <MenuDivider title={title}/>}
         </>
     );
@@ -23,6 +22,7 @@ interface ISubMenuItem {
     icon?: IconName;
     disabled?: boolean;
     dividerPosition?: 'after' | 'before' | 'both';
+    intent?: Intent;
 }
 
 export interface IMenuItem {
@@ -33,37 +33,39 @@ export interface IMenuItem {
     dividerPosition?: 'after' | 'before' | 'both';
     haveSubMenu?: boolean;
     subMenuItems?: ISubMenuItem[];
+    intent?: Intent;
 }
 
 interface IPropsActionsMenu {
     items: IMenuItem[];
     large?: boolean;
 }
-const ActionsMenu = ({ items }: IPropsActionsMenu) => {
+const ActionsMenu: React.FC<IPropsActionsMenu> = ({ items }) => {
     return (
         <Menu>
             {items.map((item, index) => {
                 return (
                     <MenuItemDivider position={item.dividerPosition}>
-                        {item.haveSubMenu} ? (
-                            <MenuItem
-                                onClick={() => item.clickHandler && item.clickHandler()}
-                                key={index}
-                                {...item}
-                            >
-                                {item.subMenuItems?.map((subItem, index) => {
-                                    return (
-                                        <MenuItem 
-                                            onClick={() => subItem.clickHandler && subItem.clickHandler()}
-                                            key={index}
-                                            {...subItem}
-                                        />
-                                    )
-                                })}
-                            </MenuItem>
-                        ) : (
-                            <MenuItem onClick={() => item.clickHandler && item.clickHandler()} {...item}/>
-                        )
+                        {item.haveSubMenu 
+                        ? 
+                        <MenuItem
+                            onClick={() => item.clickHandler && item.clickHandler()}
+                            key={index}
+                            {...item}
+                        >
+                            {item.subMenuItems?.map((subItem, index) => {
+                                return (
+                                    <MenuItem 
+                                        onClick={() => subItem.clickHandler && subItem.clickHandler()}
+                                        key={index}
+                                        {...subItem}
+                                    />
+                                )
+                            })}
+                        </MenuItem>
+                        : 
+                        <MenuItem onClick={() => item.clickHandler && item.clickHandler()} {...item}/>
+                        }
                     </MenuItemDivider>
                 )
             })}

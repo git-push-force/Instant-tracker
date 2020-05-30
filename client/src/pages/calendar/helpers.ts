@@ -1,4 +1,6 @@
 import moment from 'moment';
+import { IMenuItem } from '../../components/ActionsMenu';
+import { IEvent } from '../../redux/reducers/calendar';
 
 export const checkDate = (date: string): boolean =>
 	moment(date, 'YYYY-MM-DD', true).isValid();
@@ -80,4 +82,30 @@ export const clearFields = (
 		description: '',
 		important: false,
 	});
+};
+
+export const getEventMenuItems = (
+	event: IEvent, 
+	toggleImportant: Function,
+	submitAction: Function,
+	removeEventFunc: Function
+	): IMenuItem[] => {
+	return [
+		{
+			text: `Mark as ${Number(event.important) ? 'unimportant' : 'important'}`,
+			icon: Number(event.important) ? 'star-empty' : 'star',
+			clickHandler: () => toggleImportant(event.id, event.important)
+		}, 
+		{
+			text: 'Remove event',
+			icon: 'trash',
+			intent: 'danger',
+			dividerPosition: 'before',
+			clickHandler: () => submitAction(
+				event,
+				'Confirm to delete',
+				'Are you sure want to remove event?',
+				removeEventFunc)
+		}
+	];
 };

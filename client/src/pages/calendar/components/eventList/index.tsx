@@ -66,7 +66,6 @@ const EventList = ({ events, isFetching, id, eventActionFetching }: IProps) => {
                 <Content
                     events={events}
                     redirectToEvent={redirectToEvent}
-                    eventActionFetching={eventActionFetching}
                     toggleImportant={toggleImportant}
                     removeEventFunc={removeEventFunc}
                 />

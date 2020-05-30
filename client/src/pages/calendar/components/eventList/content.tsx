@@ -1,84 +1,35 @@
 import React from 'react';
-import { IEvent } from '../../../../redux/reducers/calendar';
-import { Card, Divider, Icon, Button, Popover, Menu, MenuItem, MenuDivider } from '@blueprintjs/core';
+import { Card, Divider, Icon } from '@blueprintjs/core';
 
 import { submitAction } from '../../../../utils/helpers';
-
-interface IPropsActionsMenu {
-    event: IEvent,
-    eventActionFetching: boolean,
-    toggleImportant: Function,
-    removeEventFunc: Function
-}
-
-const ActionsMenu = ({ 
-    event, 
-    eventActionFetching, 
-    toggleImportant, 
-    removeEventFunc 
-}: IPropsActionsMenu) => {
-    return (
-        <Menu>
-            <MenuItem
-                icon={Number(event.important) === 1 ? 'star-empty' : 'star'}
-                text={`Mark as ${Number(event.important) === 1 ? 'unimportant' : 'important'}`}
-                disabled={eventActionFetching}
-                onClick={() => toggleImportant(event.id, event.important)}
-            />
-            <MenuDivider />
-            <MenuItem
-                icon='trash'
-                text='Remove event'
-                disabled={eventActionFetching}
-                onClick={() => submitAction(
-                    event,
-                    'Confirm to delete',
-                    'Are you sure want to remove event?',
-                    removeEventFunc)}
-            />
-        </Menu>
-    )
-};
-
-const ImportantIndicator = ({ event }: { event: IEvent }) => {
-    return (
-        <span>
-            {Number(event.important) === 1 
-            && 
-            <Icon icon='star' iconSize={Icon.SIZE_STANDARD}/>}
-        </span>
-    )
-}
+import { IEvent } from '../../../../redux/reducers/calendar';
+import { getEventMenuItems } from '../../helpers';
+import PopoverMenu from '../../../../components/PopoverMenu';
 
 interface IPropsContent {
     events: IEvent[],
     redirectToEvent: Function,
-    eventActionFetching: boolean,
     toggleImportant: Function,
     removeEventFunc: Function
 }
-const EventListContent = ({ 
+
+const EventListContent: React.FC<IPropsContent> = ({ 
     events, 
     redirectToEvent, 
-    eventActionFetching,
     toggleImportant,
     removeEventFunc
-}: IPropsContent) => {
+}) => {
     return (
         <>
-        {events.map((event, index) => {                        
+        {events.map((event, index) => {
+            const menuItems = getEventMenuItems(event, toggleImportant, submitAction, removeEventFunc); 
             return (
                 <Card key={index} className={`eventCard ${event.description ? 'withDescription' : ''}`}>
-                    <Popover className='eventCard_actions' content={
-                            <ActionsMenu 
-                                event={event}
-                                eventActionFetching={eventActionFetching}
-                                toggleImportant={toggleImportant}
-                                removeEventFunc={removeEventFunc}
-                            />
-                        }>
-                        <Button icon='layout-linear'/>
-                    </Popover>
+                    <PopoverMenu
+                        buttonIcon='layout-linear'
+                        className='eventCard_actions'
+                        items={menuItems}
+                    />
 
                     <span 
                         className='eventCard_more' 
@@ -92,7 +43,8 @@ const EventListContent = ({
                     </p>
 
                     <span className='bp3-text-muted'>
-                        {event.dateStart} {event.dateEnd && ` - ${event.dateEnd}`} <ImportantIndicator event={event}/>
+                        {event.dateStart} {event.dateEnd && ` - ${event.dateEnd}`}
+                        {Number(event.important) === 1 && <Icon icon='star' iconSize={Icon.SIZE_STANDARD}/>}
                     </span>
 
                     {event.description &&( 
