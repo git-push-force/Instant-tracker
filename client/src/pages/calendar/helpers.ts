@@ -1,16 +1,18 @@
 import moment from 'moment';
 import { IMenuItem } from '../../components/ActionsMenu';
 import { IEvent } from '../../redux/reducers/calendar';
+import { getCalendar } from '../../redux/actions/calendar';
+import { getPassword } from '../../utils/localStorage';
 
 export const checkDate = (date: string): boolean =>
 	moment(date, 'YYYY-MM-DD', true).isValid();
 
+	//Get fields for add event panel
 interface IInput {
 	placeholder: string;
 	name: string;
 	checkDate?: boolean;
 }
-
 interface IGroup {
 	size: {
 		xs: number;
@@ -19,7 +21,6 @@ interface IGroup {
 	};
 	inputs: IInput[];
 }
-
 export const getInputs = (): IGroup[] => {
 	return [
 		{
@@ -64,6 +65,7 @@ export const getInputs = (): IGroup[] => {
 	];
 };
 
+	//Clear add event panel fields
 export const clearFields = (
 	setData: React.Dispatch<
 		React.SetStateAction<{
@@ -84,6 +86,7 @@ export const clearFields = (
 	});
 };
 
+	//Get fields for event card menu
 export const getEventMenuItems = (
 	event: IEvent, 
 	toggleImportant: Function,
@@ -109,3 +112,44 @@ export const getEventMenuItems = (
 		}
 	];
 };
+
+	//Request on first render and handling errors
+export const doRequest = async (
+	queryString: qs.ParsedQs,
+	dispatch: React.Dispatch<Object>,
+	setOpen: React.Dispatch<React.SetStateAction<boolean>>,
+	setWrong: React.Dispatch<React.SetStateAction<boolean>>,
+	redirect: Function
+) => {
+	if (queryString.id) {
+
+		try {
+			await dispatch(getCalendar({
+				id: queryString.id.toString(),
+				password: getPassword()
+			}));
+
+		} catch (err) {
+			const statusCode = err.split(' ')[5];
+
+			switch (statusCode) {
+				case '401': {
+					setOpen(true);
+					setWrong(false);
+					break;
+				}
+				case '400': {
+					setOpen(true);
+					setWrong(true);
+					break;
+				}
+				case '404': {
+					redirect();
+					break;
+				}
+			}
+		}
+	} else {
+		redirect();
+	}
+}

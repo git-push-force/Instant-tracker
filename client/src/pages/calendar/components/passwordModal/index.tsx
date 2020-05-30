@@ -9,7 +9,7 @@ interface IProps {
     setOpen: Function
 }
 
-const Modal = ({ open, wrong, setOpen }: IProps) => {
+const Modal: React.FC<IProps> = ({ open, wrong, setOpen }) => {
     const [showPassword, setShowPassword] = useState(false);
     const [value, setValue] = useState('');
 
@@ -49,11 +49,7 @@ const Modal = ({ open, wrong, setOpen }: IProps) => {
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue(e.target.value)}
             />
 
-            <Button 
-                intent='success' 
-                disabled={!value.length}
-                onClick={handleSubmit}
-            >
+            <Button intent='success' disabled={!value.length} onClick={handleSubmit}>
                 Save password
             </Button>
         </Dialog>

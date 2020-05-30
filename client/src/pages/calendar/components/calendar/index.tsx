@@ -1,7 +1,7 @@
 import './_calendar.scss';
 import React, { useState, useEffect } from 'react';
-import Calendar from 'react-calendar';
 import { Collapse } from '@blueprintjs/core';
+import Calendar from 'react-calendar';
 
 import Loader from '../../../../components/Loader';
 import ToggleButton from '../../../../components/Button/Toggle';
@@ -11,7 +11,7 @@ interface IProps {
     isFetching: boolean
 }
 
-const CalendarComponent = ({ isFetching }: IProps) => {
+const CalendarComponent: React.FC<IProps> = ({ isFetching }) => {
 
     const [isOpen, setOpen] = useState(true);
 
@@ -21,17 +21,15 @@ const CalendarComponent = ({ isFetching }: IProps) => {
 
     return (
         <div className='mainCalendar'>
-            {isFetching 
-            ? 
-            <Loader/>
-            :
+            {isFetching ? <Loader/> : (
             <>
                 <ToggleButton isOpen={isOpen} setOpen={setOpen}/>
 
                 <Collapse keepChildrenMounted isOpen={isOpen}>
                     <Calendar/>
                 </Collapse>
-            </>}
+            </>
+            )}
         </div>
     )
 }

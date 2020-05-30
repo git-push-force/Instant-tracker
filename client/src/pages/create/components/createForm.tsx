@@ -15,13 +15,12 @@ interface IProps {
     isFetching: boolean
 }
 
-const CreateForm = ({ value, handleChange, handleSubmit, isFetching}: IProps) => {
+const CreateForm: React.FC<IProps> = ({ value, handleChange, handleSubmit, isFetching}) => {
     return (
         <>
         <p className='createTitle'>Create new calendar</p>
 
         <ControlGroup fill={true} vertical>
-
             {getInputs(value).map((item, index) => {
                 return (
                     <InputGroup 

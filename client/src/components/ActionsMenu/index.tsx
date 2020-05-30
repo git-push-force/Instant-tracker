@@ -25,15 +25,9 @@ interface ISubMenuItem {
     intent?: Intent;
 }
 
-export interface IMenuItem {
-    text: string;
-    clickHandler?: Function;
-    icon?: IconName;
-    disabled?: boolean;
-    dividerPosition?: 'after' | 'before' | 'both';
+export interface IMenuItem extends ISubMenuItem {
     haveSubMenu?: boolean;
     subMenuItems?: ISubMenuItem[];
-    intent?: Intent;
 }
 
 interface IPropsActionsMenu {
@@ -64,8 +58,7 @@ const ActionsMenu: React.FC<IPropsActionsMenu> = ({ items }) => {
                             })}
                         </MenuItem>
                         : 
-                        <MenuItem onClick={() => item.clickHandler && item.clickHandler()} {...item}/>
-                        }
+                        <MenuItem onClick={() => item.clickHandler && item.clickHandler()} {...item}/>}
                     </MenuItemDivider>
                 )
             })}

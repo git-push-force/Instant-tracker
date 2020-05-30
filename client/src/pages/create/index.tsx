@@ -12,6 +12,7 @@ import { savePassword } from '../../utils/localStorage';
 
 const CreatePage: React.FC = () => {
     const dispatch = useDispatch();
+    
     const calendarState = useSelector((state: IRootReducer) => state.calendar);
     const { isFetching, data } = calendarState;
 
@@ -20,15 +21,13 @@ const CreatePage: React.FC = () => {
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>, field: string) => setValue({ ...value, [field]: e.target.value });
     const handleSubmit = () => {
-        try {
-            if (value.name.length) dispatch(createCalendar(value));
-            savePassword(value.password);
-            setValue(initValue);
-        } catch (err) {}
+        if (value.name.length) dispatch(createCalendar(value));
+        savePassword(value.password);
+        setValue(initValue);
     };
 
     useEffect(() => {
-        document.title = 'Create calendar';
+        document.title = 'Create new calendar';
     }, []);
 
     return (
@@ -42,14 +41,13 @@ const CreatePage: React.FC = () => {
                         isFetching={isFetching}
                         handleSubmit={handleSubmit}
                         handleChange={handleChange}
-                    />
-                    }
+                    />}
 
                     {calendarState.isCreated && <Created id={data.id}/>}
                 </Card>
             </Col>
         </Row>
-    )
-}
+    );
+};
 
 export default CreatePage;

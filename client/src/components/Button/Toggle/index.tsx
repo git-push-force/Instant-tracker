@@ -7,7 +7,7 @@ interface IProps {
     size?: number
 }
 
-const ToggleButton = ({ setOpen, isOpen, size }: IProps) => {
+const ToggleButton: React.FC<IProps> = ({ setOpen, isOpen, size }) => {
     return (
         <Icon 
             icon='chevron-up' 

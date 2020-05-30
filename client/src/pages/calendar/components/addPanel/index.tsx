@@ -79,9 +79,11 @@ const AddPanel: React.FC = () => {
                     disabled={!(data.name && checkDate(data.dateStart))}
                     onClick={handleSubmit}
                 >
-                    {!calendar.eventFetching && data.name && checkDate(data.dateStart) && 'Create'}
+                    {!calendar.eventFetching && data.name && checkDate(data.dateStart) &&
+                    'Create'}
                     
-                    {!calendar.eventFetching && (!data.name || !checkDate(data.dateStart)) && 'Fill required fields to create event'}
+                    {!calendar.eventFetching && (!data.name || !checkDate(data.dateStart)) &&
+                    'Fill required fields to create event'}
 
                     {calendar.eventFetching && <Loader width={20}/>}
                 </Button>

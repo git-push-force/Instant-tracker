@@ -14,15 +14,12 @@ const ErrorPage = () => {
                 title={title}
                 description={description}
             >
-                <Button 
-                    intent='success'
-                    onClick={() => history.push('/create')}
-                >
+                <Button intent='success' onClick={() => history.push('/create')}>
                     Create new calendar
                 </Button>
             </NonIdealState>
         </div>
-    )
-}
+    );
+};
 
 export default ErrorPage;

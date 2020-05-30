@@ -2,7 +2,7 @@ import React from 'react';
 import Loader from 'react-loader-spinner';
 
 interface IProps {
-    type: 
+    type?: 
         "Grid" |
         "Audio" | 
         "BallTriangle" | 
@@ -22,11 +22,11 @@ interface IProps {
         "None" | 
         "NotSpecified" |
         undefined;
-    width: number;
-    color: string;
+    width?: number;
+    color?: string;
 }
 
-const LoaderComponent = ({ type, width, color}: IProps) => {
+const LoaderComponent: React.FC<IProps> = ({ type, width, color}) => {
     return (
         <Loader
             type={type}

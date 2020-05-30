@@ -9,7 +9,7 @@ interface IProps {
     description?: string
 }
 
-const CalendarInfo = ({ name, description }: IProps) => {
+const CalendarInfo: React.FC<IProps> = ({ name, description }) => {
     const history = useHistory();
 
     return (
