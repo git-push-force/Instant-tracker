@@ -1,15 +1,15 @@
 import './_addPanel.scss';
+import moment from 'moment';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Row, Col } from 'react-bootstrap';
 import { Button, InputGroup, ControlGroup, Checkbox } from '@blueprintjs/core';
-import Loader from 'react-loader-spinner';
-import moment from 'moment';
+import { Row, Col } from 'react-bootstrap';
 
 import { checkDate, getInputs, clearFields } from '../../helpers';
 import { createEvent } from '../../../../redux/actions/event';
 import { IRootReducer } from '../../../../redux/reducers';
 import { getPassword } from '../../../../utils/localStorage';
+import Loader from '../../../../components/Loader';
 
 const AddPanel: React.FC = () => {
     const dispatch = useDispatch();
@@ -33,7 +33,6 @@ const AddPanel: React.FC = () => {
     }
 
     const handleSubmit = async () => {
-        
         try {
             await dispatch(createEvent({
                 ...data,
@@ -48,7 +47,6 @@ const AddPanel: React.FC = () => {
 
     return (
         <Row className='addPanel'>
-
             {getInputs().map((group, index) => {
                 return (
                     <Col xs={group.size.xs} md={group.size.md} lg={group.size.lg} key={index}>
@@ -85,14 +83,7 @@ const AddPanel: React.FC = () => {
                     
                     {!calendar.eventFetching && (!data.name || !checkDate(data.dateStart)) && 'Fill required fields to create event'}
 
-                    {calendar.eventFetching && (
-                        <Loader
-                            type='Grid'
-                            height={17}
-                            width={20}
-                            color='#0f9960'
-                        />
-                    )}
+                    {calendar.eventFetching && <Loader width={20}/>}
                 </Button>
             </Col>
 
@@ -108,4 +99,4 @@ const AddPanel: React.FC = () => {
     )
 }
 
-export default AddPanel
+export default AddPanel;

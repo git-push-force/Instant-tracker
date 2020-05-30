@@ -1,8 +1,8 @@
 import React from 'react';
 import { Button, InputGroup, ControlGroup } from "@blueprintjs/core";
-import Loader from 'react-loader-spinner';
 
 import { getInputs } from '../helpers';
+import Loader from '../../../components/Loader';
 
 interface IProps {
     value: {
@@ -42,16 +42,7 @@ const CreateForm = ({ value, handleChange, handleSubmit, isFetching}: IProps) =>
                 disabled={(!value.name || isFetching)}
                 onClick={handleSubmit}
             >
-                {isFetching ? 
-                (
-                    <Loader
-                        type='Grid'
-                        height={17}
-                        width={65}
-                        color='#fff'
-                    />
-                ) :
-                'Create'}
+                {isFetching ? <Loader width={65} color='#fff'/> :'Create'}
             </Button>
         </ControlGroup>
         </>
