@@ -27,6 +27,7 @@ const CalendarPage: React.FC = () => {
 
     const [open, setOpen] = useState(false);
     const [wrong, setWrong] = useState(false);
+    const [needSkeleton, setNeedSkeleton] = useState(isFetching || open || wrong);
 
     const queryString = qs.parse(location.search.substring(1));
     const redirectToNotExist = () => history.push('/notExist');
@@ -37,19 +38,32 @@ const CalendarPage: React.FC = () => {
         // eslint-disable-next-line
     }, [dispatch, queryString.id]);
 
+    useEffect(() => {
+        if (isFetching || open || wrong) {
+            return setNeedSkeleton(true);
+        }
+        setNeedSkeleton(false);
+    }, [isFetching, open, wrong]);
+
     return (
         <>
             <PasswordModal open={open} wrong={wrong} setOpen={setOpen} />
-            <Info name={name} description={description} />
-            <AddPanel />
+            <Info name={name} description={description} skeleton={needSkeleton} />
+            <AddPanel skeleton={needSkeleton} />
 
             <Row>
-                <Col xs={12}  md={7} lg={9}>
+                <Col xs={12}  md={7} lg={8}>
                     <Calendar isFetching={isFetching}/>
                 </Col>
 
-                <Col xs={12}  md={5} lg={3} className='eventsCol'>
-                    <EventsList id={id} events={events} isFetching={isFetching} queryString={queryString}/>
+                <Col xs={12}  md={5} lg={4}>
+                    <EventsList 
+                        id={id} 
+                        events={events} 
+                        isFetching={isFetching} 
+                        queryString={queryString}
+                        skeleton={needSkeleton}
+                    />
                 </Col>
             </Row>
         </>

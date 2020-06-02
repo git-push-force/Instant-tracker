@@ -1,0 +1,15 @@
+.chevronIcon {
+    transition: .2s;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.chevronIcon.opened {
+    transform: rotate(-180deg);
+}
+
+@media screen and (min-width: 768px) {
+    .chevronIcon {
+        display: none;
+    }
+}

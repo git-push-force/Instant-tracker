@@ -8,25 +8,3 @@
 .text-green {
     color: $green1;
 }
-
-.chevronIcon {
-    transition: .2s;
-    cursor: pointer;
-    background-color: #0f9960;
-    padding: 5px;
-    border-radius: 50%;
-    outline: none;
-    border: none;
-    text-decoration: none;
-    -webkit-tap-highlight-color: transparent;
-}
-
-.chevronIcon.opened {
-    transform: rotate(-180deg);
-}
-
-@media screen and (min-width: 768px) {
-    .chevronIcon {
-        display: none;
-    }
-}

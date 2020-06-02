@@ -11,7 +11,11 @@ import { IRootReducer } from '../../../../redux/reducers';
 import { getPassword } from '../../../../utils/localStorage';
 import Loader from '../../../../components/Loader';
 
-const AddPanel: React.FC = () => {
+interface IProps {
+    skeleton: boolean;
+}
+
+const AddPanel: React.FC<IProps> = ({ skeleton }) => {
     const dispatch = useDispatch();
     const calendar = useSelector((state: IRootReducer) => state.calendar);
 
@@ -66,6 +70,7 @@ const AddPanel: React.FC = () => {
                                             if (input.checkDate && !checkDate(data[input.name]))
                                                 setField(input.name, oldValue)
                                         }}
+                                        className={skeleton ? 'bp3-skeleton' : ''}
                                     />
                                 )
                             })}
@@ -78,6 +83,7 @@ const AddPanel: React.FC = () => {
                 <Button 
                     disabled={!(data.name && checkDate(data.dateStart))}
                     onClick={handleSubmit}
+                    className={skeleton ? 'bp3-skeleton' : ''}
                 >
                     {!calendar.eventFetching && data.name && checkDate(data.dateStart) &&
                     'Create'}
@@ -93,6 +99,7 @@ const AddPanel: React.FC = () => {
                 <Checkbox
                     checked={data.important}
                     onChange={() => setField('important', !data.important)}
+                    className={skeleton ? 'bp3-skeleton' : ''}
                 >
                     Mark as important
                 </Checkbox>

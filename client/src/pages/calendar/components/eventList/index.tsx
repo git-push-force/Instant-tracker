@@ -19,9 +19,10 @@ interface IProps {
     isFetching: boolean,
     events: IEvent[],
     id: string;
+    skeleton: boolean;
 }
 
-const EventList: React.FC<IProps> = ({ events, isFetching, id, queryString }) => {
+const EventList: React.FC<IProps> = ({ events, isFetching, id, queryString, skeleton }) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const screenSize = getScreenSize();
@@ -50,7 +51,7 @@ const EventList: React.FC<IProps> = ({ events, isFetching, id, queryString }) =>
 
             {(!isFetching && !events.length) &&
 
-            <h3 className={events.length ? '' : 'bp3-text-muted'}>
+            <h3 className={`${events.length ? '' : 'bp3-text-muted'} ${skeleton ? 'bp3-skeleton' : ''}`}>
                 No created events
             </h3>}
 

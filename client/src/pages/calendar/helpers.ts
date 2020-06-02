@@ -153,3 +153,5 @@ export const doRequest = async (
 		redirect();
 	}
 }
+
+	//Get fields for calendar day menu

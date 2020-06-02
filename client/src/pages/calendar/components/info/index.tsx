@@ -6,20 +6,31 @@ import { Row } from 'react-bootstrap';
 
 interface IProps {
     name: string;
-    description?: string
+    description?: string;
+    skeleton: boolean;
 }
 
-const CalendarInfo: React.FC<IProps> = ({ name, description }) => {
+const CalendarInfo: React.FC<IProps> = ({ name, description, skeleton }) => {
     const history = useHistory();
 
     return (
         <Row className='calendarInfo'>
-            <Button onClick={() => history.push('/create')}>
+            <Button 
+                onClick={() => history.push('/create')}  
+                className={skeleton ? 'bp3-skeleton' : ''}
+                disabled={skeleton}
+            >
                 Create new calendar
             </Button>
             <div className='info'>
-                <h3 className='bp3-text-overflow-ellipsis'>Name: {name}</h3>
-                {description && <h3 className='bp3-text-overflow-ellipsis'>Description: {description}</h3>}
+                <h3 className={`bp3-text-overflow-ellipsis ${skeleton ? 'bp3-skeleton' : ''}`}>
+                    Name: {name}
+                </h3>
+
+                {description && 
+                <h3 className={`bp3-text-overflow-ellipsis ${skeleton ? 'bp3-skeleton' : ''}`}>
+                    Description: {description}
+                </h3>}
             </div>
         </Row>
     )
