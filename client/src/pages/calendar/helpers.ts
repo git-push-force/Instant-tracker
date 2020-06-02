@@ -3,9 +3,11 @@ import { IMenuItem } from '../../components/ActionsMenu';
 import { IEvent } from '../../redux/reducers/calendar';
 import { getCalendar } from '../../redux/actions/calendar';
 import { getPassword } from '../../utils/localStorage';
+import { notify } from 'react-notify-toast';
+import copy from 'copy-to-clipboard';
+import { HOST } from '../../services/request';
 
-export const checkDate = (date: string): boolean =>
-	moment(date, 'YYYY-MM-DD', true).isValid();
+export const checkDate = (date: string): boolean => moment(date, 'YYYY-MM-DD', true).isValid();
 
 	//Get fields for add event panel
 interface IInput {
@@ -91,9 +93,19 @@ export const getEventMenuItems = (
 	event: IEvent, 
 	toggleImportant: Function,
 	submitAction: Function,
-	removeEventFunc: Function
+	removeEventFunc: Function,
+	calendarId: string
 	): IMenuItem[] => {
 	return [
+		{
+			text: 'Copy link to event',
+			icon: 'duplicate',
+			clickHandler: async () => {
+				await copy(`${HOST}/calendar?id=${calendarId}&eventId=${event.id}`);
+				const color = { background: '#0f9960', text: '#FFFFFF' }
+				notify.show('Link copied!', 'custom', 2500, color);
+			}
+		},
 		{
 			text: `Mark as ${Number(event.important) ? 'unimportant' : 'important'}`,
 			icon: Number(event.important) ? 'star-empty' : 'star',

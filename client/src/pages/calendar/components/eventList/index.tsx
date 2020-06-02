@@ -20,9 +20,10 @@ interface IProps {
     events: IEvent[],
     id: string;
     skeleton: boolean;
+    calendarId: string;
 }
 
-const EventList: React.FC<IProps> = ({ events, isFetching, id, queryString, skeleton }) => {
+const EventList: React.FC<IProps> = ({ events, isFetching, id, queryString, skeleton, calendarId }) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const screenSize = getScreenSize();
@@ -61,6 +62,7 @@ const EventList: React.FC<IProps> = ({ events, isFetching, id, queryString, skel
                     redirectToEvent={redirectToEvent}
                     toggleImportant={toggleImportant}
                     removeEventFunc={removeEventFunc}
+                    calendarId={calendarId}
                 />
             </Collapse>
         </div>

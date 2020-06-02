@@ -12,7 +12,7 @@ import { IEvent } from '../../../../redux/reducers/calendar';
 
 interface IProps {
     isFetching: boolean;
-    events: IEvent[],
+    events: IEvent[];
 }
 
 const CalendarComponent: React.FC<IProps> = ({ isFetching, events }) => {

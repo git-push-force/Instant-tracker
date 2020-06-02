@@ -34,6 +34,7 @@ export const copyText = async (calendarLink: string) => {
 		const color = { background: '#0f9960', text: '#FFFFFF' }
 		notify.show('Link copied!', 'custom', 2500, color);
 	} catch (err) {
-		alert(`Oops, unable to copy link`);
-	}
-}
+		const color = { background: 'rgb(196, 35, 35)', text: '#FFFFFF' }
+		notify.show('Oops, unable to copy', 'custom', 2500, color);
+	};
+};

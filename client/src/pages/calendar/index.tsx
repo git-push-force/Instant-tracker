@@ -66,6 +66,7 @@ const CalendarPage: React.FC = () => {
                         isFetching={isFetching} 
                         queryString={queryString}
                         skeleton={needSkeleton}
+                        calendarId={id}
                     />
                 </Col>
             </Row>

@@ -3,6 +3,7 @@ import { Icon, Button } from '@blueprintjs/core';
 import { Link } from 'react-router-dom';
 
 import { copyText } from '../helpers';
+import { HOST } from '../../../services/request';
 
 interface IProps {
     id: string;
@@ -10,7 +11,7 @@ interface IProps {
 }
 
 const Created: React.FC<IProps> = ({ id, setCreated }) => {
-    const calendarLink: string = `http://192.168.88.254:3000/calendar?id=${id}`;    
+    const calendarLink: string = `${HOST}/calendar?id=${id}`;
 
     return (
         <div className='bp3-callout createdPage'>

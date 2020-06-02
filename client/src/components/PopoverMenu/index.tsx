@@ -13,7 +13,7 @@ interface IProps {
     minimal?: boolean;
 }
 
-const PopoverMenu: React.FC<IProps> = ({ position, buttonIcon, buttonText, items, className, minimal }) => {
+const PopoverMenu: React.FC<IProps> = ({ position , buttonIcon, buttonText, items, className, minimal }) => {
     return (
         <Popover
             position={position}

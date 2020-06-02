@@ -7,22 +7,24 @@ import { submitAction } from '../../../../utils/helpers';
 import { getEventMenuItems } from '../../helpers';
 
 interface IPropsContent {
-    events: IEvent[],
-    redirectToEvent: Function,
-    toggleImportant: Function,
-    removeEventFunc: Function
+    events: IEvent[];
+    redirectToEvent: Function;
+    toggleImportant: Function;
+    removeEventFunc: Function;
+    calendarId: string;
 }
 
 const EventListContent: React.FC<IPropsContent> = ({ 
     events, 
     redirectToEvent, 
     toggleImportant,
-    removeEventFunc
+    removeEventFunc,
+    calendarId
 }) => {
     return (
         <>
         {events.map((event, index) => {
-            const menuItems = getEventMenuItems(event, toggleImportant, submitAction, removeEventFunc);
+            const menuItems = getEventMenuItems(event, toggleImportant, submitAction, removeEventFunc, calendarId);
 
             return (
                 <Card key={index} className={`eventCard ${event.description ? 'withDescription' : ''}`}>
