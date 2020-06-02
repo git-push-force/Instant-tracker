@@ -6,9 +6,10 @@ import { copyText } from '../helpers';
 
 interface IProps {
     id: string;
+    setCreated: Function;
 }
 
-const Created: React.FC<IProps> = ({ id }) => {
+const Created: React.FC<IProps> = ({ id, setCreated }) => {
     const calendarLink: string = `http://192.168.88.254:3000/calendar?id=${id}`;    
 
     return (
@@ -21,7 +22,10 @@ const Created: React.FC<IProps> = ({ id }) => {
 
             <p className='bp3-text-muted'>You can get access to calendar by this link*</p>
 
-            <Link to={`/calendar?id=${id}`}>
+            <Link 
+                to={`/calendar?id=${id}`}
+                onClick={() => setCreated(false)}
+            >
                 <Button rightIcon='arrow-right' intent='success'>Go to calendar</Button>
             </Link>
         </div>

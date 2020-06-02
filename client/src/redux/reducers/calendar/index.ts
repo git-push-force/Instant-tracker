@@ -20,7 +20,6 @@ export interface ICalendarReducer {
 		password: string;
 	};
 	isFetching: boolean;
-	isCreated: boolean;
 	eventFetching: boolean;
 	eventActionFetching: boolean;
 }
@@ -35,7 +34,6 @@ const initState = {
 		events: [],
 	},
 	isFetching: false,
-	isCreated: false,
 	eventFetching: false,
 	eventActionFetching: false,
 };
@@ -56,9 +54,8 @@ const createReducer = (state = initState, action: IAction) => {
 				isFetching: false,
 				data: {
 					...action.payload,
-					id: action.payload._id,
-				},
-				isCreated: true,
+					id: action.payload._id
+				}
 			};
 		}
 

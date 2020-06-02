@@ -91,7 +91,7 @@ const AddPanel: React.FC<IProps> = ({ skeleton }) => {
                     {!calendar.eventFetching && (!data.name || !checkDate(data.dateStart)) &&
                     'Fill required fields to create event'}
 
-                    {calendar.eventFetching && <Loader width={20}/>}
+                    {calendar.eventFetching && <Loader height={10} width={10}/>}
                 </Button>
             </Col>
 

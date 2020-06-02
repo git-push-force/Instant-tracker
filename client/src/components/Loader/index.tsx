@@ -23,14 +23,16 @@ interface IProps {
         "NotSpecified" |
         undefined;
     width?: number;
+    height?: number;
     color?: string;
 }
 
-const LoaderComponent: React.FC<IProps> = ({ type, width, color}) => {
+const LoaderComponent: React.FC<IProps> = ({ type, width, color, height }) => {
     return (
         <Loader
             type={type}
             width={width}
+            height={height}
             color={color}
         />
     )

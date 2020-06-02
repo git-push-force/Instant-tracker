@@ -10,16 +10,17 @@ interface IProps {
     buttonText?: string;
     items: IMenuItem[];
     className?: string;
+    minimal?: boolean;
 }
 
-const PopoverMenu: React.FC<IProps> = ({ position, buttonIcon, buttonText, items, className }) => {
+const PopoverMenu: React.FC<IProps> = ({ position, buttonIcon, buttonText, items, className, minimal }) => {
     return (
         <Popover
             position={position}
             content={<ActionsMenu items={items}/>}
             className={className}
         >
-            <Button icon={buttonIcon} text={buttonText} />
+            <Button icon={buttonIcon} text={buttonText} minimal={minimal} />
         </Popover>
     )
 }

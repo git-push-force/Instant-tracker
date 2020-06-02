@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, InputGroup, ControlGroup } from "@blueprintjs/core";
+import { Button, InputGroup, ControlGroup, Icon } from "@blueprintjs/core";
 
 import { getInputs } from '../helpers';
 import Loader from '../../../components/Loader';
@@ -12,10 +12,10 @@ interface IProps {
     },
     handleChange: (e: React.ChangeEvent<HTMLInputElement>, field: string) => void,
     handleSubmit: () => void
-    isFetching: boolean
+    isFetching: boolean;
 }
 
-const CreateForm: React.FC<IProps> = ({ value, handleChange, handleSubmit, isFetching}) => {
+const CreateForm: React.FC<IProps> = ({ value, handleChange, handleSubmit, isFetching }) => {
     return (
         <>
         <p className='createTitle'>Create new calendar</p>
@@ -35,13 +35,17 @@ const CreateForm: React.FC<IProps> = ({ value, handleChange, handleSubmit, isFet
 
             <Button 
                 type='submit'
-                icon={isFetching ? false : 'add'}
                 className='bp3-button submitCreate'
                 intent='success'
                 disabled={(!value.name || isFetching)}
                 onClick={handleSubmit}
             >
-                {isFetching ? <Loader width={65} color='#fff'/> :'Create'}
+                {isFetching ? <Loader width={65} height={10}  color='#fff'/> : (
+                    <>
+                        <span>Create</span>
+                        {<Icon icon='arrow-right'/>}
+                    </>
+                )}
             </Button>
         </ControlGroup>
         </>

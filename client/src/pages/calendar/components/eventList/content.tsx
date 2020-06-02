@@ -30,6 +30,7 @@ const EventListContent: React.FC<IPropsContent> = ({
                         buttonIcon='layout-linear'
                         className='eventCard_actions'
                         items={menuItems}
+                        minimal
                     />
 
                     <span className='eventCard_more' onClick={() => redirectToEvent(event.id)}>
@@ -42,7 +43,7 @@ const EventListContent: React.FC<IPropsContent> = ({
 
                     <span className='bp3-text-muted'>
                         {event.dateStart} {event.dateEnd && ` - ${event.dateEnd}`}
-                        {Number(event.important) && <Icon icon='star' iconSize={Icon.SIZE_STANDARD}/>}
+                        {Number(event.important) ? <Icon icon='star' iconSize={Icon.SIZE_STANDARD}/> : null}
                     </span>
 
                     {event.description && <Divider/>}

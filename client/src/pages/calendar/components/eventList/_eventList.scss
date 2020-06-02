@@ -31,9 +31,10 @@
 
         .eventCard_actions {
             position: absolute;
-            top: 5px;
+            top: 0px;
             right: 5px;
             cursor: pointer;
+            outline: none;
         }
 
         .eventCard_more {
@@ -59,8 +60,9 @@
 
 @media screen and (max-width: 767px) {
     .eventList {
-        margin: 0;
+        margin-left: -15px;
         border-radius: 0px;
+        width: 100vw;
     }
 
     .eventsCol {

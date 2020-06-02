@@ -23,10 +23,6 @@ const CalendarComponent: React.FC<IProps> = ({ isFetching, events }) => {
         console.log(date);
     }
 
-    const handleClick = (date: Date | Date[]) => {
-        console.log(date);
-    }
-
     const renderTileContent = (props: CalendarTileProperties) => {
         const { date, view } = props;
         const parsedDate = moment(date).format('YYYY-MM-DD');
@@ -37,13 +33,12 @@ const CalendarComponent: React.FC<IProps> = ({ isFetching, events }) => {
                     intent={Intent.SUCCESS}
                     minimal
                 >
-                    !
+                    {events.filter(event => event.dateStart === parsedDate).length}
                 </Tag>
             )
-        }
-        
+        }        
         return null;
-    }
+    };
 
     useEffect(() => {
         setResizeHandler(setOpen);
