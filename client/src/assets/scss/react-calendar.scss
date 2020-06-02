@@ -38,4 +38,11 @@
     background-color: #fff;
     border:1px solid rgb(189, 188, 188);
     cursor: pointer;
+    position: relative;
+
+    .bp3-tag {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
 }

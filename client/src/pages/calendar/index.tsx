@@ -53,7 +53,10 @@ const CalendarPage: React.FC = () => {
 
             <Row>
                 <Col xs={12}  md={7} lg={8}>
-                    <Calendar isFetching={isFetching}/>
+                    <Calendar 
+                        isFetching={isFetching}
+                        events={events}
+                    />
                 </Col>
 
                 <Col xs={12}  md={5} lg={4}>
