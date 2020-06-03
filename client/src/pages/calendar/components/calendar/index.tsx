@@ -40,6 +40,10 @@ const CalendarComponent: React.FC<IProps> = ({ isFetching, events }) => {
         return null;
     };
 
+    const handleClick = (e : React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+        const [x, y] = [e.clientX, e.clientY];
+    }
+
     useEffect(() => {
         setResizeHandler(setOpen);
     }, []);
@@ -51,10 +55,12 @@ const CalendarComponent: React.FC<IProps> = ({ isFetching, events }) => {
                 <ToggleButton isOpen={isOpen} setOpen={setOpen}/>
 
                 <Collapse keepChildrenMounted isOpen={isOpen}>
-                    <Calendar 
-                        onClickDay={handleDayClick}
-                        tileContent={renderTileContent}
-                    />
+                    <div className='calendarWrapper' onClick={handleClick}>
+                        <Calendar 
+                            onClickDay={handleDayClick}
+                            tileContent={renderTileContent}
+                        />
+                    </div>
                 </Collapse>
             </>
             )}

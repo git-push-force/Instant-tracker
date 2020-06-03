@@ -24,12 +24,12 @@ const CalendarInfo: React.FC<IProps> = ({ name, description, skeleton }) => {
             </Button>
             <div className='info'>
                 <h3 className={`bp3-text-overflow-ellipsis ${skeleton ? 'bp3-skeleton' : ''}`}>
-                    Name: {name}
+                    Calendar name: {name}
                 </h3>
 
                 {description && 
                 <h3 className={`bp3-text-overflow-ellipsis ${skeleton ? 'bp3-skeleton' : ''}`}>
-                    Description: {description}
+                    Calendar description: {description}
                 </h3>}
             </div>
         </Row>

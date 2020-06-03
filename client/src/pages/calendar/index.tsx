@@ -7,6 +7,7 @@ import { Row, Col } from 'react-bootstrap';
 import { doRequest } from './helpers';
 import { calendarSelector } from '../../redux/selectors/calendar';
 
+import Event from '../event/index';
 import Info from './components/info';
 import AddPanel from './components/addPanel';
 import Calendar from './components/calendar';
@@ -25,6 +26,9 @@ const CalendarPage: React.FC = () => {
         id 
     } = useSelector(calendarSelector);
 
+    const [isEventOpen, setEventOpen] = useState(false);
+    const [activeEventId, setEventId] = useState(0);
+
     const [open, setOpen] = useState(false);
     const [wrong, setWrong] = useState(false);
     const [needSkeleton, setNeedSkeleton] = useState(isFetching || open || wrong);
@@ -35,42 +39,69 @@ const CalendarPage: React.FC = () => {
 
     useEffect(() => {
         document.title = 'Calendar';
-        doRequestFunc();
+        if (!events.length) {
+            doRequestFunc();
+        }
+        
+        if (queryString.eventId) {
+            return setEventOpen(true);
+        }
+        setEventOpen(false);
         // eslint-disable-next-line
-    }, [dispatch, queryString.id]);
+    }, [dispatch, queryString.id, queryString.eventId]);
 
     useEffect(() => {
         if (isFetching || open || wrong) {
             return setNeedSkeleton(true);
         }
         setNeedSkeleton(false);
+        
     }, [isFetching, open, wrong]);
 
     return (
         <>
-            <PasswordModal open={open} wrong={wrong} setOpen={setOpen} doRequest={doRequestFunc}/>
-            <Info name={name} description={description} skeleton={needSkeleton} />
-            <AddPanel skeleton={needSkeleton} />
+            <PasswordModal 
+                open={open} 
+                wrong={wrong} 
+                setOpen={setOpen} 
+                doRequest={doRequestFunc}
+            />
+            <Info 
+                name={name} 
+                description={description} 
+                skeleton={needSkeleton} 
+            />
 
-            <Row>
-                <Col xs={12}  md={7} lg={8}>
-                    <Calendar 
-                        isFetching={isFetching}
+                {isEventOpen ? (
+                    <Event
                         events={events}
+                        doRequest={doRequestFunc}
+                        eventId={activeEventId}
                     />
-                </Col>
+                ) : (
+                    <>
+                        <AddPanel skeleton={needSkeleton} />
+                        <Row>
+                            <Col xs={12}  md={7} lg={8}>
+                                <Calendar 
+                                    isFetching={isFetching}
+                                    events={events}
+                                />
+                            </Col>
 
-                <Col xs={12}  md={5} lg={4}>
-                    <EventsList 
-                        id={id} 
-                        events={events} 
-                        isFetching={isFetching} 
-                        queryString={queryString}
-                        skeleton={needSkeleton}
-                        calendarId={id}
-                    />
-                </Col>
-            </Row>
+                            <Col xs={12}  md={5} lg={4}>
+                                <EventsList 
+                                    id={id} 
+                                    events={events} 
+                                    isFetching={isFetching} 
+                                    queryString={queryString}
+                                    skeleton={needSkeleton}
+                                    calendarId={id}
+                                />
+                            </Col>
+                        </Row>
+                    </>
+                )}
         </>
     )
 }
