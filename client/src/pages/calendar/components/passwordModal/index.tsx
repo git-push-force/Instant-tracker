@@ -4,12 +4,13 @@ import { Dialog, InputGroup, Tooltip, Button, Intent } from '@blueprintjs/core';
 import { savePassword } from '../../../../utils/localStorage';
 
 interface IProps {
-    open: boolean,
-    wrong: boolean,
-    setOpen: Function
+    open: boolean;
+    wrong: boolean;
+    setOpen: Function;
+    doRequest: Function;
 }
 
-const Modal: React.FC<IProps> = ({ open, wrong, setOpen }) => {
+const Modal: React.FC<IProps> = ({ open, wrong, setOpen, doRequest }) => {
     const [showPassword, setShowPassword] = useState(false);
     const [value, setValue] = useState('');
 
@@ -17,6 +18,7 @@ const Modal: React.FC<IProps> = ({ open, wrong, setOpen }) => {
     const handleSubmit = () => {
         savePassword(value);
         setOpen(false);
+        doRequest();
     }
 
     const lockButton = (

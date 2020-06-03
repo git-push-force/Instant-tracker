@@ -31,10 +31,11 @@ const CalendarPage: React.FC = () => {
 
     const queryString = qs.parse(location.search.substring(1));
     const redirectToNotExist = () => history.push('/notExist');
+    const doRequestFunc = () => doRequest(queryString, dispatch, setOpen, setWrong, redirectToNotExist);
 
     useEffect(() => {
         document.title = 'Calendar';
-        doRequest(queryString, dispatch, setOpen, setWrong, redirectToNotExist);
+        doRequestFunc();
         // eslint-disable-next-line
     }, [dispatch, queryString.id]);
 
@@ -47,7 +48,7 @@ const CalendarPage: React.FC = () => {
 
     return (
         <>
-            <PasswordModal open={open} wrong={wrong} setOpen={setOpen} />
+            <PasswordModal open={open} wrong={wrong} setOpen={setOpen} doRequest={doRequestFunc}/>
             <Info name={name} description={description} skeleton={needSkeleton} />
             <AddPanel skeleton={needSkeleton} />
 
