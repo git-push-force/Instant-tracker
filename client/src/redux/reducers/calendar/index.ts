@@ -163,7 +163,7 @@ const createReducer = (state = initState, action: IAction) => {
 		}
 
 		case eventTypes.REMOVE_NOTE:
-		case eventTypes.REMOVE_EVENT_ERROR: {
+		case eventTypes.REMOVE_NOTE_ERROR: {
 			return {
 				...state,
 				noteActionFetching: true
