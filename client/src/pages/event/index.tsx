@@ -1,6 +1,6 @@
 import './_event.scss';
 import qs from 'qs';
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { Card } from '@blueprintjs/core';
 import { useLocation } from 'react-router-dom';
@@ -11,26 +11,31 @@ import { IEvent } from '../../redux/reducers/calendar';
 interface IProps {
     events: IEvent[];
     doRequest: Function;
-    eventId: number;
 }
 
-const EventPage: React.FC<IProps> = ({ events, doRequest, eventId }) => {
+const EventPage: React.FC<IProps> = ({ events, doRequest }) => {
     const location = useLocation();
-    const queryString = qs.parse(location.search.substring(1));
+    const { eventId, id } = qs.parse(location.search.substring(1));
+    const [activeEvent, setActiveEvent] = useState(events.find(event => event.id === eventId));
 
     useEffect(() => {
-        if (!events.length) {
+        if (!events.length)
             doRequest();
-        }
+    // eslint-disable-next-line
     }, []);
+    
+    useEffect(() => {
+        setActiveEvent(events.find(event => event.id === eventId));
+    }, [eventId, events]);
 
     return (
         <Row>
             <Col className='eventDetails'>
                 <Card>
-                    <RedirectButton to={`/calendar?id=${queryString.id}`} buttonText='Back to calendar'/>
-                    <h3>{events[eventId]?.name}</h3>
-                    <p>{events[eventId]?.description}</p>
+                    <RedirectButton to={`/calendar?id=${id}`} buttonText='Back to calendar'/>
+                    <p>
+                        Event name: <span>{activeEvent?.name}</span>
+                    </p>
                 </Card>
             </Col>
         </Row>

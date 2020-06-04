@@ -41,7 +41,7 @@ const CalendarComponent: React.FC<IProps> = ({ isFetching, events }) => {
     };
 
     const handleClick = (e : React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-        const [x, y] = [e.clientX, e.clientY];
+        // const [x, y] = [e.clientX, e.clientY];
     }
 
     useEffect(() => {

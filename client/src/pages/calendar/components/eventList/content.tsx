@@ -35,7 +35,12 @@ const EventListContent: React.FC<IPropsContent> = ({
                         minimal
                     />
 
-                    <span className='eventCard_more' onClick={() => redirectToEvent(event.id)}>
+                    <span 
+                        className='eventCard_more' 
+                        onClick={() => {
+                            redirectToEvent(event.id);
+                        }}
+                    >
                         <Icon icon='chevron-right' iconSize={36}/>
                     </span>
 

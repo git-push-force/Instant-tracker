@@ -18,6 +18,7 @@ const CalendarPage: React.FC = () => {
     const dispatch = useDispatch();
     const location = useLocation();
     const history = useHistory();
+    const queryString = qs.parse(location.search.substring(1));
     const { 
         description, 
         isFetching, 
@@ -27,13 +28,11 @@ const CalendarPage: React.FC = () => {
     } = useSelector(calendarSelector);
 
     const [isEventOpen, setEventOpen] = useState(false);
-    const [activeEventId, setEventId] = useState(0);
 
     const [open, setOpen] = useState(false);
     const [wrong, setWrong] = useState(false);
     const [needSkeleton, setNeedSkeleton] = useState(isFetching || open || wrong);
 
-    const queryString = qs.parse(location.search.substring(1));
     const redirectToNotExist = () => history.push('/notExist');
     const doRequestFunc = () => doRequest(queryString, dispatch, setOpen, setWrong, redirectToNotExist);
 
@@ -76,7 +75,6 @@ const CalendarPage: React.FC = () => {
                     <Event
                         events={events}
                         doRequest={doRequestFunc}
-                        eventId={activeEventId}
                     />
                 ) : (
                     <>
