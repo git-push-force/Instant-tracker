@@ -1,6 +1,14 @@
 import * as calendarTypes from '../../types/calendar';
 import * as eventTypes from '../../types/event';
 
+//TODO: need to optimize actions working with data in redux by injecting only NEW or UPDATED data instead change all data (do it on server side too)
+
+export interface INote {
+	content: string;
+	id: string;
+	date: Date;
+	likes: number;
+}
 export interface IEvent {
 	name: string;
 	id: string;
@@ -9,7 +17,7 @@ export interface IEvent {
 	dateEnd?: string;
 	likes: number;
 	important: number;
-	notes: [];
+	notes: INote[];
 }
 export interface ICalendarReducer {
 	data: {
@@ -22,6 +30,7 @@ export interface ICalendarReducer {
 	isFetching: boolean;
 	eventFetching: boolean;
 	eventActionFetching: boolean;
+	noteFetching: boolean;
 }
 
 interface IAction {
@@ -36,6 +45,7 @@ const initState = {
 	isFetching: false,
 	eventFetching: false,
 	eventActionFetching: false,
+	noteFetching: false,
 };
 
 const createReducer = (state = initState, action: IAction) => {
@@ -54,8 +64,8 @@ const createReducer = (state = initState, action: IAction) => {
 				isFetching: false,
 				data: {
 					...action.payload,
-					id: action.payload._id
-				}
+					id: action.payload._id,
+				},
 			};
 		}
 
@@ -128,6 +138,25 @@ const createReducer = (state = initState, action: IAction) => {
 			return {
 				...state,
 				eventActionFetching: false,
+			};
+		}
+
+		case eventTypes.ADD_NOTE_ERROR:
+		case eventTypes.ADD_NOTE: {
+			return {
+				...state,
+				noteFetching: true,
+			};
+		}
+
+		case eventTypes.ADD_NOTE_SUCCESS: {
+			return {
+				...state,
+				noteFetching: false,
+				data: {
+					...action.payload,
+					id: action.payload._id,
+				},
 			};
 		}
 

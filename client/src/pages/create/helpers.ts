@@ -12,29 +12,28 @@ export const getInputs = (value: IValue) => {
 		{
 			placeholder: 'Calendar name...',
 			value: value.name,
-			field: 'name'
+			field: 'name',
 		},
 		{
 			placeholder: 'Calendar description...',
 			value: value.description,
-			field: 'description'
+			field: 'description',
 		},
 		{
 			placeholder: 'Calendar password...',
 			value: value.password,
-			field: 'password'
+			field: 'password',
 		},
 	];
 };
 
-
 export const copyText = async (calendarLink: string) => {
 	try {
 		await copy(calendarLink);
-		const color = { background: '#0f9960', text: '#FFFFFF' }
+		const color = { background: '#0f9960', text: '#FFFFFF' };
 		notify.show('Link copied!', 'custom', 2500, color);
 	} catch (err) {
-		const color = { background: 'rgb(196, 35, 35)', text: '#FFFFFF' }
+		const color = { background: 'rgb(196, 35, 35)', text: '#FFFFFF' };
 		notify.show('Oops, unable to copy', 'custom', 2500, color);
-	};
+	}
 };

@@ -9,3 +9,7 @@ export const MARK_AS_IMPORTANT_ERROR: string = 'MARK_AS_IMPORTANT_ERROR';
 export const REMOVE_EVENT: string = 'REMOVE_EVENT';
 export const REMOVE_EVENT_SUCCESS: string = 'REMOVE_EVENT_SUCCESS';
 export const REMOVE_EVENT_ERROR: string = 'REMOVE_EVENT_ERROR';
+
+export const ADD_NOTE = 'ADD_NOTE';
+export const ADD_NOTE_SUCCESS = 'ADD_NOTE_SUCCESS';
+export const ADD_NOTE_ERROR = 'ADD_NOTE_ERROR';

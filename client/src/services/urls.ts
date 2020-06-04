@@ -47,3 +47,14 @@ export interface IRemoveEvent {
 export const removeEventUrl = (payload: IRemoveEvent) => {
 	return axiosInstance.post(`/event/remove`, qs.stringify({ ...payload }));
 };
+
+export interface IAddNote {
+	id: string;
+	eventId: string;
+	password?: string;
+	content: string;
+}
+
+export const addNoteUrl = (payload: IAddNote) => {
+	return axiosInstance.post(`/note/create`, qs.stringify({ ...payload }));
+};

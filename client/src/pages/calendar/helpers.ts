@@ -7,9 +7,10 @@ import { notify } from 'react-notify-toast';
 import copy from 'copy-to-clipboard';
 import { HOST } from '../../services/request';
 
-export const checkDate = (date: string): boolean => moment(date, 'YYYY-MM-DD', true).isValid();
+export const checkDate = (date: string): boolean =>
+	moment(date, 'YYYY-MM-DD', true).isValid();
 
-	//Get fields for add event panel
+//Get fields for add event panel
 interface IInput {
 	placeholder: string;
 	name: string;
@@ -67,7 +68,7 @@ export const getInputs = (): IGroup[] => {
 	];
 };
 
-	//Clear add event panel fields
+//Clear add event panel fields
 export const clearFields = (
 	setData: React.Dispatch<
 		React.SetStateAction<{
@@ -88,44 +89,50 @@ export const clearFields = (
 	});
 };
 
-	//Get fields for event card menu
+//Get fields for event card menu
 export const getEventMenuItems = (
-	event: IEvent, 
+	event: IEvent,
 	toggleImportant: Function,
 	submitAction: Function,
 	removeEventFunc: Function,
 	calendarId: string
-	): IMenuItem[] => {
+): IMenuItem[] => {
 	return [
 		{
 			text: 'Copy link to event',
 			icon: 'duplicate',
 			clickHandler: async () => {
-				await copy(`${HOST}/calendar?id=${calendarId}&eventId=${event.id}`);
-				const color = { background: '#0f9960', text: '#FFFFFF' }
+				await copy(
+					`${HOST}/calendar?id=${calendarId}&eventId=${event.id}`
+				);
+				const color = { background: '#0f9960', text: '#FFFFFF' };
 				notify.show('Link copied!', 'custom', 2500, color);
-			}
+			},
 		},
 		{
-			text: `Mark as ${Number(event.important) ? 'unimportant' : 'important'}`,
+			text: `Mark as ${
+				Number(event.important) ? 'unimportant' : 'important'
+			}`,
 			icon: Number(event.important) ? 'star-empty' : 'star',
-			clickHandler: () => toggleImportant(event.id, event.important)
-		}, 
+			clickHandler: () => toggleImportant(event.id, event.important),
+		},
 		{
 			text: 'Remove event',
 			icon: 'trash',
 			intent: 'danger',
 			dividerPosition: 'before',
-			clickHandler: () => submitAction(
-				event,
-				'Confirm to delete',
-				'Are you sure want to remove event?',
-				removeEventFunc)
-		}
+			clickHandler: () =>
+				submitAction(
+					event,
+					'Confirm to delete',
+					'Are you sure want to remove event?',
+					removeEventFunc
+				),
+		},
 	];
 };
 
-	//Request on first render and handling errors
+//Request on first render and handling errors
 export const doRequest = async (
 	queryString: qs.ParsedQs,
 	dispatch: React.Dispatch<Object>,
@@ -134,13 +141,13 @@ export const doRequest = async (
 	redirect: Function
 ) => {
 	if (queryString.id) {
-
 		try {
-			await dispatch(getCalendar({
-				id: queryString.id.toString(),
-				password: getPassword()
-			}));
-
+			await dispatch(
+				getCalendar({
+					id: queryString.id.toString(),
+					password: getPassword(),
+				})
+			);
 		} catch (err) {
 			const statusCode = err.split(' ')[5];
 
@@ -164,6 +171,6 @@ export const doRequest = async (
 	} else {
 		redirect();
 	}
-}
+};
 
-	//Get fields for calendar day menu
+//Get fields for calendar day menu

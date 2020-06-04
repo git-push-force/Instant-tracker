@@ -1,6 +1,7 @@
+import './_redirect.scss';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from '@blueprintjs/core';
+import { Button, Icon } from '@blueprintjs/core';
 
 interface IProps {
     to: string;
@@ -10,7 +11,8 @@ interface IProps {
 const Component: React.FC<IProps> = ({ to, buttonText }) => {
     return (
         <Link to={to}>
-            <Button>
+            <Button minimal className='redirectButtonComponent'>
+                <Icon icon='chevron-left'/>
                 {buttonText}
             </Button>
         </Link>

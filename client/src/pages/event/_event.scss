@@ -2,8 +2,27 @@
     .bp3-card {
         margin-top: 15px;
         box-shadow: 0 0 15px 0 rgb(194, 194, 194);
-        padding: 10px;
+        padding: 15px;
     }
+
+    .eventDetails__addNoteForm {
+        display: flex;
+
+        .bp3-icon {
+            color: green;
+            font-size: 1.5rem;
+            margin-right: 10px;
+        }
+    }
+}
+
+.eventDetails__name {
+    font-size: 1.5rem;
+    color: #106ba3;
+}
+
+.eventDetails__description {
+    font-size: 1.1rem;
 }
 
 @media screen and (max-width: 443px) {
@@ -11,5 +30,9 @@
         margin-top: -10px;
         padding-right: 0;
         padding-left: 0;
+
+        .bp3-card {
+            padding: 10px;
+        }
     }
 }
