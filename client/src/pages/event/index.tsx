@@ -10,6 +10,8 @@ import RedirectButton from '../../components/Button/Redirect';
 import { IEvent } from '../../redux/reducers/calendar';
 import { addNote } from '../../redux/actions/event';
 import { getPassword } from '../../utils/localStorage';
+import PopoverMenu from '../../components/PopoverMenu';
+import { getEventMenuItems } from './helpers';
 
 interface IProps {
     events: IEvent[];
@@ -66,7 +68,9 @@ const EventPage: React.FC<IProps> = ({ events, doRequest }) => {
                             minimal
                             disabled={!value.trim().length}
                             onClick={handleSubmit}
-                        />
+                        >
+                            Add note
+                        </Button>
                         <InputGroup 
                             value={value} 
                             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue(e.target.value)}
@@ -76,9 +80,19 @@ const EventPage: React.FC<IProps> = ({ events, doRequest }) => {
                     </div>
 
                     {activeEvent?.notes.map(note => {
+                        const menuItems = getEventMenuItems();
+                        
                         return (
                             <div className='eventDetails__note'>
-                                {note.content}
+                                <PopoverMenu
+                                    buttonIcon='layout-linear'
+                                    className='eventDetails__actions'
+                                    items={menuItems}
+                                    minimal
+                                />
+                                <p className='bp3-text-overflow-ellipsis'>
+                                    {note.content}
+                                </p>
                                 <p className='bp3-text-muted'>
                                     {note.date}
                                 </p>

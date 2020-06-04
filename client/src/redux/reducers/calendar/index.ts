@@ -6,7 +6,7 @@ import * as eventTypes from '../../types/event';
 export interface INote {
 	content: string;
 	id: string;
-	date: Date;
+	date: Date | string;
 	likes: number;
 }
 export interface IEvent {

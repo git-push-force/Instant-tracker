@@ -5,13 +5,7 @@ import * as moment from 'moment';
 
 import { NoteDto } from './dto/note.dto';
 import { ICalendar } from '../calendar/interfaces/calendar.interface';
-import {
-	InternalError,
-	NeedPassword,
-	WrongPassword,
-	InvalidProperty,
-	NotExist,
-} from '../exceptions';
+import { InternalError, NotExist } from '../exceptions';
 
 @Injectable()
 export class NoteService {
@@ -38,13 +32,13 @@ export class NoteService {
 							{
 								...activeEvent,
 								notes: [
-									...activeEvent.notes,
 									{
 										likes: 0,
 										content: query.content,
 										id: activeEvent.notes.length.toString(),
-										date: new Date(),
+										date: moment(new Date()).format('YYYY-MM-DD hh:mm'),
 									},
+									...activeEvent.notes
 								],
 							},
 						],
