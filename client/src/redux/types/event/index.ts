@@ -13,3 +13,7 @@ export const REMOVE_EVENT_ERROR: string = 'REMOVE_EVENT_ERROR';
 export const ADD_NOTE = 'ADD_NOTE';
 export const ADD_NOTE_SUCCESS = 'ADD_NOTE_SUCCESS';
 export const ADD_NOTE_ERROR = 'ADD_NOTE_ERROR';
+
+export const REMOVE_NOTE = 'REMOVE_NOTE';
+export const REMOVE_NOTE_SUCCESS = 'REMOVE_NOTE_SUCCESS';
+export const REMOVE_NOTE_ERROR = 'REMOVE_NOTE_ERROR';

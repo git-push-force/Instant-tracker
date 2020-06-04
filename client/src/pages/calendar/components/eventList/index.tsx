@@ -23,11 +23,18 @@ interface IProps {
     calendarId: string;
 }
 
-const EventList: React.FC<IProps> = ({ events, isFetching, id, queryString, skeleton, calendarId }) => {
+const EventList: React.FC<IProps> = ({ 
+    events, 
+    isFetching, 
+    id, 
+    queryString, 
+    skeleton, 
+    calendarId 
+}) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const screenSize = getScreenSize();
-    const [isOpen, setOpen] = useState(screenSize.width > 768);
+    const [isOpen, setOpen] = useState(screenSize.width > 767);
 
     const redirectToEvent = (eventId: string) => history.push(`/calendar?id=${queryString.id}&eventId=${eventId}`);
     const removeEventFunc = (eventId: string) => dispatch(removeEvent({ id, eventId, password: getPassword() }));

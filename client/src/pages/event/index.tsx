@@ -3,7 +3,7 @@ import qs from 'qs';
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Col, Row } from 'react-bootstrap';
-import { Card, Icon, InputGroup, Button } from '@blueprintjs/core';
+import { Card, InputGroup, Button } from '@blueprintjs/core';
 import { useLocation } from 'react-router-dom';
 
 import RedirectButton from '../../components/Button/Redirect';
@@ -12,6 +12,8 @@ import { addNote } from '../../redux/actions/event';
 import { getPassword } from '../../utils/localStorage';
 import PopoverMenu from '../../components/PopoverMenu';
 import { getEventMenuItems } from './helpers';
+import { removeNote } from '../../redux/actions/event';
+import { IRemoveNote } from '../../services/urls';
 
 interface IProps {
     events: IEvent[];
@@ -26,6 +28,8 @@ const EventPage: React.FC<IProps> = ({ events, doRequest }) => {
     const { eventId, id } = queryString;
     const [activeEvent, setActiveEvent] = useState(events.find(event => event.id === eventId));
     const [value, setValue] = useState('');
+
+    const removeNoteFunc = (arg: IRemoveNote) => dispatch(removeNote(arg));
 
     const handleSubmit = () => {
         dispatch(addNote({
@@ -80,7 +84,12 @@ const EventPage: React.FC<IProps> = ({ events, doRequest }) => {
                     </div>
 
                     {activeEvent?.notes.map(note => {
-                        const menuItems = getEventMenuItems();
+                        const menuItems = getEventMenuItems(
+                            id.toString(),
+                            activeEvent?.id,
+                            note.id,
+                            removeNoteFunc
+                        );
                         
                         return (
                             <div className='eventDetails__note'>

@@ -31,6 +31,7 @@ export interface ICalendarReducer {
 	eventFetching: boolean;
 	eventActionFetching: boolean;
 	noteFetching: boolean;
+	noteActionFetching: boolean;
 }
 
 interface IAction {
@@ -46,6 +47,7 @@ const initState = {
 	eventFetching: false,
 	eventActionFetching: false,
 	noteFetching: false,
+	noteActionFetching: false
 };
 
 const createReducer = (state = initState, action: IAction) => {
@@ -153,6 +155,25 @@ const createReducer = (state = initState, action: IAction) => {
 			return {
 				...state,
 				noteFetching: false,
+				data: {
+					...action.payload,
+					id: action.payload._id,
+				},
+			};
+		}
+
+		case eventTypes.REMOVE_NOTE:
+		case eventTypes.REMOVE_EVENT_ERROR: {
+			return {
+				...state,
+				noteActionFetching: true
+			}
+		}
+
+		case eventTypes.REMOVE_NOTE_SUCCESS: {
+			return {
+				...state,
+				noteActionFetching: false,
 				data: {
 					...action.payload,
 					id: action.payload._id,

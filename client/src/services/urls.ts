@@ -58,3 +58,14 @@ export interface IAddNote {
 export const addNoteUrl = (payload: IAddNote) => {
 	return axiosInstance.post(`/note/create`, qs.stringify({ ...payload }));
 };
+
+export interface IRemoveNote {
+	id: string;
+	eventId: string;
+	noteId: string;
+	password?: string;
+};
+
+export const removeNoteUrl = (payload: IRemoveNote) => {
+	return axiosInstance.post(`/note/remove`, qs.stringify({ ...payload }));
+};

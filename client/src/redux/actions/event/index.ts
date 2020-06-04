@@ -11,6 +11,8 @@ import {
 	IRemoveEvent,
 	addNoteUrl,
 	IAddNote,
+	IRemoveNote,
+	removeNoteUrl,
 } from '../../../services/urls';
 
 export const createEvent = (
@@ -78,5 +80,22 @@ export const addNote = (
 		});
 	} catch (err) {
 		dispatch({ type: actionTypes.ADD_NOTE_ERROR });
+	}
+};
+
+export const removeNote = (
+	payload: IRemoveNote
+): ThunkAction<void, Object, unknown, Action<string>> => async dispatch => {
+	dispatch({ type: actionTypes.REMOVE_NOTE });
+
+	try {
+		const response = await removeNoteUrl(payload);
+		const { data } = response;
+		dispatch({
+			type: actionTypes.REMOVE_NOTE_SUCCESS,
+			payload: data,
+		});
+	} catch (err) {
+		dispatch({ type: actionTypes.REMOVE_NOTE_ERROR });
 	}
 };
