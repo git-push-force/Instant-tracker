@@ -9,6 +9,15 @@
     abbr {
         text-decoration: none !important;
     }
+
+    .react-calendar__month-view__days__day {
+        padding: 0 !important;
+
+        .bp3-popover-target {
+            width: 100%;
+            height: 100%;
+        }
+    }
 }
 
 .react-calendar__navigation {

@@ -9,15 +9,8 @@ import { createEvent } from '../../../../redux/actions/event';
 import { IRootReducer } from '../../../../redux/reducers';
 import { getPassword } from '../../../../utils/localStorage';
 import Loader from '../../../../components/Loader';
+import { IData } from '../../helpers';
 
-
-export interface IData {
-    dateStart: string;
-    dateEnd: string;
-    name: string;
-    description: string;
-    important: boolean;
-}
 interface IProps {
     skeleton: boolean;
     data: IData;
