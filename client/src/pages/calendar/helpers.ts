@@ -174,3 +174,18 @@ export const doRequest = async (
 };
 
 //Get fields for calendar day menu
+
+export const getDayMenuItems = (
+	date: Date
+): IMenuItem[] => {
+	return [
+		{
+			text: 'Set as start day',
+			icon: 'arrow-right',
+		},
+		{
+			text: 'Set as end day',
+			icon: 'arrow-left'
+		}
+	];
+};

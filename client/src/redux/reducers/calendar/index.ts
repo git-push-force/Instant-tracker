@@ -86,14 +86,14 @@ const createReducer = (state = initState, action: IAction) => {
 		case calendarTypes.CREATE_CALENDAR_ERROR: {
 			return {
 				...state,
-				isFetching: false,
+				isFetching: false
 			};
 		}
 
 		case eventTypes.CREATE_EVENT: {
 			return {
 				...state,
-				eventFetching: true,
+				eventFetching: true
 			};
 		}
 
@@ -103,7 +103,7 @@ const createReducer = (state = initState, action: IAction) => {
 				eventFetching: false,
 				data: {
 					...action.payload,
-					id: action.payload._id,
+					id: action.payload._id
 				},
 			};
 		}
@@ -111,7 +111,7 @@ const createReducer = (state = initState, action: IAction) => {
 		case eventTypes.CREATE_EVENT_ERROR: {
 			return {
 				...state,
-				eventFetching: false,
+				eventFetching: false
 			};
 		}
 
@@ -119,7 +119,7 @@ const createReducer = (state = initState, action: IAction) => {
 		case eventTypes.MARK_AS_IMPORTANT: {
 			return {
 				...state,
-				eventActionFetching: true,
+				eventActionFetching: true
 			};
 		}
 
@@ -130,7 +130,7 @@ const createReducer = (state = initState, action: IAction) => {
 				eventActionFetching: false,
 				data: {
 					...action.payload,
-					id: action.payload._id,
+					id: action.payload._id
 				},
 			};
 		}
@@ -139,7 +139,7 @@ const createReducer = (state = initState, action: IAction) => {
 		case eventTypes.MARK_AS_IMPORTANT_ERROR: {
 			return {
 				...state,
-				eventActionFetching: false,
+				eventActionFetching: false
 			};
 		}
 
@@ -147,7 +147,7 @@ const createReducer = (state = initState, action: IAction) => {
 		case eventTypes.ADD_NOTE: {
 			return {
 				...state,
-				noteFetching: true,
+				noteFetching: true
 			};
 		}
 
@@ -157,7 +157,7 @@ const createReducer = (state = initState, action: IAction) => {
 				noteFetching: false,
 				data: {
 					...action.payload,
-					id: action.payload._id,
+					id: action.payload._id
 				},
 			};
 		}
@@ -176,7 +176,7 @@ const createReducer = (state = initState, action: IAction) => {
 				noteActionFetching: false,
 				data: {
 					...action.payload,
-					id: action.payload._id,
+					id: action.payload._id
 				},
 			};
 		}
