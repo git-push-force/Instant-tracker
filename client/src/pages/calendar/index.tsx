@@ -7,6 +7,7 @@ import { Row, Col } from 'react-bootstrap';
 import { doRequest } from './helpers';
 import { calendarSelector } from '../../redux/selectors/calendar';
 
+import moment from 'moment';
 import Event from '../event/index';
 import Info from './components/info';
 import AddPanel from './components/addPanel';
@@ -32,6 +33,14 @@ const CalendarPage: React.FC = () => {
     const [open, setOpen] = useState(false);
     const [wrong, setWrong] = useState(false);
     const [needSkeleton, setNeedSkeleton] = useState(isFetching || open || wrong);
+
+    const [data, setData] = useState({
+        dateStart: moment(new Date()).format('YYYY-MM-DD'),
+        dateEnd: '',
+        name: '',
+        description: '',
+        important: false
+    });
 
     const redirectToNotExist = () => history.push('/notExist');
     const doRequestFunc = () => doRequest(queryString, dispatch, setOpen, setWrong, redirectToNotExist);
@@ -78,7 +87,7 @@ const CalendarPage: React.FC = () => {
                     />
                 ) : (
                     <>
-                        <AddPanel skeleton={needSkeleton} />
+                        <AddPanel skeleton={needSkeleton} data={data} setData={setData} />
                         <Row>
                             <Col xs={12}  md={7} lg={8}>
                                 <Calendar 

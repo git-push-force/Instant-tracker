@@ -1,5 +1,4 @@
 import './_addPanel.scss';
-import moment from 'moment';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, InputGroup, ControlGroup, Checkbox } from '@blueprintjs/core';
@@ -11,22 +10,25 @@ import { IRootReducer } from '../../../../redux/reducers';
 import { getPassword } from '../../../../utils/localStorage';
 import Loader from '../../../../components/Loader';
 
+
+export interface IData {
+    dateStart: string;
+    dateEnd: string;
+    name: string;
+    description: string;
+    important: boolean;
+}
 interface IProps {
     skeleton: boolean;
+    data: IData;
+    setData: React.Dispatch<React.SetStateAction<IData>>
 }
 
-const AddPanel: React.FC<IProps> = ({ skeleton }) => {
+const AddPanel: React.FC<IProps> = ({ skeleton, data, setData }) => {
     const dispatch = useDispatch();
     const calendar = useSelector((state: IRootReducer) => state.calendar);
 
     const [oldValue, setOld] = useState('');
-    const [data, setData] = useState({
-        dateStart: moment(new Date()).format('YYYY-MM-DD'),
-        dateEnd: '',
-        name: '',
-        description: '',
-        important: false
-    });
 
     const setField = (fieldName: string, event: React.ChangeEvent<HTMLInputElement> | string | boolean): void => {
         if (typeof event === 'string' || typeof event === 'boolean') {

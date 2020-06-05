@@ -6,6 +6,7 @@ import { getPassword } from '../../utils/localStorage';
 import { notify } from 'react-notify-toast';
 import copy from 'copy-to-clipboard';
 import { HOST } from '../../services/request';
+import { IData } from './components/addPanel';
 
 export const checkDate = (date: string): boolean =>
 	moment(date, 'YYYY-MM-DD', true).isValid();
@@ -70,15 +71,7 @@ export const getInputs = (): IGroup[] => {
 
 //Clear add event panel fields
 export const clearFields = (
-	setData: React.Dispatch<
-		React.SetStateAction<{
-			dateStart: string;
-			dateEnd: string;
-			name: string;
-			description: string;
-			important: boolean;
-		}>
-	>
+	setData: React.Dispatch<React.SetStateAction<IData>>
 ) => {
 	setData({
 		dateStart: moment(new Date()).format('YYYY-MM-DD'),
