@@ -176,16 +176,26 @@ export const doRequest = async (
 //Get fields for calendar day menu
 
 export const getDayMenuItems = (
-	date: Date
+	date: Date,
+	setData: React.Dispatch<React.SetStateAction<IData>>,
+	data: IData
 ): IMenuItem[] => {
 	return [
 		{
 			text: 'Set as start day',
 			icon: 'arrow-right',
+			clickHandler: () => setData({
+				...data,
+				dateStart: moment(date).format('YYYY-MM-DD')
+			})
 		},
 		{
 			text: 'Set as end day',
-			icon: 'arrow-left'
+			icon: 'arrow-left',
+			clickHandler: () => setData({
+				...data,
+				dateEnd: moment(date).format('YYYY-MM-DD')
+			})
 		}
 	];
 };

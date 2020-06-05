@@ -10,13 +10,16 @@ import { IEvent } from '../../../../redux/reducers/calendar';
 import Loader from '../../../../components/Loader';
 import ToggleButton from '../../../../components/Button/Toggle';
 import PopoverMenu from '../../../../components/PopoverMenu';
+import { IData } from '../../helpers';
 
 interface IProps {
     isFetching: boolean;
     events: IEvent[];
+    setData: React.Dispatch<React.SetStateAction<IData>>,
+    data: IData
 }
 
-const CalendarComponent: React.FC<IProps> = ({ isFetching, events }) => {
+const CalendarComponent: React.FC<IProps> = ({ isFetching, events, setData, data }) => {
 
     const [isOpen, setOpen] = useState(true);
 
@@ -37,7 +40,7 @@ const CalendarComponent: React.FC<IProps> = ({ isFetching, events }) => {
             )
         }
         if (view === 'month') {
-            const menuItems = getDayMenuItems(date);
+            const menuItems = getDayMenuItems(date, setData, data);
 
             return (
                 <PopoverMenu items={menuItems} className='calendarTileMenu'/>
