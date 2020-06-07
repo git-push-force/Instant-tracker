@@ -195,7 +195,8 @@ export const getDayMenuItems = (
 			clickHandler: () => setData({
 				...data,
 				dateEnd: moment(date).format('YYYY-MM-DD')
-			})
+			}),
+			disabled: moment(date).isBefore(data.dateStart)
 		}
 	];
 };

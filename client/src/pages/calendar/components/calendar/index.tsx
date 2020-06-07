@@ -26,6 +26,7 @@ const CalendarComponent: React.FC<IProps> = ({ isFetching, events, setData, data
     const renderTileContent = (props: CalendarTileProperties) => {
         const { date, view } = props;
         const parsedDate = moment(date).format('YYYY-MM-DD');
+        const menuItems = getDayMenuItems(date, setData, data);
 
         if (view === 'month' && events.find(event => event.dateStart === parsedDate)) {
             return (
@@ -36,12 +37,11 @@ const CalendarComponent: React.FC<IProps> = ({ isFetching, events, setData, data
                     >
                         {events.filter(event => event.dateStart === parsedDate).length}
                     </Tag>
+                    <PopoverMenu items={menuItems} className='calendarTileMenu'/>
                 </>
             )
         }
         if (view === 'month') {
-            const menuItems = getDayMenuItems(date, setData, data);
-
             return (
                 <PopoverMenu items={menuItems} className='calendarTileMenu'/>
             );

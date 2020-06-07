@@ -1,4 +1,5 @@
 import './_addPanel.scss';
+import moment from 'moment';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, InputGroup, ControlGroup, Checkbox } from '@blueprintjs/core';
@@ -63,7 +64,9 @@ const AddPanel: React.FC<IProps> = ({ skeleton, data, setData }) => {
                                         onBlur={() => {
                                             // @ts-ignore
                                             if (input.checkDate && !checkDate(data[input.name]))
-                                                setField(input.name, oldValue)
+                                                setField(input.name, oldValue);
+                                            if (input.name === 'dateEnd' && moment(data.dateStart).isAfter(data.dateEnd))
+                                                setField(input.name, oldValue);
                                         }}
                                         className={skeleton ? 'bp3-skeleton' : ''}
                                     />
